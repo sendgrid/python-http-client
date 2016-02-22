@@ -8,7 +8,8 @@ client = Client(host=os.environ.get('HOST'),
                 headers=headers
                 )
 headers = {'X-Mock': 200}
-response = client.api_keys.get(headers=headers)
+params = {'limit': 100}
+response = client.api_keys.get(params=params, headers=headers)
 print "\nGET Mocked Example"
 print response.headers
 print response.status_code
