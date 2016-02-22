@@ -89,10 +89,10 @@ class Client(object):
         self._reset()
         return self
 
-    def delete(self, params=None, headers=None):
+    def delete(self, data=None, params=None, headers=None):
         if headers:
             self._set_headers(headers)
-        response = requests.delete(self._build_url(), params=params, headers=self.request_headers)
+        response = requests.delete(self._build_url(), params=params, data=data, headers=self.request_headers)
         self._set_response(response)
         self._reset()
         return self
