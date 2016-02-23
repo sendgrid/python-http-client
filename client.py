@@ -1,7 +1,8 @@
 import requests
 
+
 class Client(object):
-    
+
     def __init__(self, host=None, api_key=None, headers=None):
         self.host = host
         self.request_headers = {'Authorization': 'Bearer ' + api_key}
@@ -12,11 +13,11 @@ class Client(object):
         self._status_code = None
         self._body = None
         self._headers = None
-    
+
     def _reset(self):
         self._count = 0
         self._cache = {}
-    
+
     def _add_to_cache(self, value):
         self._cache[self._count] = value
         self._count += 1
@@ -33,26 +34,26 @@ class Client(object):
         self._status_code = response.status_code
         self._body = response.text
         self._headers = response.headers
-    
+
     def _set_headers(self, headers):
         self.request_headers.update(headers)
-    
+
     def _(self, value):
         self._add_to_cache(value)
         return self
-    
+
     def __getattr__(self, value):
         self._add_to_cache(value)
         return self
-    
+
     @property
     def status_code(self):
         return self._status_code
-    
+
     @property
     def body(self):
         return self._body
-    
+
     @property
     def headers(self):
         return self._headers
@@ -60,7 +61,9 @@ class Client(object):
     def get(self, params=None, headers=None):
         if headers:
             self._set_headers(headers)
-        response = requests.get(self._build_url(), params=params, headers=self.request_headers)
+        response = requests.get(self._build_url(),
+                                params=params,
+                                headers=self.request_headers)
         self._set_response(response)
         self._reset()
         return self
@@ -68,7 +71,10 @@ class Client(object):
     def post(self, data=None, params=None, headers=None):
         if headers:
             self._set_headers(headers)
-        response = requests.post(self._build_url(), params=params, data=data, headers=self.request_headers)
+        response = requests.post(self._build_url(),
+                                 params=params,
+                                 data=data,
+                                 headers=self.request_headers)
         self._set_response(response)
         self._reset()
         return self
@@ -76,7 +82,10 @@ class Client(object):
     def put(self, data=None, params=None, headers=None):
         if headers:
             self._set_headers(headers)
-        response = requests.put(self._build_url(), params=params, data=data, headers=self.request_headers)
+        response = requests.put(self._build_url(),
+                                params=params,
+                                data=data,
+                                headers=self.request_headers)
         self._set_response(response)
         self._reset()
         return self
@@ -84,7 +93,10 @@ class Client(object):
     def patch(self, data=None, params=None, headers=None):
         if headers:
             self._set_headers(headers)
-        response = requests.patch(self._build_url(), params=params, data=data, headers=self.request_headers)
+        response = requests.patch(self._build_url(),
+                                  params=params,
+                                  data=data,
+                                  headers=self.request_headers)
         self._set_response(response)
         self._reset()
         return self
@@ -92,7 +104,10 @@ class Client(object):
     def delete(self, data=None, params=None, headers=None):
         if headers:
             self._set_headers(headers)
-        response = requests.delete(self._build_url(), params=params, data=data, headers=self.request_headers)
+        response = requests.delete(self._build_url(),
+                                   params=params,
+                                   data=data,
+                                   headers=self.request_headers)
         self._set_response(response)
         self._reset()
         return self

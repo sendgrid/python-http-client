@@ -1,5 +1,6 @@
 import os
 
+
 class Config(object):
     """All configuration for this app is loaded here"""
     def __init__(self):

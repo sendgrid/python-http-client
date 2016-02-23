@@ -3,8 +3,8 @@ from config import Config
 import os
 Config.init_environment()
 headers = {'X-Mock': 200}
-client = Client(host=os.environ.get('HOST'), 
-                api_key=os.environ.get('SENDGRID_API_KEY'), 
+client = Client(host=os.environ.get('HOST'),
+                api_key=os.environ.get('SENDGRID_API_KEY'),
                 headers=headers
                 )
 headers = {'X-Mock': 200}
