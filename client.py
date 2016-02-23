@@ -77,9 +77,10 @@ class Client(object):
         return wrapper
 
     @method_wrapper
-    def get(self, params=None, headers=None):
+    def get(self, data=None, params=None, headers=None):
         self._response = requests.get(self._build_url(),
                                       params=params,
+                                      data=data,
                                       headers=self.request_headers)
         return self
 
