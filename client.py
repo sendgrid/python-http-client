@@ -1,4 +1,5 @@
 import requests
+from functools import wraps
 
 
 class Client(object):
@@ -13,10 +14,12 @@ class Client(object):
         self._status_code = None
         self._body = None
         self._headers = None
+        self._response = None
 
     def _reset(self):
         self._count = 0
         self._cache = {}
+        self._response = None
 
     def _add_to_cache(self, value):
         self._cache[self._count] = value
@@ -58,56 +61,56 @@ class Client(object):
     def headers(self):
         return self._headers
 
+    def method_wrapper(func):
+
+        @wraps(func)
+        def wrapper(self, *args, **kwargs):
+            if kwargs['headers']:
+                self._set_headers(kwargs['headers'])
+
+            response = func(self, *args, **kwargs)
+
+            self._set_response(self._response)
+            self._reset()
+            return response
+
+        return wrapper
+
+    @method_wrapper
     def get(self, params=None, headers=None):
-        if headers:
-            self._set_headers(headers)
-        response = requests.get(self._build_url(),
-                                params=params,
-                                headers=self.request_headers)
-        self._set_response(response)
-        self._reset()
+        self._response = requests.get(self._build_url(),
+                                      params=params,
+                                      headers=self.request_headers)
         return self
 
+    @method_wrapper
     def post(self, data=None, params=None, headers=None):
-        if headers:
-            self._set_headers(headers)
-        response = requests.post(self._build_url(),
-                                 params=params,
-                                 data=data,
-                                 headers=self.request_headers)
-        self._set_response(response)
-        self._reset()
+        self._response = requests.post(self._build_url(),
+                                       params=params,
+                                       data=data,
+                                       headers=self.request_headers)
         return self
 
+    @method_wrapper
     def put(self, data=None, params=None, headers=None):
-        if headers:
-            self._set_headers(headers)
-        response = requests.put(self._build_url(),
-                                params=params,
-                                data=data,
-                                headers=self.request_headers)
-        self._set_response(response)
-        self._reset()
+        self._response = requests.put(self._build_url(),
+                                      params=params,
+                                      data=data,
+                                      headers=self.request_headers)
         return self
 
+    @method_wrapper
     def patch(self, data=None, params=None, headers=None):
-        if headers:
-            self._set_headers(headers)
-        response = requests.patch(self._build_url(),
-                                  params=params,
-                                  data=data,
-                                  headers=self.request_headers)
-        self._set_response(response)
-        self._reset()
+        self._response = requests.patch(self._build_url(),
+                                        params=params,
+                                        data=data,
+                                        headers=self.request_headers)
         return self
 
+    @method_wrapper
     def delete(self, data=None, params=None, headers=None):
-        if headers:
-            self._set_headers(headers)
-        response = requests.delete(self._build_url(),
-                                   params=params,
-                                   data=data,
-                                   headers=self.request_headers)
-        self._set_response(response)
-        self._reset()
+        self._response = requests.delete(self._build_url(),
+                                         params=params,
+                                         data=data,
+                                         headers=self.request_headers)
         return self
