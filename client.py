@@ -7,6 +7,7 @@ class Client(object):
     def __init__(self, host=None, api_key=None, headers=None):
         self.host = host
         self.request_headers = {'Authorization': 'Bearer ' + api_key}
+        self.methods = ['get', 'post', 'put', 'patch', 'delete']
         if headers:
             self._set_headers(headers)
         self._count = 0
@@ -46,7 +47,32 @@ class Client(object):
         return self
 
     def __getattr__(self, value):
-        self._add_to_cache(value)
+        if value in self.methods:
+            def http_request(*args, **kwargs):
+                request = getattr(requests, value)
+                try:
+                    self._set_headers(kwargs['headers'])
+                except KeyError, e:
+                    pass
+                try:
+                    data = kwargs['data']
+                except KeyError, e:
+                    data = None
+                    self._set_headers(kwargs['headers'])
+                try:
+                    params = kwargs['params']
+                except KeyError, e:
+                    params = None                
+                self._response = request(self._build_url(),
+                                         data=data,
+                                         params=params,
+                                         headers=self.request_headers)
+                self._set_response(self._response)
+                self._reset()
+                return self
+            return http_request
+        else:
+            self._add_to_cache(value)
         return self
 
     @property
@@ -60,58 +86,3 @@ class Client(object):
     @property
     def headers(self):
         return self._headers
-
-    def method_wrapper(func):
-
-        @wraps(func)
-        def wrapper(self, *args, **kwargs):
-            if kwargs['headers']:
-                self._set_headers(kwargs['headers'])
-
-            response = func(self, *args, **kwargs)
-
-            self._set_response(self._response)
-            self._reset()
-            return response
-
-        return wrapper
-
-    @method_wrapper
-    def get(self, data=None, params=None, headers=None):
-        self._response = requests.get(self._build_url(),
-                                      params=params,
-                                      data=data,
-                                      headers=self.request_headers)
-        return self
-
-    @method_wrapper
-    def post(self, data=None, params=None, headers=None):
-        self._response = requests.post(self._build_url(),
-                                       params=params,
-                                       data=data,
-                                       headers=self.request_headers)
-        return self
-
-    @method_wrapper
-    def put(self, data=None, params=None, headers=None):
-        self._response = requests.put(self._build_url(),
-                                      params=params,
-                                      data=data,
-                                      headers=self.request_headers)
-        return self
-
-    @method_wrapper
-    def patch(self, data=None, params=None, headers=None):
-        self._response = requests.patch(self._build_url(),
-                                        params=params,
-                                        data=data,
-                                        headers=self.request_headers)
-        return self
-
-    @method_wrapper
-    def delete(self, data=None, params=None, headers=None):
-        self._response = requests.delete(self._build_url(),
-                                         params=params,
-                                         data=data,
-                                         headers=self.request_headers)
-        return self
