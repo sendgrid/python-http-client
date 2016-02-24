@@ -1,19 +1,18 @@
+import time
+import os
+import requests
+from functools import wraps
 if __name__ == '__main__' and __package__ is None:
     from os import sys, path
     sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
     from client import Client
     from config import Config
-    
-import time
-import os
-import requests
-from functools import wraps
+
 
 class StaticClient(Client):
     def __getattr__(self, value):
         self._add_to_cache(value)
         return self
-    
 
     def method_wrapper(func):
 
@@ -71,8 +70,6 @@ class StaticClient(Client):
         return self
 
 
-Config.init_environment()
-
 def timefunc(f):
     def f_timer(*args, **kwargs):
         start = time.time()
@@ -82,9 +79,11 @@ def timefunc(f):
         return result
     return f_timer
 
+
 def get_number():
     for x in xrange(5000000):
         yield x
+
 
 def run_tested_code(client, num_loops):
     while num_loops > 0:
@@ -99,12 +98,14 @@ def run_tested_code(client, num_loops):
         data = {'sample': 'data'}
         headers = {'X-Mock': 200}
         api_key_id = "test_url_param"
-        response = client.api_keys._(api_key_id).put(data=data, headers=headers)
+        response = client.api_keys._(api_key_id).put(data=data,
+                                                     headers=headers)
 
         data = {'sample': 'data'}
         headers = {'X-Mock': 200}
         api_key_id = "test_url_param"
-        response = client.api_keys._(api_key_id).patch(data=data, headers=headers)
+        response = client.api_keys._(api_key_id).patch(data=data,
+                                                       headers=headers)
 
         headers = {'X-Mock': 204}
         api_key_id = "test_url_param"
@@ -112,17 +113,21 @@ def run_tested_code(client, num_loops):
 
         num_loops -= 1
 
+
 @timefunc
 def dynamic_version():
     headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
+    Config.init_environment()
     client = Client(host=os.environ.get('HOST'),
                     api_key=os.environ.get('SENDGRID_API_KEY'),
                     headers=headers)
     run_tested_code(client, 10)
 
+
 @timefunc
 def static_version():
     headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
+    Config.init_environment()
     client = StaticClient(host=os.environ.get('HOST'),
                           api_key=os.environ.get('SENDGRID_API_KEY'),
                           headers=headers)
