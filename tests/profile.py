@@ -86,28 +86,31 @@ def get_number():
     for x in xrange(5000000):
         yield x
 
-def run_tested_code(client):
-    headers = {'X-Mock': 200}
-    params = {'limit': 100}
-    response = client.api_keys.get(params=params, headers=headers)
+def run_tested_code(client, num_loops):
+    while num_loops > 0:
+        headers = {'X-Mock': 200}
+        params = {'limit': 100}
+        response = client.api_keys.get(params=params, headers=headers)
 
-    data = {'sample': 'data'}
-    headers = {'X-Mock': 201}
-    response = client.api_keys.post(data=data, headers=headers)
+        data = {'sample': 'data'}
+        headers = {'X-Mock': 201}
+        response = client.api_keys.post(data=data, headers=headers)
 
-    data = {'sample': 'data'}
-    headers = {'X-Mock': 200}
-    api_key_id = "test_url_param"
-    response = client.api_keys._(api_key_id).put(data=data, headers=headers)
+        data = {'sample': 'data'}
+        headers = {'X-Mock': 200}
+        api_key_id = "test_url_param"
+        response = client.api_keys._(api_key_id).put(data=data, headers=headers)
 
-    data = {'sample': 'data'}
-    headers = {'X-Mock': 200}
-    api_key_id = "test_url_param"
-    response = client.api_keys._(api_key_id).patch(data=data, headers=headers)
+        data = {'sample': 'data'}
+        headers = {'X-Mock': 200}
+        api_key_id = "test_url_param"
+        response = client.api_keys._(api_key_id).patch(data=data, headers=headers)
 
-    headers = {'X-Mock': 204}
-    api_key_id = "test_url_param"
-    response = client.api_keys._(api_key_id).delete(headers=headers)
+        headers = {'X-Mock': 204}
+        api_key_id = "test_url_param"
+        response = client.api_keys._(api_key_id).delete(headers=headers)
+
+        num_loops -= 1
 
 @timefunc
 def dynamic_version():
@@ -115,7 +118,7 @@ def dynamic_version():
     client = Client(host=os.environ.get('HOST'),
                     api_key=os.environ.get('SENDGRID_API_KEY'),
                     headers=headers)
-    run_tested_code(client)
+    run_tested_code(client, 10)
 
 @timefunc
 def static_version():
@@ -123,7 +126,7 @@ def static_version():
     client = StaticClient(host=os.environ.get('HOST'),
                           api_key=os.environ.get('SENDGRID_API_KEY'),
                           headers=headers)
-    run_tested_code(client)
+    run_tested_code(client, 10)
 
 dynamic_result = dynamic_version()
 

@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 
 def getRequires():
-    deps = ['requests']
+    deps = []
     if (2, 6) <= sys.version_info < (2, 7):
         deps.append('unittest2')
     return deps
