@@ -74,20 +74,11 @@ class Client(object):
         if value in self.methods:
             method = value.upper() 
             def http_request(*args, **kwargs):
-                try:
+                if 'headers' in kwargs:
                     self._set_headers(kwargs['headers'])
-                except KeyError:
-                    pass
-                try:
-                    data = kwargs['data']
-                except KeyError:
-                    data = None
-                try:
-                    params = kwargs['params']
-                except KeyError:
-                    params = None
+                data = json.dumps(kwargs['data']) if 'data' in kwargs else None
+                params = kwargs['params'] if 'params' in kwargs else None
                 opener = urllib.build_opener()
-                data = json.dumps(data)
                 request = urllib.Request(self._build_urllib_url(params), data=data)  
                 for key, value in self.request_headers.iteritems():
                     request.add_header(key, value)
