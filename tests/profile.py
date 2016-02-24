@@ -1,7 +1,14 @@
 import time
 import os
-import requests
-from functools import wraps
+import json
+try:
+    # Python 3
+    import urllib.request as urllib
+    from urllib.parse import urlencode
+except ImportError:
+    # Python 2
+    import urllib2 as urllib
+    from urllib import urlencode
 if __name__ == '__main__' and __package__ is None:
     from os import sys, path
     sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
@@ -14,81 +21,50 @@ class StaticClient(Client):
         self._add_to_url_path(value)
         return self
 
-    def method_wrapper(func):
-
-        @wraps(func)
-        def wrapper(self, *args, **kwargs):
-            if kwargs['headers']:
-                self._set_headers(kwargs['headers'])
-
-            response = func(self, *args, **kwargs)
-
+    def make_request(self, method, data=None, params=None, headers=None):
+        method = method.upper()
+        if headers:
+            self._set_headers(headers)
+            data = json.dumps(data) if data else None
+            params = params if params else None
+            opener = urllib.build_opener()
+            request = urllib.Request(self._build_url(params), data=data)
+            for key, value in self.request_headers.iteritems():
+                request.add_header(key, value)
+            request.get_method = lambda: method
+            self._response = opener.open(request)
             self._set_response(self._response)
             self._reset()
-            return response
 
-        return wrapper
 
-    def _build_url(self):
-        url = ""
-        count = 0
-        while count < len(self._url_path):
-            url += "/" + self._url_path[count]
-            count += 1
-        return self.host + url
-
-    def _set_response(self, response):
-        self._status_code = response.status_code
-        self._body = response.text
-        self._headers = response.headers
-
-    @method_wrapper
     def get(self, data=None, params=None, headers=None):
-        self._response = requests.get(self._build_url(),
-                                      params=params,
-                                      data=data,
-                                      headers=self.request_headers)
+        self._response = self.make_request('get', data, params, headers)
         return self
 
-    @method_wrapper
     def post(self, data=None, params=None, headers=None):
-        self._response = requests.post(self._build_url(),
-                                       params=params,
-                                       data=data,
-                                       headers=self.request_headers)
+        self._response = self.make_request('post', data, params, headers)
         return self
 
-    @method_wrapper
     def put(self, data=None, params=None, headers=None):
-        self._response = requests.put(self._build_url(),
-                                      params=params,
-                                      data=data,
-                                      headers=self.request_headers)
+        self._response = self.make_request('put', data, params, headers)
         return self
 
-    @method_wrapper
     def patch(self, data=None, params=None, headers=None):
-        self._response = requests.patch(self._build_url(),
-                                        params=params,
-                                        data=data,
-                                        headers=self.request_headers)
+        self._response = self.make_request('patch', data, params, headers)
         return self
 
-    @method_wrapper
     def delete(self, data=None, params=None, headers=None):
-        self._response = requests.delete(self._build_url(),
-                                         params=params,
-                                         data=data,
-                                         headers=self.request_headers)
+        self._response = self.make_request('delete', data, params, headers)
         return self
 
 
+# Shout out to Zapier: https://zapier.com/engineering/profiling-python-boss
 def timefunc(f):
     def f_timer(*args, **kwargs):
         start = time.time()
         result = f(*args, **kwargs)
         end = time.time()
-        print f.__name__, 'took', end - start, 'time'
+        print f.__name__, 'took', end - start, 'seconds'
         return result
     return f_timer
 
