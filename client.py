@@ -19,7 +19,7 @@ class Client(object):
         if headers:
             self._set_headers(headers)
         self._count = 0
-        self._cache = {}
+        self._url_path = {}
         self._status_code = None
         self._body = None
         self._response_headers = None
@@ -27,18 +27,18 @@ class Client(object):
 
     def _reset(self):
         self._count = 0
-        self._cache = {}
+        self._url_path = {}
         self._response = None
 
-    def _add_to_cache(self, value):
-        self._cache[self._count] = value
+    def _add_to_url_path(self, value):
+        self._url_path[self._count] = value
         self._count += 1
 
     def _build_url(self, params):
         url = ""
         count = 0
-        while count < len(self._cache):
-            url += "/" + self._cache[count]
+        while count < len(self._url_path):
+            url += "/" + self._url_path[count]
             count += 1
         if params:
             url_values = urlencode(params)
@@ -54,7 +54,7 @@ class Client(object):
         self.request_headers.update(headers)
 
     def _(self, value):
-        self._add_to_cache(value)
+        self._add_to_url_path(value)
         return self
 
     def __getattr__(self, value):
@@ -76,7 +76,7 @@ class Client(object):
                 return self
             return http_request
         else:
-            self._add_to_cache(value)
+            self._add_to_url_path(value)
         return self
 
     @property
