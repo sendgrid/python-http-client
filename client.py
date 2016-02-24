@@ -58,7 +58,6 @@ class Client(object):
                     data = kwargs['data']
                 except KeyError, e:
                     data = None
-                    self._set_headers(kwargs['headers'])
                 try:
                     params = kwargs['params']
                 except KeyError, e:
