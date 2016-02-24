@@ -3,10 +3,12 @@ import encodings.idna
 
 
 try:
-    import urllib.request as urllib #for python 3
+    # Python 3
+    import urllib.request as urllib
     from urllib.parse import urlencode
 except ImportError:
-    import urllib2 as urllib # for python 2
+    # Python 2
+    import urllib2 as urllib
     from urllib import urlencode
 
 
@@ -14,7 +16,8 @@ class Client(object):
 
     def __init__(self, host=None, api_key=None, headers=None):
         self.host = host
-        self.request_headers = {'Authorization': 'Bearer ' + api_key, 'Content-Type': 'application/json'}
+        self.request_headers = {'Authorization': 'Bearer ' + api_key,
+                                'Content-Type': 'application/json'}
         self.methods = ['delete', 'get', 'patch', 'post', 'put']
         if headers:
             self._set_headers(headers)
@@ -60,13 +63,14 @@ class Client(object):
     def __getattr__(self, value):
         if value in self.methods:
             method = value.upper()
+
             def http_request(*args, **kwargs):
                 if 'headers' in kwargs:
                     self._set_headers(kwargs['headers'])
                 data = json.dumps(kwargs['data']) if 'data' in kwargs else None
                 params = kwargs['params'] if 'params' in kwargs else None
                 opener = urllib.build_opener()
-                request = urllib.Request(self._build_url(params), data=data)  
+                request = urllib.Request(self._build_url(params), data=data)
                 for key, value in self.request_headers.iteritems():
                     request.add_header(key, value)
                 request.get_method = lambda: method
