@@ -11,7 +11,7 @@ if __name__ == '__main__' and __package__ is None:
 
 class StaticClient(Client):
     def __getattr__(self, value):
-        self._add_to_cache(value)
+        self._add_to_url_path(value)
         return self
 
     def method_wrapper(func):
@@ -28,6 +28,19 @@ class StaticClient(Client):
             return response
 
         return wrapper
+
+    def _build_url(self):
+        url = ""
+        count = 0
+        while count < len(self._url_path):
+            url += "/" + self._url_path[count]
+            count += 1
+        return self.host + url
+
+    def _set_response(self, response):
+        self._status_code = response.status_code
+        self._body = response.text
+        self._headers = response.headers
 
     @method_wrapper
     def get(self, data=None, params=None, headers=None):
@@ -118,7 +131,7 @@ def run_tested_code(client, num_loops):
 def dynamic_version():
     headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
     Config.init_environment()
-    client = Client(host=os.environ.get('HOST'),
+    client = Client(host=os.environ.get('LOCAL_HOST'),
                     api_key=os.environ.get('SENDGRID_API_KEY'),
                     headers=headers)
     run_tested_code(client, 10)
@@ -128,7 +141,7 @@ def dynamic_version():
 def static_version():
     headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
     Config.init_environment()
-    client = StaticClient(host=os.environ.get('HOST'),
+    client = StaticClient(host=os.environ.get('LOCAL_HOST'),
                           api_key=os.environ.get('SENDGRID_API_KEY'),
                           headers=headers)
     run_tested_code(client, 10)
