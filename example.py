@@ -2,7 +2,7 @@ from client import Client
 from config import Config
 import os
 Config.init_environment()
-headers = {'X-Mock': 200}
+headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
 client = Client(host=os.environ.get('HOST'),
                 api_key=os.environ.get('SENDGRID_API_KEY'),
                 headers=headers)

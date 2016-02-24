@@ -16,8 +16,7 @@ class Client(object):
 
     def __init__(self, host=None, api_key=None, headers=None):
         self.host = host
-        self.request_headers = {'Authorization': 'Bearer ' + api_key,
-                                'Content-Type': 'application/json'}
+        self.request_headers = {'Authorization': 'Bearer ' + api_key}
         self.methods = ['delete', 'get', 'patch', 'post', 'put']
         if headers:
             self._set_headers(headers)

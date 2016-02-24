@@ -114,7 +114,7 @@ def run_tested_code(client, num_loops):
 
 @timefunc
 def dynamic_version():
-    headers = {'X-Mock': 200}
+    headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
     client = Client(host=os.environ.get('HOST'),
                     api_key=os.environ.get('SENDGRID_API_KEY'),
                     headers=headers)
@@ -122,7 +122,7 @@ def dynamic_version():
 
 @timefunc
 def static_version():
-    headers = {'X-Mock': 200}
+    headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
     client = StaticClient(host=os.environ.get('HOST'),
                           api_key=os.environ.get('SENDGRID_API_KEY'),
                           headers=headers)

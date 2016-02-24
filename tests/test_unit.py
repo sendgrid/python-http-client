@@ -27,7 +27,7 @@ class TestConfig(unittest.TestCase):
 class TestClient(unittest.TestCase):
     def setUp(self):
         Config.init_environment()
-        headers = {'X-Mock': 200}
+        headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
         self.client = Client(host=os.environ.get('HOST'),
                              api_key=os.environ.get('SENDGRID_API_KEY'),
                              headers=headers)
@@ -35,7 +35,7 @@ class TestClient(unittest.TestCase):
     def test__reset(self):
         self.client._reset()
         self.assertEqual(self.client._count, 0)
-        self.assertEqual(self.client._cache, {})
+        self.assertEqual(self.client._url_path, {})
         self.assertEqual(self.client._response, None)
 
 if __name__ == '__main__':
