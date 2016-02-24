@@ -40,10 +40,10 @@ class Client(object):
         url = ""
         count = 0
         while count < len(self._url_path):
-            url += "/" + self._url_path[count]
+            url += "/" + str(self._url_path[count])
             count += 1
         if params:
-            url_values = urlencode(params)
+            url_values = urlencode(sorted(params.items()))
             url = url + '?' + url_values
         return self.host + url
 
@@ -70,7 +70,7 @@ class Client(object):
                 params = kwargs['params'] if 'params' in kwargs else None
                 opener = urllib.build_opener()
                 request = urllib.Request(self._build_url(params), data=data)
-                for key, value in self.request_headers.iteritems():
+                for key, value in self.request_headers.items():
                     request.add_header(key, value)
                 request.get_method = lambda: method
                 self._response = opener.open(request)

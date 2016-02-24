@@ -107,7 +107,7 @@ def run_tested_code(client, num_loops):
 def dynamic_version():
     headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
     Config.init_environment()
-    client = Client(host=os.environ.get('LOCAL_HOST'),
+    client = Client(host=os.environ.get('HOST'),
                     api_key=os.environ.get('SENDGRID_API_KEY'),
                     headers=headers)
     run_tested_code(client, 10)
@@ -117,7 +117,7 @@ def dynamic_version():
 def static_version():
     headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
     Config.init_environment()
-    client = StaticClient(host=os.environ.get('LOCAL_HOST'),
+    client = StaticClient(host=os.environ.get('HOST'),
                           api_key=os.environ.get('SENDGRID_API_KEY'),
                           headers=headers)
     run_tested_code(client, 10)
