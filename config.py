@@ -13,7 +13,9 @@ class Config(object):
            os.environ.get('VAR_NAME')"""
         base_path = os.path.abspath(os.path.dirname(__file__))
         if os.path.exists(base_path + '/.env'):
-            for line in open(base_path + '/.env'):
+            file = open(base_path + '/.env')
+            for line in file:
                 var = line.strip().split('=')
                 if len(var) == 2:
                     os.environ[var[0]] = var[1]
+            file.close()

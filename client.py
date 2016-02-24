@@ -1,4 +1,8 @@
 import requests
+try:
+    import urllib.request as urllib #for python 3
+except ImportError:
+    import urllib2 as urllib # for python 2
 
 
 class Client(object):
@@ -51,15 +55,15 @@ class Client(object):
                 request = getattr(requests, value)
                 try:
                     self._set_headers(kwargs['headers'])
-                except KeyError, e:
+                except KeyError:
                     pass
                 try:
                     data = kwargs['data']
-                except KeyError, e:
+                except KeyError:
                     data = None
                 try:
                     params = kwargs['params']
-                except KeyError, e:
+                except KeyError:
                     params = None                
                 self._response = request(self._build_url(),
                                          data=data,
