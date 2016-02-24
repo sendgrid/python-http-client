@@ -1,5 +1,4 @@
 import requests
-from functools import wraps
 
 
 class Client(object):
