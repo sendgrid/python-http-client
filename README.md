@@ -4,7 +4,7 @@ Quickly and easily access any REST or REST-like API.
 
 Here is a quick example:
 
-*GET /your/api/{param}/call*
+`GET /your/api/{param}/call`
 
 ```python
 import python_http_client
@@ -16,7 +16,7 @@ print response.response_headers
 print response.body 
 ```
 
-*POST /your/api/{param}/call* with headers, query params and data, with versioning
+`POST /your/api/{param}/call` with headers, query params and data, with versioning
 
 ```python
 import python_http_client
