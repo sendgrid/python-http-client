@@ -44,7 +44,8 @@ class TestClient(unittest.TestCase):
         self.headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
         self.client = Client(host=self.host,
                              api_key=self.api_key,
-                             headers=self.headers)
+                             headers=self.headers,
+                             version=3)
 
     def test__init__(self):
         self.assertEqual(os.environ.get('LOCAL_HOST'), self.host)
@@ -52,6 +53,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(self.client.request_headers, self.headers)
         methods = ['delete', 'get', 'patch', 'post', 'put']
         self.assertEqual(self.client.methods.sort(), methods.sort())
+        self.assertEqual(self.client._version, 3)
         self.assertEqual(self.client._count, 0)
         self.assertEqual(self.client._url_path, {})
         self.assertEqual(self.client._status_code, None)
@@ -74,12 +76,19 @@ class TestClient(unittest.TestCase):
         self.assertEqual(self.client._url_path, url_path)
         self.client._reset()
 
+    def test__build_versioned_url(self):
+        url = "/api_keys?hello=1&world=2"
+        versioned_url = self.client._build_versioned_url(url)
+        self.assertEqual(versioned_url,
+                         self.host + "/v" + str(self.client._version) + url)
+
     def test__build_url(self):
         self.client._add_to_url_path("here")
         self.client._add_to_url_path("there")
         self.client._add_to_url_path(1)
         params = {"hello": 0, "world": 1}
-        url = self.host + "/here/there/1?hello=0&world=1"
+        url = self.host + "/v" + str(self.client._version)\
+            + "/here/there/1?hello=0&world=1"
         self.assertEqual(self.client._build_url(params), url)
         self.client._reset()
 
@@ -120,6 +129,10 @@ class TestClient(unittest.TestCase):
         self.assertEqual(self.client.__getattr__("get").__name__,
                          "http_request")
         self.client._reset()
+
+        # Test Version
+        self.client.version(3)
+        self.assertEqual(self.client._version, 3)
 
         # Test GET
         self.client._add_to_url_path("api_keys")

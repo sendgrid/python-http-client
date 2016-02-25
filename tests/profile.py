@@ -36,7 +36,6 @@ class StaticClient(Client):
             self._set_response(self._response)
             self._reset()
 
-
     def get(self, data=None, params=None, headers=None):
         self._response = self.make_request('get', data, params, headers)
         return self
@@ -107,9 +106,10 @@ def run_tested_code(client, num_loops):
 def dynamic_version():
     headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
     Config.init_environment()
-    client = Client(host=os.environ.get('HOST'),
+    client = Client(host=os.environ.get('LOCAL_HOST'),
                     api_key=os.environ.get('SENDGRID_API_KEY'),
-                    headers=headers)
+                    headers=headers,
+                    version=3)
     run_tested_code(client, 10)
 
 
@@ -117,9 +117,10 @@ def dynamic_version():
 def static_version():
     headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
     Config.init_environment()
-    client = StaticClient(host=os.environ.get('HOST'),
+    client = StaticClient(host=os.environ.get('LOCAL_HOST'),
                           api_key=os.environ.get('SENDGRID_API_KEY'),
-                          headers=headers)
+                          headers=headers,
+                          version=3)
     run_tested_code(client, 10)
 
 dynamic_result = dynamic_version()

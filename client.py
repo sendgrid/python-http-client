@@ -14,10 +14,11 @@ except ImportError:
 
 class Client(object):
 
-    def __init__(self, host=None, api_key=None, headers=None):
+    def __init__(self, host=None, api_key=None, headers=None, version=None):
         self.host = host
         self.request_headers = {'Authorization': 'Bearer ' + api_key}
         self.methods = ['delete', 'get', 'patch', 'post', 'put']
+        self._version = version
         if headers:
             self._set_headers(headers)
         self._count = 0
@@ -36,6 +37,9 @@ class Client(object):
         self._url_path[self._count] = value
         self._count += 1
 
+    def _build_versioned_url(self, url):
+        return self.host + "/v" + str(self._version) + url
+
     def _build_url(self, params):
         url = ""
         count = 0
@@ -45,7 +49,11 @@ class Client(object):
         if params:
             url_values = urlencode(sorted(params.items()))
             url = url + '?' + url_values
-        return self.host + url
+        if self._version:
+            url = self._build_versioned_url(url)
+        else:
+            url = self.host + url
+        return url
 
     def _set_response(self, response):
         self._status_code = response.getcode()
@@ -60,6 +68,12 @@ class Client(object):
         return self
 
     def __getattr__(self, value):
+        if value == "version":
+            def get_version(*args, **kwargs):
+                self._version = args[0]
+                return self
+            return get_version
+
         if value in self.methods:
             method = value.upper()
 

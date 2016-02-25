@@ -5,7 +5,15 @@ Config.init_environment()
 headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
 client = Client(host=os.environ.get('HOST'),
                 api_key=os.environ.get('SENDGRID_API_KEY'),
-                headers=headers)
+                headers=headers,
+                version=3)
+
+headers = {'X-Mock': 200}
+params = {'limit': 100}
+response = client.version(3).api_keys.get()
+print response.headers
+print response.status_code
+print response.body
 
 headers = {'X-Mock': 200}
 params = {'limit': 100}
