@@ -39,9 +39,8 @@ class TestClient(unittest.TestCase):
         Config()
         self.api_key = os.environ.get('SENDGRID_API_KEY')
         self.host = os.environ.get('LOCAL_HOST')
-        self.request_headers = {'Content-Type': 'application/json'}
-        self.client = Client(host=self.host,
-                             api_key=self.api_key,
+        self.request_headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + self.api_key}
+        self.client = Client(host=self.host, 
                              request_headers=self.request_headers,
                              version=3)
 

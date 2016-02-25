@@ -1,24 +1,27 @@
+<Travis Badge Placeholder> <CodeClimate Badge Placeholder> <Python Badge Placeholder>
+
 Quickly and easily access any REST or REST-like API.
 
 Here is a quick example:
 
-GET /your/api/{param}/call
+*GET /your/api/{param}/call*
 
 ```python
-import python-http-client
-client = Client(host='base_url', api_key='api_key')
+import python_http_client
+global_headers = {'Authorization': 'Basic XXXXXXX'}
+client = Client(host='base_url', request_headers=global_headers)
 client.your.api._(param).call.get()
 print response.status_code
 print response.response_headers
 print response.body 
 ```
 
-POST /your/api/{param}/call with headers, query params and data, with versioning
+*POST /your/api/{param}/call* with headers, query params and data, with versioning
 
 ```python
-import python-http-client
-global_headers = {'X-Default': 'default'}
-client = Client(host='base_url', api_key='api_key', request_headers=global_headers )
+import python_http_client
+global_headers = {'Authorization': 'Basic XXXXXXX'}
+client = Client(host='base_url', request_headers=global_headers)
 query_params={'hello':0, 'world':1}
 request_headers={'X-Test': 'test'}
 data={'some': 1, 'awesome', 2, 'data', 3}
@@ -29,8 +32,6 @@ print response.status_code
 print response.response_headers
 print response.body 
 ```
-
-<Travis Badge Placeholder> <CodeClimate Badge Placeholder> <Python Badge Placeholder>
 
 # Installation
 
@@ -55,10 +56,9 @@ import python_http_client
 Config()
 host = os.environ.get('HOST')
 api_key = os.environ.get('SENDGRID_API_KEY')
-request_headers = {'Content-Type': 'application/json'}
+request_headers = {'Authorization': 'Bearer ' + api_key, 'Content-Type': 'application/json'}
 version = 3 # note that we could also do client.version(3) to set the version for each endpoint
 client = Client(host=host,
-                api_key=api_key,
                 request_headers=request_headers,
                 version=version)
 

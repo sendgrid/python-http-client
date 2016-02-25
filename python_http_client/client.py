@@ -16,15 +16,12 @@ class Client(object):
 
     def __init__(self,
                  host=None,
-                 api_key=None,
                  request_headers=None,
                  version=None):
         self.host = host
-        self.request_headers = {'Authorization': 'Bearer ' + api_key}
+        self.request_headers = request_headers
         self.methods = ['delete', 'get', 'patch', 'post', 'put']
         self._version = version
-        if request_headers:
-            self._set_headers(request_headers)
         self._count = 0
         self._url_path = {}
         self._status_code = None
