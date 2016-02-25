@@ -13,15 +13,29 @@ except ImportError:
 
 
 class Client(object):
+    """Quickly and easily access any REST or REST-like API.
 
+    :param host: Base URL for the api. (e.g. https://api.sendgrid.com)
+    :type host:  string
+    :param request_headers: A dictionary of the headers you want
+                            applied on all calls
+    :type request_headers: dictionary
+    :param version: The version number of the API.
+                    Subclass _build_versioned_url for custom behavior.
+                    Or just pass the version as part of the URL
+                    (e.g. client._("/v3"))
+    :type integer:
+    """
     def __init__(self,
                  host=None,
                  request_headers=None,
                  version=None):
         self.host = host
         self.request_headers = request_headers
+        # These are the supported HTTP verbs
         self.methods = ['delete', 'get', 'patch', 'post', 'put']
         self._version = version
+        # _count and _url_path keep track of the dynamically built url
         self._count = 0
         self._url_path = {}
         self._status_code = None
@@ -29,18 +43,33 @@ class Client(object):
         self._response_headers = None
         self._response = None
 
+    """Resets the URL builder, so you can make a fresh new dynamic call."""
     def _reset(self):
         self._count = 0
         self._url_path = {}
         self._response = None
 
-    def _add_to_url_path(self, value):
-        self._url_path[self._count] = value
+    """Takes the method chained call and adds to the url path.
+
+       :param name: The name of the method call
+       :type name: string
+    """
+    def _add_to_url_path(self, name):
+        self._url_path[self._count] = name
         self._count += 1
 
+    """Subclass this function for your own needs.
+       Or just pass the version as part of the URL
+       (e.g. client._("/v3"))
+    """
     def _build_versioned_url(self, url):
         return self.host + "/v" + str(self._version) + url
 
+    """Build the final URL to be passed to urllib
+
+    :param query_params: A dictionary of all the query parameters
+    :type query_params: dictionary
+    """
     def _build_url(self, query_params):
         url = ""
         count = 0
@@ -56,27 +85,52 @@ class Client(object):
             url = self.host + url
         return url
 
+    """Build the API call's response
+
+    :param response: The response object from the API call from urllib
+    :type response: urllib.Request object
+    """
     def _set_response(self, response):
         self._status_code = response.getcode()
         self._response_body = response.read()
         self._response_headers = response.info()
 
+    """Add headers to the API call
+
+    :param request_headers: A dictionary of all the request headers
+    :type request_headers: dictionary
+    """
     def _set_headers(self, request_headers):
         self.request_headers.update(request_headers)
 
-    def _(self, value):
-        self._add_to_url_path(value)
+    """Add variable values to the url. (e.g. /your/api/{variable_value}/call)
+       Another example: if you have a Python reserved word, such as global,
+       in your url, you must use this method.
+
+    :param name: Name of the url segment
+    :type name: string
+    """
+    def _(self, name):
+        self._add_to_url_path(name)
         return self
 
-    def __getattr__(self, value):
+    """Dynamically add method calls to the url, then call a method.
+       (e.g. client.name.name.method())
+       You can also add a version number by using .version(<int>)
+
+    :param name: Name of the url segment or method call
+    :type name: string or integer if name == version
+    """
+    def __getattr__(self, name):
         if value == "version":
             def get_version(*args, **kwargs):
                 self._version = args[0]
                 return self
             return get_version
 
-        if value in self.methods:
-            method = value.upper()
+        # We have reached the end of the method chain, make the API call
+        if name in self.methods:
+            method = name.upper()
 
             def http_request(*args, **kwargs):
                 if 'request_headers' in kwargs:
