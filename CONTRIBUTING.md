@@ -90,7 +90,7 @@ Update your settings in `.env`
 See the [examples folder](https://github.com/sendgrid/python-http-client/tree/master/examples) to get started quickly.
 ```
 
-## Understanding the Code Base ##<a name="understanding_the_codebase"></a>
+## Understanding the Code Base<a name="understanding_the_codebase"></a>
 
 **/examples**
 
