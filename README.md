@@ -51,7 +51,7 @@ Following is an abridged example, here is the [full working code](https://github
 ```python
 import os
 import json
-import python-http-client
+import python_http_client
 Config()
 host = os.environ.get('HOST')
 api_key = os.environ.get('SENDGRID_API_KEY')
