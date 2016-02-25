@@ -1,5 +1,3 @@
-Source: https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md
-
 Hello! Thank you for choosing to help contribute to the python-http-client. There are many ways you can contribute and help is always welcome.
 
 We use [Milestones](https://github.com/sendgrid/python-http-client/milestones) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions and additional PRs are welcomed and encouraged.
