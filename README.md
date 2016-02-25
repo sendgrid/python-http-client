@@ -74,8 +74,8 @@ data = {
             "alerts.read"
           ]
         }
-response = client.api_keys.post(data=data)
-json_response = json.loads(response.body)
+response = client.api_keys.post(request_body=data)
+json_response = json.loads(response.response_body)
 api_key_id = json_response['api_key_id']
 
 # GET single
@@ -85,7 +85,7 @@ response = client.api_keys._(api_key_id).get()
 data = {
           "name": "A New Hope"
         }
-response = client.api_keys._(api_key_id).patch(data=data)
+response = client.api_keys._(api_key_id).patch(request_body=data)
 
 # PUT
 data = {
@@ -95,7 +95,7 @@ data = {
             "user.profile.update"
           ]
         }
-response = client.api_keys._(api_key_id).put(data=data)
+response = client.api_keys._(api_key_id).put(request_body=data)
 
 # DELETE
 response = client.api_keys._(api_key_id).delete()
