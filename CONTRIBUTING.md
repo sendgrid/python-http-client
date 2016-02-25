@@ -12,7 +12,8 @@ We use [Milestones](https://github.com/sendgrid/python-http-client/milestones) t
 
 There are a few ways to contribute, which we'll enumerate below:
 
-## Feature Request<a name="feature_request"></a>
+<a name="feature_request"></a>
+## Feature Request
 
 If you'd like to make a feature request, please read this section.
 
@@ -21,7 +22,8 @@ The GitHub issue tracker is the preferred channel for library feature requests, 
 - Please **search for existing issues** in order to ensure we don't have duplicate bugs/feature requests.
 - Please be respectful and considerate of others when commenting on issues
 
-## Submit a Bug Report<a name="submit_a_bug_report"></a>
+<a name="submit_a_bug_report"></a>
+## Submit a Bug Report
 
 Note: DO NOT include your credentials in ANY code examples, descriptions, or media you make public.
 
@@ -59,7 +61,8 @@ Any other information you want to share that is relevant to the issue being repo
 * Python Version: 2.7
 ```
 
-## Improvements to the Codebase<a name="improvements_to_the_codebase"></a>
+<a name="improvements_to_the_codebase"></a>
+## Improvements to the Codebase
 
 We welcome direct contributions to the python-http-client code base. Thank you!
 
@@ -88,7 +91,8 @@ Update your settings in `.env`
 See the [examples folder](https://github.com/sendgrid/python-http-client/tree/master/examples) to get started quickly.
 ```
 
-## Understanding the Code Base<a name="understanding_the_codebase"></a>
+<a name="understanding_the_codebase"></a>
+## Understanding the Code Base
 
 **/examples**
 
@@ -106,7 +110,8 @@ This allows for the following mapping from a URL to a method chain:
 
 Loads the environment variables.
 
-## Testing<a name="testing"></a>
+<a name="testing"></a>
+## Testing
 
 All PRs require passing tests before the PR will be reviewed. 
 
@@ -142,7 +147,8 @@ source venv/bin/activate
 tox
 ```
 
-## Style Guidelines & Naming Conventions<a name="style_guidelines_and_naming_conventions"></a>
+<a name="style_guidelines_and_naming_conventions"></a>
+## Style Guidelines & Naming Conventions
 
 Generally, we follow the style guidelines as suggested by the official language. However, we ask that you conform to the styles that already exist in the library. If you wish to deviate, please explain your reasoning.
 
