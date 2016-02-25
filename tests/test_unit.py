@@ -2,8 +2,8 @@ try:
     import unittest2 as unittest
 except ImportError:
     import unittest
-from config import Config
-from client import Client
+from python_http_client.config import Config
+from python_http_client.client import Client
 import os
 
 

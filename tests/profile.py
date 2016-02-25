@@ -10,8 +10,8 @@ except ImportError:
 if __name__ == '__main__' and __package__ is None:
     from os import sys, path
     sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
-    from client import Client
-    from config import Config
+    from python_http_client.client import Client
+    from python_http_client.config import Config
 
 
 class StaticClient(Client):

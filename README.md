@@ -34,11 +34,11 @@ print response.body
 
 # Installation
 
-`pip install python-http-client` 
+`pip install python_http_client` 
 
 or
 
-`easy_install python-http-client`
+`easy_install python_http_client`
 
 ## Usage ##
 
