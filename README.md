@@ -1,3 +1,5 @@
+Source: https://github.com/sendgrid/python-http-client/blob/master/README.md
+
 Quickly and easily access any REST or REST-like API.
 
 Here is a quick example:
@@ -34,11 +36,13 @@ print response.body
 
 # Installation
 
-`pip install sendgrid` or `easy_install sendgrid`
+pip install python-http-client
+or
+easy_install python-http-client
 
 ## Usage ##
 
-Following is an example using SendGrid. You can get your free account [here](https://sendgrid.com).
+Following is an example using SendGrid. You can get your free account [here](https://sendgrid.com/free?source=python-http-client).
 
 First, update your .env with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) and HOST. For this example HOST=https://api.sendgrid.com.
 
@@ -109,6 +113,10 @@ response = client.api_keys._(api_key_id).delete()
 
 We encourage contribution to our libraries, please see our [CONTRIBUTING](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md) guide for details.
 
+* [Feature Request](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#feature_request)
+* [Bug Reports](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#submit_a_bug_report)
+* [Improvements to the Codebase](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#improvements_to_the_codebase)
+
 # About
 
 ![SendGrid Logo]
@@ -117,4 +125,5 @@ We encourage contribution to our libraries, please see our [CONTRIBUTING](https:
 python-http-client is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
 python-http-client is maintained and funded by SendGrid, inc. The names and logos for python-http-client are trademarks of SendGrid, inc.
+
 
