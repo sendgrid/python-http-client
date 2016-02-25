@@ -41,16 +41,16 @@ class TestClient(unittest.TestCase):
         Config.init_environment()
         self.api_key = os.environ.get('SENDGRID_API_KEY')
         self.host = os.environ.get('LOCAL_HOST')
-        self.headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
+        self.request_headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
         self.client = Client(host=self.host,
                              api_key=self.api_key,
-                             headers=self.headers,
+                             request_headers=self.request_headers,
                              version=3)
 
     def test__init__(self):
         self.assertEqual(os.environ.get('LOCAL_HOST'), self.host)
-        self.headers.update({'Authorization': 'Bearer ' + self.api_key})
-        self.assertEqual(self.client.request_headers, self.headers)
+        self.request_headers.update({'Authorization': 'Bearer ' + self.api_key})
+        self.assertEqual(self.client.request_headers, self.request_headers)
         methods = ['delete', 'get', 'patch', 'post', 'put']
         self.assertEqual(self.client.methods.sort(), methods.sort())
         self.assertEqual(self.client._version, 3)

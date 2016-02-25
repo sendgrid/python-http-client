@@ -14,13 +14,13 @@ except ImportError:
 
 class Client(object):
 
-    def __init__(self, host=None, api_key=None, headers=None, version=None):
+    def __init__(self, host=None, api_key=None, request_headers=None, version=None):
         self.host = host
         self.request_headers = {'Authorization': 'Bearer ' + api_key}
         self.methods = ['delete', 'get', 'patch', 'post', 'put']
         self._version = version
-        if headers:
-            self._set_headers(headers)
+        if request_headers:
+            self._set_headers(request_headers)
         self._count = 0
         self._url_path = {}
         self._status_code = None
@@ -78,7 +78,7 @@ class Client(object):
             method = value.upper()
 
             def http_request(*args, **kwargs):
-                if 'headers' in kwargs:
+                if 'request_headers' in kwargs:
                     self._set_headers(kwargs['headers'])
                 data = json.dumps(kwargs['data']) if 'data' in kwargs else None
                 params = kwargs['params'] if 'params' in kwargs else None
@@ -105,5 +105,5 @@ class Client(object):
         return self._body
 
     @property
-    def headers(self):
+    def response_headers(self):
         return self._response_headers
