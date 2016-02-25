@@ -1,6 +1,6 @@
 <Travis Badge Placeholder> <CodeClimate Badge Placeholder> <Python Badge Placeholder>
 
-Quickly and easily access any REST or REST-like API.
+**Quickly and easily access any REST or REST-like API.**
 
 Here is a quick example:
 
