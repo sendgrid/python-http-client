@@ -5,17 +5,14 @@ except ImportError:
 from config import Config
 from client import Client
 import os
-import json
 
 
 try:
     # Python 3
     import urllib.request as urllib
-    from urllib.parse import urlencode
 except ImportError:
     # Python 2
     import urllib2 as urllib
-    from urllib import urlencode
 
 try:
     basestring

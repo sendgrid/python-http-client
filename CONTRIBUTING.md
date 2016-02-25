@@ -88,25 +88,17 @@ See the [examples folder](https://github.com/sendgrid/python-http-client/tree/ma
 
 Working examples that demonstrate usage.
 
-**.env**
+**client.py**
 
-Define all private configurartion variables here.
+An HTTP client with a fluent interface using method chaining and reflection. By returning self on [__getattr__](https://github.com/sendgrid/python-http-client/blob/master/client.py#L74) and [_()](https://github.com/sendgrid/python-http-client/blob/master/client.py#L70), we can dynamically build the URL using method chaining and [__getattr__](https://github.com/sendgrid/python-http-client/blob/master/client.py#L74) allows us to dynamically receive the method calls to achieve reflection. 
 
-**db_connector.py**
+This allows for the following mapping from a URL to a method chain:
 
-Interface to the DB, courtesy of SQLAlchemy.
+`/api_client/{api_key_id}/version` maps to `client.api_client._(api_key_id).version.<method>()` where <method> is a [HTTP verb](https://github.com/sendgrid/python-http-client/blob/master/client.py#L24).
 
-**github.py**
+**congfig.py**
 
-Interface to GitHub's API to grab repository data.
-
-**package_managers.py**
-
-Scrapes various package manager web pages to obtain your library's download data.
-
-**sendgrid_email.py**
-
-Send email through SendGrid.
+Loads the environment variables.
 
 ## Testing
 
@@ -135,6 +127,8 @@ pyenv local 3.5.0 3.4.3 3.3.6 3.2.6 2.7.8 2.6.9
 pyenv rehash
 ````
 
+Please [email](mailto:dx@sendgrid.com) us for details on how we mocked up the SendGrid API server, otherwise when you commit to your branch the Travis tests will execute remotely against our Mock Server.
+
 ### Execute: ###
 
 ```
@@ -152,11 +146,8 @@ Please run your code through [pyflakes](https://pypi.python.org/pypi/pyflakes) a
 
 ### Directory Structure
 
-<<Library Specific Directory Structure, though there should always be the following:
-* `resources` for Web API v3 endpoints
 * `examples` for example calls
-* `tests`, with `unit` and `integration` sub-directories
->>
+* `tests`, for all tests
 
 ## Creating a Pull Request
 
@@ -165,11 +156,11 @@ Please run your code through [pyflakes](https://pypi.python.org/pypi/pyflakes) a
 
    ```bash
    # Clone your fork of the repo into the current directory
-   git clone https://github.com/<your-username>/<<Library Repo>>
+   git clone https://github.com/sendgrid/python-http-client
    # Navigate to the newly cloned directory
    cd <<Library Repo>>
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/sendgrid/<<Library Repo>>
+   git remote add upstream https://github.com/sendgrid/python-http-client
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:

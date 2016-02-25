@@ -4,11 +4,9 @@ import json
 try:
     # Python 3
     import urllib.request as urllib
-    from urllib.parse import urlencode
 except ImportError:
     # Python 2
     import urllib2 as urllib
-    from urllib import urlencode
 if __name__ == '__main__' and __package__ is None:
     from os import sys, path
     sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
@@ -96,30 +94,29 @@ def run_tested_code(client, num_loops):
     while num_loops > 0:
         request_headers = {'X-Mock': 200}
         query_params = {'limit': 100}
-        response = client.api_keys.get(query_params=query_params,
-                                       request_headers=request_headers)
+        client.api_keys.get(query_params=query_params,
+                            request_headers=request_headers)
 
         data = {'sample': 'data'}
         headers = {'X-Mock': 201}
-        response = client.api_keys.post(data=data,
-                                        request_headers=headers)
+        client.api_keys.post(data=data,
+                             request_headers=headers)
 
         data = {'sample': 'data'}
         headers = {'X-Mock': 200}
         api_key_id = "test_url_param"
-        response = client.api_keys._(api_key_id).put(data=data,
-                                                     request_headers=headers)
+        client.api_keys._(api_key_id).put(data=data,
+                                          request_headers=headers)
 
         data = {'sample': 'data'}
         headers = {'X-Mock': 200}
         api_key_id = "test_url_param"
-        response = client.api_keys._(api_key_id).patch(data=data,
-                                                       request_headers=headers)
+        client.api_keys._(api_key_id).patch(data=data,
+                                            request_headers=headers)
 
         headers = {'X-Mock': 204}
         api_key_id = "test_url_param"
-        response = client.api_keys._(api_key_id).delete(
-                                                  request_headers=headers)
+        client.api_keys._(api_key_id).delete(request_headers=headers)
 
         num_loops -= 1
 
