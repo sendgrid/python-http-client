@@ -122,7 +122,7 @@ class Client(object):
     :type name: string or integer if name == version
     """
     def __getattr__(self, name):
-        if value == "version":
+        if name == "version":
             def get_version(*args, **kwargs):
                 self._version = args[0]
                 return self
@@ -150,7 +150,7 @@ class Client(object):
                 return self
             return http_request
         else:
-            self._add_to_url_path(value)
+            self._add_to_url_path(name)
         return self
 
     @property
