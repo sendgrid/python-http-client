@@ -63,3 +63,4 @@ target/
 
 .env
 venv/
+.python-version
