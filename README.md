@@ -1,5 +1,3 @@
-Source: https://github.com/sendgrid/python-http-client/blob/master/README.md
-
 Quickly and easily access any REST or REST-like API.
 
 Here is a quick example:
