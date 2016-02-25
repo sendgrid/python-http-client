@@ -21,16 +21,17 @@ class StaticClient(Client):
 
     def make_request(self,
                      method,
-                     data=None,
+                     request_body=None,
                      query_params=None,
                      request_headers=None):
         method = method.upper()
         if request_headers:
             self._set_headers(request_headers)
-            data = json.dumps(data) if data else None
+            request_body = json.dumps(request_body) if request_body else None
             query_params = query_params if query_params else None
             opener = urllib.build_opener()
-            request = urllib.Request(self._build_url(query_params), data=data)
+            request = urllib.Request(self._build_url(query_params),
+                                     data=request_body)
             for key, value in self.request_headers.iteritems():
                 request.add_header(key, value)
             request.get_method = lambda: method
@@ -38,37 +39,37 @@ class StaticClient(Client):
             self._set_response(self._response)
             self._reset()
 
-    def get(self, data=None, query_params=None, request_headers=None):
+    def get(self, request_body=None, query_params=None, request_headers=None):
         self._response = self.make_request('get',
-                                           data,
+                                           request_body,
                                            query_params,
                                            request_headers)
         return self
 
-    def post(self, data=None, query_params=None, request_headers=None):
+    def post(self, request_body=None, query_params=None, request_headers=None):
         self._response = self.make_request('post',
-                                           data,
+                                           request_body,
                                            query_params,
                                            request_headers)
         return self
 
-    def put(self, data=None, query_params=None, request_headers=None):
+    def put(self, request_body=None, query_params=None, request_headers=None):
         self._response = self.make_request('put',
-                                           data,
+                                           request_body,
                                            query_params,
                                            request_headers)
         return self
 
-    def patch(self, data=None, query_params=None, request_headers=None):
+    def patch(self, request_body=None, query_params=None, request_headers=None):
         self._response = self.make_request('patch',
-                                           data,
+                                           request_body,
                                            query_params,
                                            request_headers)
         return self
 
-    def delete(self, data=None, query_params=None, request_headers=None):
+    def delete(self, request_body=None, query_params=None, request_headers=None):
         self._response = self.make_request('delete',
-                                           data,
+                                           request_body,
                                            query_params,
                                            request_headers)
         return self
@@ -99,19 +100,19 @@ def run_tested_code(client, num_loops):
 
         data = {'sample': 'data'}
         headers = {'X-Mock': 201}
-        client.api_keys.post(data=data,
+        client.api_keys.post(request_body=data,
                              request_headers=headers)
 
         data = {'sample': 'data'}
         headers = {'X-Mock': 200}
         api_key_id = "test_url_param"
-        client.api_keys._(api_key_id).put(data=data,
+        client.api_keys._(api_key_id).put(request_body=data,
                                           request_headers=headers)
 
         data = {'sample': 'data'}
         headers = {'X-Mock': 200}
         api_key_id = "test_url_param"
-        client.api_keys._(api_key_id).patch(data=data,
+        client.api_keys._(api_key_id).patch(request_body=data,
                                             request_headers=headers)
 
         headers = {'X-Mock': 204}

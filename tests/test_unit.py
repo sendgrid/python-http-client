@@ -14,6 +14,7 @@ except ImportError:
     # Python 2
     import urllib2 as urllib
 
+
 try:
     basestring
 except NameError:
@@ -55,7 +56,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(self.client._count, 0)
         self.assertEqual(self.client._url_path, {})
         self.assertEqual(self.client._status_code, None)
-        self.assertEqual(self.client._body, None)
+        self.assertEqual(self.client._response_body, None)
         self.assertEqual(self.client._response_headers, None)
         self.assertEqual(self.client._response, None)
 
@@ -101,9 +102,9 @@ class TestClient(unittest.TestCase):
         response = opener.open(request)
         self.client._set_response(response)
         self.assertEqual(self.client._status_code, 200)
-        self.assertTrue(b'result' in self.client._body)
-        self.assertTrue(b'name' in self.client._body)
-        self.assertTrue(b'api_key_id' in self.client._body)
+        self.assertTrue(b'result' in self.client._response_body)
+        self.assertTrue(b'name' in self.client._response_body)
+        self.assertTrue(b'api_key_id' in self.client._response_body)
         self.assertEqual(self.client._response_headers, response.info())
         self.client._reset()
 

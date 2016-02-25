@@ -28,7 +28,7 @@ class Client(object):
         self._count = 0
         self._url_path = {}
         self._status_code = None
-        self._body = None
+        self._response_body = None
         self._response_headers = None
         self._response = None
 
@@ -61,11 +61,11 @@ class Client(object):
 
     def _set_response(self, response):
         self._status_code = response.getcode()
-        self._body = response.read()
+        self._response_body = response.read()
         self._response_headers = response.info()
 
-    def _set_headers(self, headers):
-        self.request_headers.update(headers)
+    def _set_headers(self, request_headers):
+        self.request_headers.update(request_headers)
 
     def _(self, value):
         self._add_to_url_path(value)
@@ -84,7 +84,8 @@ class Client(object):
             def http_request(*args, **kwargs):
                 if 'request_headers' in kwargs:
                     self._set_headers(kwargs['request_headers'])
-                data = json.dumps(kwargs['data']) if 'data' in kwargs else None
+                data = json.dumps(kwargs['request_body'])\
+                    if 'request_body' in kwargs else None
                 params = kwargs['query_params']\
                     if 'query_params' in kwargs else None
                 opener = urllib.build_opener()
@@ -106,8 +107,8 @@ class Client(object):
         return self._status_code
 
     @property
-    def body(self):
-        return self._body
+    def response_body(self):
+        return self._response_body
 
     @property
     def response_headers(self):

@@ -15,7 +15,7 @@ client = Client(host=host,
 response = client.api_keys.get()
 print response.response_headers
 print response.status_code
-print response.body
+print response.response_body
 
 # POST
 data = {
@@ -26,27 +26,27 @@ data = {
             "alerts.read"
           ]
         }
-response = client.api_keys.post(data=data)
+response = client.api_keys.post(request_body=data)
 print response.response_headers
 print response.status_code
-print response.body
-json_response = json.loads(response.body)
+print response.response_body
+json_response = json.loads(response.response_body)
 api_key_id = json_response['api_key_id']
 
 # GET single
 response = client.api_keys._(api_key_id).get()
 print response.response_headers
 print response.status_code
-print response.body
+print response.response_body
 
 # PATCH
 data = {
           "name": "A New Hope"
         }
-response = client.api_keys._(api_key_id).patch(data=data)
+response = client.api_keys._(api_key_id).patch(request_body=data)
 print response.response_headers
 print response.status_code
-print response.body
+print response.response_body
 
 # PUT
 data = {
@@ -56,10 +56,10 @@ data = {
             "user.profile.update"
           ]
         }
-response = client.api_keys._(api_key_id).put(data=data)
+response = client.api_keys._(api_key_id).put(request_body=data)
 print response.response_headers
 print response.status_code
-print response.body
+print response.response_body
 
 # DELETE
 response = client.api_keys._(api_key_id).delete()
