@@ -137,21 +137,21 @@ class TestClient(unittest.TestCase):
         # Test GET
         self.client._add_to_url_path("api_keys")
         self.client.get()
+        self.assertEqual(self.client.status_code, 200)
 
         # Test POST
-        self.assertEqual(self.client.status_code, 200)
         self.client._add_to_url_path("api_keys")
         self.client._add_to_url_path("api_key_id")
         self.client.put()
+        self.assertEqual(self.client.status_code, 200)
 
         # Test PATCH
-        self.assertEqual(self.client.status_code, 200)
         self.client._add_to_url_path("api_keys")
         self.client._add_to_url_path("api_key_id")
         self.client.patch()
+        self.assertEqual(self.client.status_code, 200)
 
         # Test POST
-        self.assertEqual(self.client.status_code, 200)
         self.client.request_headers.update({'X-Mock': 201})
         self.client._add_to_url_path("api_keys")
         self.client.post()
