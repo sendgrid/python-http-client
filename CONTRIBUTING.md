@@ -10,10 +10,11 @@ We use [Milestones](https://github.com/sendgrid/python-http-client/milestones) t
 * [Understanding the Code Base](#understanding_the_codebase)
 * [Testing](#testing)
 * [Style Guidelines & Naming Conventions](#style_guidelines_and_naming_conventions)
+* [Creating a Pull Request](#creating_a_pull_request)
 
 There are a few ways to contribute, which we'll enumerate below:
 
-<a name="feature_request"></a>## Feature Request
+## Feature Request<a name="feature_request"></a>
 
 If you'd like to make a feature request, please read this section.
 
@@ -22,7 +23,7 @@ The GitHub issue tracker is the preferred channel for library feature requests, 
 - Please **search for existing issues** in order to ensure we don't have duplicate bugs/feature requests.
 - Please be respectful and considerate of others when commenting on issues
 
-<a name="submit_a_bug_report"></a>## Submit a Bug Report
+## Submit a Bug Report<a name="submit_a_bug_report"></a>
 
 Note: DO NOT include your credentials in ANY code examples, descriptions, or media you make public.
 
@@ -60,7 +61,7 @@ Any other information you want to share that is relevant to the issue being repo
 * Python Version: 2.7
 ```
 
-<a name="improvements_to_the_codebase"></a>## Improvements to the Codebase
+## Improvements to the Codebase<a name="improvements_to_the_codebase"></a>
 
 We welcome direct contributions to the python-http-client code base. Thank you!
 
@@ -89,7 +90,7 @@ Update your settings in `.env`
 See the [examples folder](https://github.com/sendgrid/python-http-client/tree/master/examples) to get started quickly.
 ```
 
-<a name="understanding_the_codebase"></a>## Understanding the Code Base ##
+## Understanding the Code Base ##<a name="understanding_the_codebase"></a>
 
 **/examples**
 
@@ -107,7 +108,7 @@ This allows for the following mapping from a URL to a method chain:
 
 Loads the environment variables.
 
-<a name="testing"></a>## Testing
+## Testing<a name="testing"></a>
 
 All PRs require passing tests before the PR will be reviewed. 
 
@@ -143,7 +144,7 @@ source venv/bin/activate
 tox
 ```
 
-<a name="style_guidelines_and_naming_conventions"></a>## Style Guidelines & Naming Conventions
+## Style Guidelines & Naming Conventions<a name="style_guidelines_and_naming_conventions"></a>
 
 Generally, we follow the style guidelines as suggested by the official language. However, we ask that you conform to the styles that already exist in the library. If you wish to deviate, please explain your reasoning.
 
@@ -156,7 +157,7 @@ Please run your code through [pyflakes](https://pypi.python.org/pypi/pyflakes) a
 * `examples` for example calls
 * `tests`, for all tests
 
-## Creating a Pull Request
+## Creating a Pull Request<a name="creating_a_pull_request"></a>
 
 1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork,
    and configure the remotes:
