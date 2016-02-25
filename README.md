@@ -34,9 +34,7 @@ print response.body
 
 # Installation
 
-pip install sendgrid
-or
-easy_install sendgrid
+`pip install sendgrid` or `easy_install sendgrid`
 
 ## Usage ##
 

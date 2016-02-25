@@ -1,11 +1,23 @@
+Source: https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md
+
 Hello! Thank you for choosing to help contribute to the python-http-client. There are many ways you can contribute and help is always welcome.
 
 We use [Milestones](https://github.com/sendgrid/python-http-client/milestones) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions and additional PRs are welcomed and encouraged.
 
-To get started, there are a few ways to contribute, which we'll enumerate below:
+* [Feature Request](#feature_request)
+
+There are a few ways to contribute, which we'll enumerate below:
+
+<a name="feature_request">## Feature Request</a>
+
+If you'd like to make a feature request, please read this section.
+
+The GitHub issue tracker is the preferred channel for library feature requests, but please respect the following restrictions:
+
+- Please **search for existing issues** in order to ensure we don't have duplicate bugs/feature requests.
+- Please be respectful and considerate of others when commenting on issues
 
 ## Submit a Bug Report
-
 
 Note: DO NOT include your credentials in ANY code examples, descriptions, or media you make public.
 
@@ -13,8 +25,7 @@ A software bug is a demonstrable issue in the code base. In order for us to diag
 
 Before you decide to create a new issue, please try the following:
 
-0. Please **don't** use the issue tracker for personal/implementation issues. Feel free to [email](mailto:dx@sendgrid.com) us instead
-1. Check the Github issues tab if the identified issue has already been reported
+1. Check the Github issues tab if the identified issue has already been reported, if so, please add a +1 to the existing post.
 2. Update to the latest version of this code and check if issue has already been fixed
 3. Copy and fill in the Bug Report Template we have provided below
 
@@ -40,22 +51,13 @@ Any other information you want to share that is relevant to the issue being repo
 
 #### Technical details:
 
-* <<Project Name>> Version: master (latest commit: 2cb34372ef0f31352f7c90015a45e1200cb849da)
+* python-http-client Version: master (latest commit: 2cb34372ef0f31352f7c90015a45e1200cb849da)
 * Python Version: 2.7
 ```
 
-## Feature Request
-
-If you'd like to make a feature request, please read this section.
-
-The GitHub issue tracker is the preferred channel for library feature requests, but please respect the following restrictions:
-
-- Please **search for existing issues** in order to ensure we don't have duplicate bugs/feature requests.
-- Please be respectful and considerate of others when commenting on issues
-
 ## Improvements to the Codebase
 
-We welcome direct contributions to the <<Project Name>> code base. Thank you!
+We welcome direct contributions to the python-http-client code base. Thank you!
 
 ### Development Environment ###
 
@@ -203,3 +205,4 @@ Please run your code through [pyflakes](https://pypi.python.org/pypi/pyflakes) a
     with a clear title and description against the `master` branch. All tests must be passing before we will review the PR.
 
 If you have any additional questions, please feel free to [email](mailto:dx@sendgrid.com) us or create an issue in this repo.
+
