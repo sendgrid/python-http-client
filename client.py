@@ -14,7 +14,11 @@ except ImportError:
 
 class Client(object):
 
-    def __init__(self, host=None, api_key=None, request_headers=None, version=None):
+    def __init__(self,
+                 host=None,
+                 api_key=None,
+                 request_headers=None,
+                 version=None):
         self.host = host
         self.request_headers = {'Authorization': 'Bearer ' + api_key}
         self.methods = ['delete', 'get', 'patch', 'post', 'put']
@@ -40,14 +44,14 @@ class Client(object):
     def _build_versioned_url(self, url):
         return self.host + "/v" + str(self._version) + url
 
-    def _build_url(self, params):
+    def _build_url(self, query_params):
         url = ""
         count = 0
         while count < len(self._url_path):
             url += "/" + str(self._url_path[count])
             count += 1
-        if params:
-            url_values = urlencode(sorted(params.items()))
+        if query_params:
+            url_values = urlencode(sorted(query_params.items()))
             url = url + '?' + url_values
         if self._version:
             url = self._build_versioned_url(url)
@@ -79,9 +83,10 @@ class Client(object):
 
             def http_request(*args, **kwargs):
                 if 'request_headers' in kwargs:
-                    self._set_headers(kwargs['headers'])
+                    self._set_headers(kwargs['request_headers'])
                 data = json.dumps(kwargs['data']) if 'data' in kwargs else None
-                params = kwargs['params'] if 'params' in kwargs else None
+                params = kwargs['query_params']\
+                    if 'query_params' in kwargs else None
                 opener = urllib.build_opener()
                 request = urllib.Request(self._build_url(params), data=data)
                 for key, value in self.request_headers.items():

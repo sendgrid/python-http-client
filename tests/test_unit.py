@@ -25,7 +25,7 @@ except NameError:
 
 class TestConfig(unittest.TestCase):
     def setUp(self):
-        self.config = Config()
+        Config()
 
     def test_initialization(self):
         local_host = os.environ.get('LOCAL_HOST')
@@ -38,10 +38,10 @@ class TestConfig(unittest.TestCase):
 
 class TestClient(unittest.TestCase):
     def setUp(self):
-        Config.init_environment()
+        Config()
         self.api_key = os.environ.get('SENDGRID_API_KEY')
         self.host = os.environ.get('LOCAL_HOST')
-        self.request_headers = {'X-Mock': 200, 'Content-Type': 'application/json'}
+        self.request_headers = {'Content-Type': 'application/json'}
         self.client = Client(host=self.host,
                              api_key=self.api_key,
                              request_headers=self.request_headers,
@@ -49,7 +49,8 @@ class TestClient(unittest.TestCase):
 
     def test__init__(self):
         self.assertEqual(os.environ.get('LOCAL_HOST'), self.host)
-        self.request_headers.update({'Authorization': 'Bearer ' + self.api_key})
+        authorization = {'Authorization': 'Bearer ' + self.api_key}
+        self.request_headers.update(authorization)
         self.assertEqual(self.client.request_headers, self.request_headers)
         methods = ['delete', 'get', 'patch', 'post', 'put']
         self.assertEqual(self.client.methods.sort(), methods.sort())
@@ -86,17 +87,17 @@ class TestClient(unittest.TestCase):
         self.client._add_to_url_path("here")
         self.client._add_to_url_path("there")
         self.client._add_to_url_path(1)
-        params = {"hello": 0, "world": 1}
+        query_params = {"hello": 0, "world": 1}
         url = self.host + "/v" + str(self.client._version)\
             + "/here/there/1?hello=0&world=1"
-        self.assertEqual(self.client._build_url(params), url)
+        self.assertEqual(self.client._build_url(query_params), url)
         self.client._reset()
 
     def test__set_response(self):
         opener = urllib.build_opener()
         self.client._add_to_url_path("api_keys")
-        params = {"mock": 200}
-        request = urllib.Request(self.client._build_url(params))
+        query_params = {"mock": 200}
+        request = urllib.Request(self.client._build_url(query_params))
         for key, value in self.client.request_headers.items():
             request.add_header(key, value)
         request.get_method = lambda: 'GET'
@@ -110,8 +111,8 @@ class TestClient(unittest.TestCase):
         self.client._reset()
 
     def test__set_headers(self):
-        headers = {"X-Test": "Test"}
-        self.client._set_headers(headers)
+        request_headers = {"X-Test": "Test"}
+        self.client._set_headers(request_headers)
         self.assertTrue("X-Test" in self.client.request_headers)
         self.client.request_headers.pop("X-Test", None)
 
@@ -135,17 +136,20 @@ class TestClient(unittest.TestCase):
         self.assertEqual(self.client._version, 3)
 
         # Test GET
+        self.client.request_headers.update({'X-Mock': 200})
         self.client._add_to_url_path("api_keys")
         self.client.get()
         self.assertEqual(self.client.status_code, 200)
 
         # Test POST
+        self.client.request_headers.update({'X-Mock': 200})
         self.client._add_to_url_path("api_keys")
         self.client._add_to_url_path("api_key_id")
         self.client.put()
         self.assertEqual(self.client.status_code, 200)
 
         # Test PATCH
+        self.client.request_headers.update({'X-Mock': 200})
         self.client._add_to_url_path("api_keys")
         self.client._add_to_url_path("api_key_id")
         self.client.patch()

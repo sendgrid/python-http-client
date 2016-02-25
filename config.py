@@ -2,15 +2,9 @@ import os
 
 
 class Config(object):
-    """All configuration for this app is loaded here"""
+    """Allow variables assigned in .env available using
+       os.environ.get('VAR_NAME')"""
     def __init__(self):
-        if (os.environ.get('ENV') != 'prod'):  # We are not in Heroku
-            self.init_environment()
-
-    @staticmethod
-    def init_environment():
-        """Allow variables assigned in .env available using
-           os.environ.get('VAR_NAME')"""
         base_path = os.path.abspath(os.path.dirname(__file__))
         if os.path.exists(base_path + '/.env'):
             file = open(base_path + '/.env')
