@@ -4,7 +4,7 @@ Here is a quick example:
 
 GET /your/api/{param}/call
 
-```
+```python
 import python-http-client
 client = Client(host='base_url', api_key='api_key')
 client.your.api._(param).call.get()
@@ -15,7 +15,7 @@ print response.body
 
 POST /your/api/{param}/call with headers, query params and data, with versioning
 
-```
+```python
 import python-http-client
 global_headers = {'X-Default': 'default'}
 client = Client(host='base_url', api_key='api_key', request_headers=global_headers )
@@ -46,7 +46,7 @@ First, update your .env with your [SENDGRID_API_KEY](https://app.sendgrid.com/se
 
 Following is an abridged example, here is the [full working code](https://github.com/sendgrid/python-http-client/tree/master/examples).
 
-```
+```python
 import os
 import json
 import python-http-client
