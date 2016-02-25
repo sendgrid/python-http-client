@@ -4,8 +4,11 @@ import python_http_client
 Config()
 host = os.environ.get('HOST')
 api_key = os.environ.get('SENDGRID_API_KEY')
-request_headers = {'Authorization': 'Bearer ' + api_key, 'Content-Type': 'application/json'}
-version = 3 # note that we could also do client.version(3) to set the version for each endpoint
+request_headers = {
+                    'Authorization': 'Bearer ' + api_key,
+                    'Content-Type': 'application/json'
+                   }
+version = 3  # we could also use client.version(3)
 client = Client(host=host,
                 request_headers=request_headers,
                 version=version)

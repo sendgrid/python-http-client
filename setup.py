@@ -1,5 +1,5 @@
 import sys
-from setuptools import setup, find_packages
+from setuptools import setup
 
 
 def getRequires():
@@ -9,7 +9,7 @@ def getRequires():
     return deps
 
 base_url = 'https://github.com/sendgrid/'
-version='1.0.0'
+version = '1.0.0'
 setup(
     name='python_http_client',
     version=version,
@@ -22,7 +22,10 @@ setup(
     description='HTTP REST client, simplified for Python',
     long_description='Check out the README at GitHub',
     install_requires=getRequires(),
-    keywords = ['REST', 'HTTP', 'API'],
+    keywords=[
+        'REST',
+        'HTTP',
+        'API'],
     classifiers=[
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',

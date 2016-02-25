@@ -39,35 +39,50 @@ class StaticClient(Client):
             self._set_response(self._response)
             self._reset()
 
-    def get(self, request_body=None, query_params=None, request_headers=None):
+    def get(self,
+            request_body=None,
+            query_params=None,
+            request_headers=None):
         self._response = self.make_request('get',
                                            request_body,
                                            query_params,
                                            request_headers)
         return self
 
-    def post(self, request_body=None, query_params=None, request_headers=None):
+    def post(self,
+             request_body=None,
+             query_params=None,
+             request_headers=None):
         self._response = self.make_request('post',
                                            request_body,
                                            query_params,
                                            request_headers)
         return self
 
-    def put(self, request_body=None, query_params=None, request_headers=None):
+    def put(self,
+            request_body=None,
+            query_params=None,
+            request_headers=None):
         self._response = self.make_request('put',
                                            request_body,
                                            query_params,
                                            request_headers)
         return self
 
-    def patch(self, request_body=None, query_params=None, request_headers=None):
+    def patch(self,
+              request_body=None,
+              query_params=None,
+              request_headers=None):
         self._response = self.make_request('patch',
                                            request_body,
                                            query_params,
                                            request_headers)
         return self
 
-    def delete(self, request_body=None, query_params=None, request_headers=None):
+    def delete(self,
+               request_body=None,
+               query_params=None,
+               request_headers=None):
         self._response = self.make_request('delete',
                                            request_body,
                                            query_params,
@@ -126,7 +141,11 @@ def run_tested_code(client, num_loops):
 def dynamic_version():
     Config()
     api_key = os.environ.get('SENDGRID_API_KEY')
-    request_headers = {'X-Mock': 200, 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api_key}
+    request_headers = {
+                        'X-Mock': 200,
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + api_key
+                       }
     client = Client(host=os.environ.get('LOCAL_HOST'),
                     request_headers=request_headers,
                     version=3)
@@ -137,7 +156,11 @@ def dynamic_version():
 def static_version():
     Config()
     api_key = os.environ.get('SENDGRID_API_KEY')
-    request_headers = {'X-Mock': 200, 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api_key}
+    request_headers = {
+                        'X-Mock': 200,
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + api_key
+                       }
     client = StaticClient(host=os.environ.get('LOCAL_HOST'),
                           request_headers=request_headers,
                           version=3)

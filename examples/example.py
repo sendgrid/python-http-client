@@ -8,7 +8,11 @@ if __name__ == '__main__' and __package__ is None:
 
 Config()
 api_key = os.environ.get('SENDGRID_API_KEY')
-request_headers = {'X-Mock': 200, 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + api_key}
+request_headers = {
+                    'X-Mock': 200,
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + api_key
+                   }
 client = Client(host=os.environ.get('MOCK_HOST'),
                 request_headers=request_headers,
                 version=3)
