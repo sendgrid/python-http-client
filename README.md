@@ -30,12 +30,12 @@ print response.response_headers
 print response.body 
 ```
 
-<<Travis Badge Placeholder>> <<CodeClimate Badge Placeholder>> <<Python Badge Placeholder>>
+<Travis Badge Placeholder> <CodeClimate Badge Placeholder> <Python Badge Placeholder>
 
 # Installation
 
 pip install sendgrid
-# or
+or
 easy_install sendgrid
 
 ## Usage ##
