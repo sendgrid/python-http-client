@@ -26,9 +26,7 @@ class TestConfig(unittest.TestCase):
         Config("test")
 
     def test_initialization(self):
-        local_host = os.environ.get('LOCAL_HOST')
-        self.assertTrue(isinstance(local_host, basestring))
-        host = os.environ.get('HOST')
+        host = os.environ.get('MOCK_HOST')
         self.assertTrue(isinstance(host, basestring))
         sendgrid_api_key = os.environ.get('SENDGRID_API_KEY')
         self.assertTrue(isinstance(sendgrid_api_key, basestring))
@@ -38,7 +36,7 @@ class TestClient(unittest.TestCase):
     def setUp(self):
         Config("test")
         self.api_key = os.environ.get('SENDGRID_API_KEY')
-        self.host = os.environ.get('LOCAL_HOST')
+        self.host = os.environ.get('MOCK_HOST')
         self.request_headers = {
                                  'Content-Type': 'application/json',
                                  'Authorization': 'Bearer ' + self.api_key
@@ -48,7 +46,7 @@ class TestClient(unittest.TestCase):
                              version=3)
 
     def test__init__(self):
-        self.assertEqual(os.environ.get('LOCAL_HOST'), self.host)
+        self.assertEqual(os.environ.get('MOCK_HOST'), self.host)
         authorization = {'Authorization': 'Bearer ' + self.api_key}
         self.request_headers.update(authorization)
         self.assertEqual(self.client.request_headers, self.request_headers)
