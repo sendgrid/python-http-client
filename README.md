@@ -1,4 +1,4 @@
-![Travis Badge](https://travis-ci.org/sendgrid/python-http-client.svg?branch=master) [![Code Climate](https://codeclimate.com/github/sendgrid/python-http-client/badges/gpa.svg)](https://codeclimate.com/github/sendgrid/python-http-client) <Python Badge Placeholder>
+![Travis Badge](https://travis-ci.org/sendgrid/python-http-client.svg?branch=master) [![Code Climate](https://codeclimate.com/github/sendgrid/python-http-client/badges/gpa.svg)](https://codeclimate.com/github/sendgrid/python-http-client) [![Coverage Status](https://coveralls.io/repos/github/sendgrid/python-http-client/badge.svg?branch=master)](https://coveralls.io/github/sendgrid/python-http-client?branch=master) <Python Badge Placeholder>
 
 **Quickly and easily access any REST or REST-like API.**
 
