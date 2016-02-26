@@ -23,7 +23,7 @@ except NameError:
 
 class TestConfig(unittest.TestCase):
     def setUp(self):
-        Config()
+        Config("test")
 
     def test_initialization(self):
         local_host = os.environ.get('LOCAL_HOST')
@@ -36,7 +36,7 @@ class TestConfig(unittest.TestCase):
 
 class TestClient(unittest.TestCase):
     def setUp(self):
-        Config()
+        Config("test")
         self.api_key = os.environ.get('SENDGRID_API_KEY')
         self.host = os.environ.get('LOCAL_HOST')
         self.request_headers = {

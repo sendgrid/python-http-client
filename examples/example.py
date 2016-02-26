@@ -6,7 +6,7 @@ if __name__ == '__main__' and __package__ is None:
     from python_http_client.config import Config
 
 
-Config()
+Config("test")
 api_key = os.environ.get('SENDGRID_API_KEY')
 request_headers = {
                     'X-Mock': 200,

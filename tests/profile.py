@@ -139,7 +139,7 @@ def run_tested_code(client, num_loops):
 
 @timefunc
 def dynamic_version():
-    Config()
+    Config("test")
     api_key = os.environ.get('SENDGRID_API_KEY')
     request_headers = {
                         'X-Mock': 200,
@@ -154,7 +154,7 @@ def dynamic_version():
 
 @timefunc
 def static_version():
-    Config()
+    Config("test")
     api_key = os.environ.get('SENDGRID_API_KEY')
     request_headers = {
                         'X-Mock': 200,
