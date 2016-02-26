@@ -23,7 +23,7 @@ except NameError:
 
 class TestConfig(unittest.TestCase):
     def setUp(self):
-        Config("test")
+        Config(os.path.abspath(os.path.dirname(__file__)))
 
     def test_initialization(self):
         host = os.environ.get('MOCK_HOST')
