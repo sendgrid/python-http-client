@@ -118,6 +118,10 @@ We encourage contribution to our libraries, please see our [CONTRIBUTING](https:
 * [Bug Reports](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#submit_a_bug_report)
 * [Improvements to the Codebase](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#improvements_to_the_codebase)
 
+# Thanks
+
+We were inspired by the work done on [birdy](https://github.com/inueni/birdy) and [universalclient](https://github.com/dgreisen/universalclient).
+
 # About
 
 ![SendGrid Logo]
