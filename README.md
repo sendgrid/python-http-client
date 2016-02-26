@@ -1,4 +1,4 @@
-![Travis Badge](https://travis-ci.org/sendgrid/python-http-client.svg?branch=master) <CodeClimate Badge Placeholder> <Python Badge Placeholder>
+![Travis Badge](https://travis-ci.org/sendgrid/python-http-client.svg?branch=master) [![Code Climate](https://codeclimate.com/github/sendgrid/python-http-client/badges/gpa.svg)](https://codeclimate.com/github/sendgrid/python-http-client) <Python Badge Placeholder>
 
 **Quickly and easily access any REST or REST-like API.**
 

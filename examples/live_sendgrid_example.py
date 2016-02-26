@@ -1,8 +1,10 @@
 import os
 import json
 import python_http_client
-python_http_client.Config(os.path.abspath(os.path.dirname(__file__)))
-host = os.environ.get('HOST')
+
+path = os.path.abspath(os.path.dirname(__file__)) + "/.."
+python_http_client.Config(path)
+host = os.environ.get('HOST')  # http://api.sendgrid.com
 api_key = os.environ.get('SENDGRID_API_KEY')
 request_headers = {
                     'Authorization': 'Bearer ' + api_key,

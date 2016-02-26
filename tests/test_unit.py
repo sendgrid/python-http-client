@@ -23,7 +23,11 @@ except NameError:
 
 class TestConfig(unittest.TestCase):
     def setUp(self):
-        Config(os.path.abspath(os.path.dirname(__file__)))
+        if os.environ.get('TRAVIS'):
+            Config(os.path.abspath(os.path.dirname(__file__)))
+        else:
+            path = os.path.abspath(os.path.dirname(__file__)) + "/.."
+            Config(path)
 
     def test_initialization(self):
         host = os.environ.get('MOCK_HOST')
@@ -34,7 +38,11 @@ class TestConfig(unittest.TestCase):
 
 class TestClient(unittest.TestCase):
     def setUp(self):
-        Config("test")
+        if os.environ.get('TRAVIS'):
+            Config(os.path.abspath(os.path.dirname(__file__)))
+        else:
+            path = os.path.abspath(os.path.dirname(__file__)) + "/.."
+            Config(path)
         self.api_key = os.environ.get('SENDGRID_API_KEY')
         self.host = os.environ.get('MOCK_HOST')
         self.request_headers = {
