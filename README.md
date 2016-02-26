@@ -53,14 +53,15 @@ Following is an abridged example, here is the [full working code](https://github
 import os
 import json
 import python_http_client
-Config()
+path_to_env = os.path.abspath(os.path.dirname(__file__))
+python_http_client.Config(path_to_env)
 host = os.environ.get('HOST')
 api_key = os.environ.get('SENDGRID_API_KEY')
 request_headers = {'Authorization': 'Bearer ' + api_key, 'Content-Type': 'application/json'}
 version = 3 # note that we could also do client.version(3) to set the version for each endpoint
-client = Client(host=host,
-                request_headers=request_headers,
-                version=version)
+client = python_http_client.Client(host=host,
+                                   request_headers=request_headers,
+                                   version=version)
 
 # GET collection
 response = client.api_keys.get()

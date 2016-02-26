@@ -1,7 +1,7 @@
 import os
 import json
 import python_http_client
-Config()
+python_http_client.Config(os.path.abspath(os.path.dirname(__file__)))
 host = os.environ.get('HOST')
 api_key = os.environ.get('SENDGRID_API_KEY')
 request_headers = {
@@ -9,9 +9,9 @@ request_headers = {
                     'Content-Type': 'application/json'
                    }
 version = 3  # we could also use client.version(3)
-client = Client(host=host,
-                request_headers=request_headers,
-                version=version)
+client = python_http_client.Client(host=host,
+                                   request_headers=request_headers,
+                                   version=version)
 
 # GET collection
 response = client.api_keys.get()
