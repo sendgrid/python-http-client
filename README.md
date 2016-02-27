@@ -16,7 +16,7 @@ print response.response_headers
 print response.body 
 ```
 
-`POST /your/api/{param}/call` with headers, query params and data, with versioning
+`POST /your/api/{param}/call` with headers, query parameters and a request body with versioning.
 
 ```python
 import python_http_client
@@ -25,7 +25,7 @@ client = Client(host='base_url', request_headers=global_headers)
 query_params={'hello':0, 'world':1}
 request_headers={'X-Test': 'test'}
 data={'some': 1, 'awesome', 2, 'data', 3}
-response = client.your.api._(param).call.post(data=data,
+response = client.your.api._(param).call.post(request_body=data,
                                               query_params=query_params,
                                               request_headers=request_headers)
 print response.status_code
@@ -68,11 +68,11 @@ response = client.api_keys.get()
 
 # POST
 data = {
-          "name": "My API Key",
-          "scopes": [
-            "mail.send",
-            "alerts.create",
-            "alerts.read"
+          'name': 'My API Key',
+          'scopes': [
+            'mail.send',
+            'alerts.create',
+            'alerts.read'
           ]
         }
 response = client.api_keys.post(request_body=data)
@@ -84,16 +84,16 @@ response = client.api_keys._(api_key_id).get()
 
 # PATCH
 data = {
-          "name": "A New Hope"
+          'name': 'A New Hope'
         }
 response = client.api_keys._(api_key_id).patch(request_body=data)
 
 # PUT
 data = {
-          "name": "A New Hope",
-          "scopes": [
-            "user.profile.read",
-            "user.profile.update"
+          'name': 'A New Hope',
+          'scopes': [
+            'user.profile.read',
+            'user.profile.update'
           ]
         }
 response = client.api_keys._(api_key_id).put(request_body=data)
