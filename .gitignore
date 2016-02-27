@@ -64,3 +64,4 @@ target/
 .env
 venv/
 .python-version
+cleanup.sh
