@@ -23,11 +23,11 @@ class Client(object):
     :param version: The version number of the API.
                     Subclass _build_versioned_url for custom behavior.
                     Or just pass the version as part of the URL
-                    (e.g. client._("/v3"))
+                    (e.g. client._('/v3'))
     :type integer:
     """
     def __init__(self,
-                 host=None,
+                 host,
                  request_headers=None,
                  version=None):
         self.host = host
@@ -60,10 +60,10 @@ class Client(object):
 
     """Subclass this function for your own needs.
        Or just pass the version as part of the URL
-       (e.g. client._("/v3"))
+       (e.g. client._('/v3'))
     """
     def _build_versioned_url(self, url):
-        return self.host + "/v" + str(self._version) + url
+        return '{0}/v{1}{2}'.format(self.host, str(self._version), url)
 
     """Build the final URL to be passed to urllib
 
@@ -71,14 +71,14 @@ class Client(object):
     :type query_params: dictionary
     """
     def _build_url(self, query_params):
-        url = ""
+        url = ''
         count = 0
         while count < len(self._url_path):
-            url += "/" + str(self._url_path[count])
+            url += '/{0}'.format(self._url_path[count])
             count += 1
         if query_params:
             url_values = urlencode(sorted(query_params.items()))
-            url = url + '?' + url_values
+            url = '{0}?{1}'.format(url, url_values)
         if self._version:
             url = self._build_versioned_url(url)
         else:
@@ -101,7 +101,16 @@ class Client(object):
     :type request_headers: dictionary
     """
     def _set_headers(self, request_headers):
-        self.request_headers.update(request_headers)
+        if self.request_headers:
+            self.request_headers.update(request_headers)
+        else:
+            self.request_headers = request_headers
+
+    """Make the API call and return the response. This is separated into it's
+       own functin, so we can mock it easily for testing.
+    """
+    def _make_request(self, opener, request):
+        return opener.open(request)
 
     """Add variable values to the url. (e.g. /your/api/{variable_value}/call)
        Another example: if you have a Python reserved word, such as global,
@@ -122,7 +131,7 @@ class Client(object):
     :type name: string or integer if name == version
     """
     def __getattr__(self, name):
-        if name == "version":
+        if name == 'version':
             def get_version(*args, **kwargs):
                 self._version = args[0]
                 return self
@@ -141,10 +150,11 @@ class Client(object):
                     if 'query_params' in kwargs else None
                 opener = urllib.build_opener()
                 request = urllib.Request(self._build_url(params), data=data)
-                for key, value in self.request_headers.items():
-                    request.add_header(key, value)
+                if self.request_headers:
+                    for key, value in self.request_headers.items():
+                        request.add_header(key, value)
                 request.get_method = lambda: method
-                self._response = opener.open(request)
+                self._response = self._make_request(opener, request)
                 self._set_response(self._response)
                 self._reset()
                 return self
