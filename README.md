@@ -13,7 +13,7 @@ client = Client(host='base_url', request_headers=global_headers)
 client.your.api._(param).call.get()
 print response.status_code
 print response.response_headers
-print response.body 
+print response.response_body 
 ```
 
 `POST /your/api/{param}/call` with headers, query parameters and a request body with versioning.
@@ -30,7 +30,7 @@ response = client.your.api._(param).call.post(request_body=data,
                                               request_headers=request_headers)
 print response.status_code
 print response.response_headers
-print response.body 
+print response.response_body 
 ```
 
 # Installation
