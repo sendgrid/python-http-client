@@ -9,7 +9,7 @@ def getRequires():
     return deps
 
 base_url = 'https://github.com/sendgrid/'
-version = '1.1.0'
+version = '1.1.1'
 setup(
     name='python_http_client',
     version=version,
