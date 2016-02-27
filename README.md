@@ -129,6 +129,6 @@ We were inspired by the work done on [birdy](https://github.com/inueni/birdy) an
 
 python-http-client is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
-python-http-client is maintained and funded by SendGrid, inc. The names and logos for python-http-client are trademarks of SendGrid, inc.
+python-http-client is maintained and funded by SendGrid, Inc. The names and logos for python-http-client are trademarks of SendGrid, Inc.
 
 

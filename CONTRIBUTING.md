@@ -138,8 +138,6 @@ pyenv local 3.5.0 3.4.3 3.3.6 3.2.6 2.7.8 2.6.9
 pyenv rehash
 ````
 
-Please [email](mailto:dx@sendgrid.com) us for details on how we mocked up the SendGrid API server, otherwise when you commit to your branch the Travis tests will execute remotely against our Mock Server.
-
 ### Execute: ###
 
 ```

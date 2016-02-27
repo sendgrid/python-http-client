@@ -120,18 +120,18 @@ def run_tested_code(client, num_loops):
 
         data = {'sample': 'data'}
         headers = {'X-Mock': 200}
-        api_key_id = "test_url_param"
+        api_key_id = 'test_url_param'
         client.api_keys._(api_key_id).put(request_body=data,
                                           request_headers=headers)
 
         data = {'sample': 'data'}
         headers = {'X-Mock': 200}
-        api_key_id = "test_url_param"
+        api_key_id = 'test_url_param'
         client.api_keys._(api_key_id).patch(request_body=data,
                                             request_headers=headers)
 
         headers = {'X-Mock': 204}
-        api_key_id = "test_url_param"
+        api_key_id = 'test_url_param'
         client.api_keys._(api_key_id).delete(request_headers=headers)
 
         num_loops -= 1
@@ -139,8 +139,8 @@ def run_tested_code(client, num_loops):
 
 @timefunc
 def dynamic_version():
-    path = os.path.abspath(os.path.dirname(__file__)) + "/.."
-    Config(path)
+    local_path = '{}/..'.format(os.path.abspath(os.path.dirname(__file__)))
+    Config(local_path)
     api_key = os.environ.get('SENDGRID_API_KEY')
     request_headers = {
                         'X-Mock': 200,
@@ -155,8 +155,8 @@ def dynamic_version():
 
 @timefunc
 def static_version():
-    path = os.path.abspath(os.path.dirname(__file__)) + "/.."
-    Config(path)
+    local_path = '{}/..'.format(os.path.abspath(os.path.dirname(__file__)))
+    Config(local_path)
     api_key = os.environ.get('SENDGRID_API_KEY')
     request_headers = {
                         'X-Mock': 200,
@@ -169,5 +169,4 @@ def static_version():
     run_tested_code(client, 10)
 
 dynamic_result = dynamic_version()
-
 static_result = static_version()
