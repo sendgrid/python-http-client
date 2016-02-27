@@ -54,11 +54,6 @@ class TestConfig(unittest.TestCase):
 
     """
     def test_initialiation(self):
-        default_config = Config()
-        default_path = os.path.join(path.dirname(__file__), os.pardir)
-        default_path = default_path[:-8]
-        self.assertEqual(default_config.local_path_to_env,
-                         '{0}python_http_client/../.env'.format(default_path))
         local_path = os.path.dirname(path.dirname(path.abspath(__file__)))
         config = Config(local_path)
         self.assertEqual(config.local_path_to_env,
