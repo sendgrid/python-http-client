@@ -13,7 +13,7 @@ client = Client(host='base_url', request_headers=global_headers)
 client.your.api._(param).call.get()
 print response.status_code
 print response.response_headers
-print response.response_body 
+print response.response_body
 ```
 
 `POST /your/api/{param}/call` with headers, query parameters and a request body with versioning.
@@ -30,12 +30,12 @@ response = client.your.api._(param).call.post(request_body=data,
                                               request_headers=request_headers)
 print response.status_code
 print response.response_headers
-print response.response_body 
+print response.response_body
 ```
 
 # Installation
 
-`pip install python_http_client` 
+`pip install python_http_client`
 
 or
 
@@ -57,7 +57,7 @@ path_to_env = os.path.abspath(os.path.dirname(__file__))
 python_http_client.Config(path_to_env)
 host = os.environ.get('HOST')
 api_key = os.environ.get('SENDGRID_API_KEY')
-request_headers = {'Authorization': 'Bearer ' + api_key, 'Content-Type': 'application/json'}
+request_headers = {'Authorization': 'Bearer {0}'.format(api_key), 'Content-Type': 'application/json'}
 version = 3 # note that we could also do client.version(3) to set the version for each endpoint
 client = python_http_client.Client(host=host,
                                    request_headers=request_headers,
@@ -68,13 +68,14 @@ response = client.api_keys.get()
 
 # POST
 data = {
-          'name': 'My API Key',
-          'scopes': [
-            'mail.send',
-            'alerts.create',
-            'alerts.read'
-          ]
-        }
+    "name": "My API Key",
+    "scopes": [
+        "mail.send",
+        "alerts.create",
+        "alerts.read"
+    ]
+}
+
 response = client.api_keys.post(request_body=data)
 json_response = json.loads(response.response_body)
 api_key_id = json_response['api_key_id']
@@ -84,18 +85,18 @@ response = client.api_keys._(api_key_id).get()
 
 # PATCH
 data = {
-          'name': 'A New Hope'
-        }
+    "name": "A New Hope"
+}
 response = client.api_keys._(api_key_id).patch(request_body=data)
 
 # PUT
 data = {
-          'name': 'A New Hope',
-          'scopes': [
-            'user.profile.read',
-            'user.profile.update'
-          ]
-        }
+    "name": "A New Hope",
+    "scopes": [
+        "user.profile.read",
+        "user.profile.update"
+    ]
+}
 response = client.api_keys._(api_key_id).put(request_body=data)
 
 # DELETE
@@ -130,5 +131,3 @@ We were inspired by the work done on [birdy](https://github.com/inueni/birdy) an
 python-http-client is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
 python-http-client is maintained and funded by SendGrid, Inc. The names and logos for python-http-client are trademarks of SendGrid, Inc.
-
-
