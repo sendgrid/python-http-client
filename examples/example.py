@@ -11,7 +11,7 @@ local_path = '{0}/..'.format(os.path.abspath(os.path.dirname(__file__)))
 Config(local_path)
 api_key = os.environ.get('SENDGRID_API_KEY')
 request_headers = {
-    "Authorization": 'Bearer {0}'.format(api_key), 
+    "Authorization": 'Bearer {0}'.format(api_key),
     "Content-Type": "application/json"
 }
 client = Client(host=os.environ.get('MOCK_HOST'),
