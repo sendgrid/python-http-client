@@ -113,6 +113,8 @@ Loads the environment variables.
 <a name="testing"></a>
 ## Testing
 
+All PRs require passing tests before the PR will be reviewed. 
+
 All test files are in the `[tests](https://github.com/sendgrid/python-http-client/tree/master/tests)` directory. 
 
 For the purposes of contributing to this repo, please update the [`test_unit.py`](https://github.com/sendgrid/python-http-client/blob/master/tests/test_unit.py) file with unit tests as you modify the code.
