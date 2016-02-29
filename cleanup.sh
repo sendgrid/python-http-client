@@ -1,4 +1,5 @@
 #!/bin/bash
+
 rm *.pyc
 rm tests/*.pyc
 rm python_http_client/*.pyc

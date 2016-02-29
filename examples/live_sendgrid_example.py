@@ -2,14 +2,14 @@ import os
 import json
 import python_http_client
 
-path = os.path.abspath(os.path.dirname(__file__)) + "/.."
+path = '{0}/..'.format(os.path.abspath(os.path.dirname(__file__)))
 python_http_client.Config(path)
 host = os.environ.get('HOST')  # http://api.sendgrid.com
 api_key = os.environ.get('SENDGRID_API_KEY')
 request_headers = {
-                    'Authorization': 'Bearer ' + api_key,
-                    'Content-Type': 'application/json'
-                   }
+    "Authorization": 'Bearer {0}'.format(api_key), 
+    "Content-Type": "application/json"
+}
 version = 3  # we could also use client.version(3)
 client = python_http_client.Client(host=host,
                                    request_headers=request_headers,
@@ -17,55 +17,55 @@ client = python_http_client.Client(host=host,
 
 # GET collection
 response = client.api_keys.get()
-print response.response_headers
-print response.status_code
-print response.response_body
+print(response.response_headers)
+print(response.status_code)
+print(response.response_body)
 
 # POST
 data = {
-          "name": "My API Key",
-          "scopes": [
-            "mail.send",
-            "alerts.create",
-            "alerts.read"
-          ]
-        }
+    "name": "My API Key",
+    "scopes": [
+        "mail.send",
+        "alerts.create",
+        "alerts.read"
+    ]
+}
 response = client.api_keys.post(request_body=data)
-print response.response_headers
-print response.status_code
-print response.response_body
+print(response.response_headers)
+print(response.status_code)
+print(response.response_body)
 json_response = json.loads(response.response_body)
 api_key_id = json_response['api_key_id']
 
 # GET single
 response = client.api_keys._(api_key_id).get()
-print response.response_headers
-print response.status_code
-print response.response_body
+print(response.response_headers)
+print(response.status_code)
+print(response.response_body)
 
 # PATCH
 data = {
-          "name": "A New Hope"
-        }
+    "name": "A New Hope"
+}
 response = client.api_keys._(api_key_id).patch(request_body=data)
-print response.response_headers
-print response.status_code
-print response.response_body
+print(response.response_headers)
+print(response.status_code)
+print(response.response_body)
 
 # PUT
 data = {
-          "name": "A New Hope",
-          "scopes": [
-            "user.profile.read",
-            "user.profile.update"
-          ]
-        }
+    "name": "A New Hope",
+    "scopes": [
+        "user.profile.read",
+        "user.profile.update"
+    ]
+}
 response = client.api_keys._(api_key_id).put(request_body=data)
-print response.response_headers
-print response.status_code
-print response.response_body
+print(response.response_headers)
+print(response.status_code)
+print(response.response_body)
 
 # DELETE
 response = client.api_keys._(api_key_id).delete()
-print response.response_headers
-print response.status_code
+print(response.response_headers)
+print(response.status_code)
