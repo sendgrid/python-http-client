@@ -113,6 +113,21 @@ Loads the environment variables.
 <a name="testing"></a>
 ## Testing
 
+All test files are in the `[tests](https://github.com/sendgrid/python-http-client/tree/master/tests)` directory. 
+
+For the purposes of contributing to this repo, please update the [`test_unit.py`](https://github.com/sendgrid/python-http-client/blob/master/tests/test_unit.py) file with unit tests as you modify the code.
+
+For Python 2.6.*:
+
+`unit2 discover -v`
+
+For Python 2.7.* and up:
+
+`python -m unittest discover -v`
+
+<a name="testing_multiple_versoins_of_python"></a>
+## Testing Multiple Versions of Python
+
 All PRs require passing tests before the PR will be reviewed. 
 
 ### Prequisites: ###
@@ -125,10 +140,9 @@ The above local "Initial setup" is complete
 ### Initial setup: ###
 
 Add eval "$(pyenv init -)" to your .profile after installing tox, you only need to do this once.
-
 ```
 pyenv install 2.6.9
-pyenv install 2.7.8
+pyenv install 2.7.11
 pyenv install 3.2.6
 pyenv install 3.3.6
 pyenv install 3.4.3
