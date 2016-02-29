@@ -168,7 +168,7 @@ Generally, we follow the style guidelines as suggested by the official language.
 
 * [PEP8](https://www.python.org/dev/peps/pep-0008/)
 
-Please run your code through [pyflakes](https://pypi.python.org/pypi/pyflakes) and [pep8](https://pypi.python.org/pypi/pep8)
+Please run your code through [pyflakes](https://pypi.python.org/pypi/pyflakes), [pylint](https://www.pylint.org/) and [pep8](https://pypi.python.org/pypi/pep8)
 
 ### Directory Structure
 
