@@ -7,6 +7,7 @@ We use [Milestones](https://github.com/sendgrid/python-http-client/milestones) t
 * [Improvements to the Codebase](#improvements_to_the_codebase)
 * [Understanding the Code Base](#understanding_the_codebase)
 * [Testing](#testing)
+* [Testing Multiple Versions of Python](#testing_multiple_versoins_of_python)
 * [Style Guidelines & Naming Conventions](#style_guidelines_and_naming_conventions)
 * [Creating a Pull Request](#creating_a_pull_request)
 
