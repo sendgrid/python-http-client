@@ -107,7 +107,7 @@ class Client(object):
             self.request_headers = request_headers
 
     """Make the API call and return the response. This is separated into it's
-       own functin, so we can mock it easily for testing.
+       own function, so we can mock it easily for testing.
     """
     def _make_request(self, opener, request):
         return opener.open(request)
