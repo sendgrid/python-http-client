@@ -144,7 +144,7 @@ class Client(object):
             def http_request(*args, **kwargs):
                 if 'request_headers' in kwargs:
                     self._set_headers(kwargs['request_headers'])
-                data = json.dumps(kwargs['request_body'])\
+                data = json.dumps(kwargs['request_body']).encode('utf-8')\
                     if 'request_body' in kwargs else None
                 params = kwargs['query_params']\
                     if 'query_params' in kwargs else None
