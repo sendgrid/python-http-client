@@ -65,3 +65,4 @@ target/
 venv/
 .python-version
 cleanup.sh
+.idea

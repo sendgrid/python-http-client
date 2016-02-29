@@ -1,12 +1,14 @@
 import time
 import os
 import json
+
 try:
     # Python 3
     import urllib.request as urllib
 except ImportError:
     # Python 2
     import urllib2 as urllib
+
 if __name__ == '__main__' and __package__ is None:
     from os import sys, path
     sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
@@ -43,50 +45,36 @@ class StaticClient(Client):
             request_body=None,
             query_params=None,
             request_headers=None):
-        self._response = self.make_request('get',
-                                           request_body,
-                                           query_params,
-                                           request_headers)
+        self.make_request('get', request_body, query_params, request_headers)
         return self
 
     def post(self,
              request_body=None,
              query_params=None,
              request_headers=None):
-        self._response = self.make_request('post',
-                                           request_body,
-                                           query_params,
-                                           request_headers)
+        self.make_request('post', request_body, query_params, request_headers)
         return self
 
     def put(self,
             request_body=None,
             query_params=None,
             request_headers=None):
-        self._response = self.make_request('put',
-                                           request_body,
-                                           query_params,
-                                           request_headers)
+        self.make_request('put', request_body, query_params, request_headers)
         return self
 
     def patch(self,
               request_body=None,
               query_params=None,
               request_headers=None):
-        self._response = self.make_request('patch',
-                                           request_body,
-                                           query_params,
-                                           request_headers)
+        self.make_request('patch', request_body, query_params,
+                          request_headers)
         return self
 
     def delete(self,
                request_body=None,
                query_params=None,
                request_headers=None):
-        self._response = self.make_request('delete',
-                                           request_body,
-                                           query_params,
-                                           request_headers)
+        self.make_request('delete', request_body, query_params, request_headers)
         return self
 
 
@@ -96,7 +84,7 @@ def timefunc(f):
         start = time.time()
         result = f(*args, **kwargs)
         end = time.time()
-        print f.__name__, 'took', end - start, 'seconds'
+        print(f.__name__, 'took', end - start, 'seconds')
         return result
     return f_timer
 
@@ -139,14 +127,14 @@ def run_tested_code(client, num_loops):
 
 @timefunc
 def dynamic_version():
-    local_path = '{}/..'.format(os.path.abspath(os.path.dirname(__file__)))
+    local_path = '{0}/..'.format(os.path.abspath(os.path.dirname(__file__)))
     Config(local_path)
     api_key = os.environ.get('SENDGRID_API_KEY')
     request_headers = {
-                        'X-Mock': 200,
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + api_key
-                       }
+        'X-Mock': 200,
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer {0}'.format(api_key)
+    }
     client = Client(host=os.environ.get('LOCAL_HOST'),
                     request_headers=request_headers,
                     version=3)
@@ -155,14 +143,14 @@ def dynamic_version():
 
 @timefunc
 def static_version():
-    local_path = '{}/..'.format(os.path.abspath(os.path.dirname(__file__)))
+    local_path = '{0}/..'.format(os.path.abspath(os.path.dirname(__file__)))
     Config(local_path)
     api_key = os.environ.get('SENDGRID_API_KEY')
     request_headers = {
-                        'X-Mock': 200,
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + api_key
-                       }
+        'X-Mock': 200,
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer {0}'.format(api_key)
+    }
     client = StaticClient(host=os.environ.get('LOCAL_HOST'),
                           request_headers=request_headers,
                           version=3)

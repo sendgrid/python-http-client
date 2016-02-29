@@ -28,7 +28,7 @@ The GitHub issue tracker is the preferred channel for library feature requests, 
 
 Note: DO NOT include your credentials in ANY code examples, descriptions, or media you make public.
 
-A software bug is a demonstrable issue in the code base. In order for us to diagnose the issue and respond as quickly as possible, please add as much detail as possible into your bug report. 
+A software bug is a demonstrable issue in the code base. In order for us to diagnose the issue and respond as quickly as possible, please add as much detail as possible into your bug report.
 
 Before you decide to create a new issue, please try the following:
 
@@ -88,9 +88,7 @@ Update your settings in `.env`
 
 ##### Execute: #####
 
-```
 See the [examples folder](https://github.com/sendgrid/python-http-client/tree/master/examples) to get started quickly.
-```
 
 <a name="understanding_the_codebase"></a>
 ## Understanding the Code Base
@@ -101,7 +99,7 @@ Working examples that demonstrate usage.
 
 **client.py**
 
-An HTTP client with a fluent interface using method chaining and reflection. By returning self on [__getattr__](https://github.com/sendgrid/python-http-client/blob/master/client.py#L74) and [_()](https://github.com/sendgrid/python-http-client/blob/master/client.py#L70), we can dynamically build the URL using method chaining and [__getattr__](https://github.com/sendgrid/python-http-client/blob/master/client.py#L74) allows us to dynamically receive the method calls to achieve reflection. 
+An HTTP client with a fluent interface using method chaining and reflection. By returning self on [__getattr__](https://github.com/sendgrid/python-http-client/blob/master/client.py#L74) and [_()](https://github.com/sendgrid/python-http-client/blob/master/client.py#L70), we can dynamically build the URL using method chaining and [__getattr__](https://github.com/sendgrid/python-http-client/blob/master/client.py#L74) allows us to dynamically receive the method calls to achieve reflection.
 
 This allows for the following mapping from a URL to a method chain:
 
@@ -114,9 +112,9 @@ Loads the environment variables.
 <a name="testing"></a>
 ## Testing
 
-All PRs require passing tests before the PR will be reviewed. 
+All PRs require passing tests before the PR will be reviewed.
 
-All test files are in the `[tests](https://github.com/sendgrid/python-http-client/tree/master/tests)` directory. 
+All test files are in the `[tests](https://github.com/sendgrid/python-http-client/tree/master/tests)` directory.
 
 For the purposes of contributing to this repo, please update the [`test_unit.py`](https://github.com/sendgrid/python-http-client/blob/master/tests/test_unit.py) file with unit tests as you modify the code.
 
@@ -131,7 +129,7 @@ For Python 2.7.* and up:
 <a name="testing_multiple_versoins_of_python"></a>
 ## Testing Multiple Versions of Python
 
-All PRs require passing tests before the PR will be reviewed. 
+All PRs require passing tests before the PR will be reviewed.
 
 ### Prequisites: ###
 
@@ -139,10 +137,12 @@ The above local "Initial setup" is complete
 
 * [pyenv](https://github.com/yyuu/pyenv)
 * [tox](https://pypi.python.org/pypi/tox)
- 
+
 ### Initial setup: ###
 
-Add eval "$(pyenv init -)" to your .profile after installing tox, you only need to do this once.
+Add ```eval "$(pyenv init -)"``` to your shell environment (.profile, .bashrc, etc) after installing tox, you only need to do this once.
+
+>>>>>>> Stashed changes
 ```
 pyenv install 2.6.9
 pyenv install 2.7.11
@@ -230,4 +230,3 @@ Please run your code through [pyflakes](https://pypi.python.org/pypi/pyflakes) a
     with a clear title and description against the `master` branch. All tests must be passing before we will review the PR.
 
 If you have any additional questions, please feel free to [email](mailto:dx@sendgrid.com) us or create an issue in this repo.
-
