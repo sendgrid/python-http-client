@@ -48,12 +48,11 @@ class MockClient(Client):
 
 
 class TestConfig(unittest.TestCase):
-    """Make sure your configuration is setup correctly.
-       At a minimum, we need a HOST to be defined in .env
-       to test the configuration module.
-
-    """
-    def test_initialiation(self):
+    def test_initialization(self):
+        """Make sure your configuration is setup correctly.
+           At a minimum, we need a HOST to be defined in .env
+           to test the configuration module.
+        """
         local_path = os.path.dirname(path.dirname(path.abspath(__file__)))
         config = Config(local_path)
         self.assertEqual(config.local_path_to_env,
@@ -64,6 +63,21 @@ class TestClient(unittest.TestCase):
     def setUp(self):
         self.host = 'http://api.test.com'
         self.client = Client(host=self.host)
+        if os.environ.get('TRAVIS'):
+            Config(os.path.abspath(os.path.dirname(__file__)))
+        else:
+            local_path = '{0}/..'\
+                .format(os.path.abspath(os.path.dirname(__file__)))
+            Config(local_path)
+        self.api_key = os.environ.get('SENDGRID_API_KEY')
+        self.host = os.environ.get('MOCK_HOST')
+        self.request_headers = {
+                                 'Content-Type': 'application/json',
+                                 'Authorization': 'Bearer ' + self.api_key
+                                }
+        self.client = Client(host=self.host,
+                             request_headers=self.request_headers,
+                             version=3)
 
     def test__init__(self):
         default_client = Client(host=self.host)
@@ -108,18 +122,16 @@ class TestClient(unittest.TestCase):
     def test__add_to_url_path(self):
         self.client._add_to_url_path("here")
         self.client._add_to_url_path("there")
-        self.client._add_to_url_path(1)
+        self.client._add_to_url_path(str(1))
         self.assertEqual(self.client._count, 3)
-        url_path = {0: 'here', 1: 'there', 2: 1}
+        url_path = {0: 'here', 1: 'there', 2: '1'}
         self.assertEqual(self.client._url_path, url_path)
         self.client._reset()
 
     def test__build_versioned_url(self):
         url = '/api_keys?hello=1&world=2'
         versioned_url = self.client._build_versioned_url(url)
-        url = '{0}/v{1}{2}'.format(self.host,
-                                   str(self.client._version),
-                                   url)
+        url = '{0}/v{1}{2}'.format(self.host, str(self.client._version), url)
         self.assertEqual(versioned_url, url)
 
     def test__build_url(self):

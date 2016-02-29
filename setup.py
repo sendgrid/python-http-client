@@ -9,14 +9,14 @@ def getRequires():
     return deps
 
 base_url = 'https://github.com/sendgrid/'
-version = '1.1.2'
+version = '1.1.3'
 setup(
     name='python_http_client',
     version=version,
     author='Elmer Thomas',
     author_email='dx@sendgrid.com',
-    url=base_url + 'python-http-client',
-    download_url=base_url + 'python-http-client' + "/tarball/" + version,
+    url='{0}python-http-client'.format(base_url),
+    download_url='{0}python-http-client/tarball/{1}'.format(base_url, version),
     packages=['python_http_client'],
     license='MIT',
     description='HTTP REST client, simplified for Python',
