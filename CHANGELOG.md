@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.2.3] - 2016-3-01
+### Added
+- Can now reuse part of the chaining construction for multiple urls/requests
+- Thanks to [Kevin Gillette](https://github.com/extemporalgenome)!
+- Update of request headers simplified
+- Thanks to [Matt Bernier](https://github.com/mbernier)
+
 ## [1.1.3] - 2016-02-29
 ### Fixed
 - Various standardizations for commenting, syntax, pylint
