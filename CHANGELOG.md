@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.2.4] - 2016-3-02
+### Fixed
+- Getting README to display in PyPi
+
 ## [1.2.3] - 2016-3-01
 ### Added
 - Can now reuse part of the chaining construction for multiple urls/requests

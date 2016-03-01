@@ -1,6 +1,10 @@
 import sys
+import os
 from setuptools import setup
 
+long_description = 'Please see our GitHub README'
+if os.path.exists('README.txt'):
+    long_description = open('README.txt').read()
 
 def getRequires():
     deps = []
@@ -9,7 +13,7 @@ def getRequires():
     return deps
 
 base_url = 'https://github.com/sendgrid/'
-version = '1.2.3'
+version = '1.2.4'
 setup(
     name='python_http_client',
     version=version,
@@ -20,7 +24,7 @@ setup(
     packages=['python_http_client'],
     license='MIT',
     description='HTTP REST client, simplified for Python',
-    long_description='Check out the README at GitHub',
+    long_description=long_description,
     install_requires=getRequires(),
     keywords=[
         'REST',

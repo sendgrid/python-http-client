@@ -67,3 +67,5 @@ venv/
 cleanup.sh
 *_example.py
 .idea
+register.py
+README.txt
