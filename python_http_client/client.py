@@ -35,18 +35,16 @@ class Client(object):
         # These are the supported HTTP verbs
         self.methods = ['delete', 'get', 'patch', 'post', 'put']
         self._version = version
-        # _count and _url_path keep track of the dynamically built url
+        self._reset(self)
+
+    def _reset(self):
+        """Resets the URL builder, so you can make a fresh new dynamic call."""
+                # _count and _url_path keep track of the dynamically built url
         self._count = 0
         self._url_path = {}
         self._status_code = None
         self._response_body = None
         self._response_headers = None
-        self._response = None
-
-    def _reset(self):
-        """Resets the URL builder, so you can make a fresh new dynamic call."""
-        self._count = 0
-        self._url_path = {}
         self._response = None
 
     def _add_to_url_path(self, name):
