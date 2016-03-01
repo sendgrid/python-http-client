@@ -5,7 +5,7 @@ try:
 except ImportError:
     import unittest
 from python_http_client.config import Config
-from python_http_client.client import Client
+from python_http_client.client import Client, Response
 
 
 try:
@@ -123,6 +123,10 @@ class TestClient(unittest.TestCase):
         self.client._update_headers(request_headers)
         self.assertTrue('X-Test' in self.client.request_headers)
         self.client.request_headers.pop('X-Test', None)
+
+    def test__build_client(self):
+        new_client = self.client._build_client('test')
+        self.assertTrue(new_client)
 
     def test__(self):
         self.assertEqual(self.client._url_path, [])
