@@ -7,7 +7,7 @@ python_http_client.Config(path)
 host = os.environ.get('HOST')  # http://api.sendgrid.com
 api_key = os.environ.get('SENDGRID_API_KEY')
 request_headers = {
-    "Authorization": 'Bearer {0}'.format(api_key), 
+    "Authorization": 'Bearer {0}'.format(api_key),
     "Content-Type": "application/json"
 }
 version = 3  # we could also use client.version(3)

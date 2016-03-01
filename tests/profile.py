@@ -45,21 +45,24 @@ class StaticClient(Client):
             request_body=None,
             query_params=None,
             request_headers=None):
-        self.make_request('get', request_body, query_params, request_headers)
+        self.make_request('get', request_body, query_params,
+                          request_headers)
         return self
 
     def post(self,
              request_body=None,
              query_params=None,
              request_headers=None):
-        self.make_request('post', request_body, query_params, request_headers)
+        self.make_request('post', request_body, query_params,
+                          request_headers)
         return self
 
     def put(self,
             request_body=None,
             query_params=None,
             request_headers=None):
-        self.make_request('put', request_body, query_params, request_headers)
+        self.make_request('put', request_body, query_params,
+                          request_headers)
         return self
 
     def patch(self,
@@ -74,7 +77,8 @@ class StaticClient(Client):
                request_body=None,
                query_params=None,
                request_headers=None):
-        self.make_request('delete', request_body, query_params, request_headers)
+        self.make_request('delete', request_body, query_params,
+                          request_headers)
         return self
 
 
