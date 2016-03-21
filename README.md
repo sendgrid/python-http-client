@@ -47,6 +47,8 @@ Following is an example using SendGrid. You can get your free account [here](htt
 
 First, update your .env with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) and HOST. For this example HOST=https://api.sendgrid.com.
 
+Then, [update the path to the .env file](https://github.com/sendgrid/python-http-client/blob/master/examples/live_sendgrid_example.py#L5).
+
 Following is an abridged example, here is the [full working code](https://github.com/sendgrid/python-http-client/tree/master/examples).
 
 ```python
