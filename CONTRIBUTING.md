@@ -166,8 +166,6 @@ Generally, we follow the style guidelines as suggested by the official language.
 
 Please run your code through:
 
-Please run your code through:
-
 - [pyflakes](https://pypi.python.org/pypi/pyflakes)
 - [pylint](https://www.pylint.org/)
 - [pep8](https://pypi.python.org/pypi/pep8)
