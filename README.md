@@ -70,6 +70,10 @@ Quick links:
 - [Sign the CLA to Create a Pull Request](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#cla)
 - [Improvements to the Codebase](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.mdimprovements_to_the_codebase)
 
+# Thanks
+
+We were inspired by the work done on [birdy](https://github.com/inueni/birdy) and [universalclient](https://github.com/dgreisen/universalclient).
+
 # About
 
 python-http-client is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
