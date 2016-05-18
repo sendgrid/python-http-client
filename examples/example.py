@@ -14,7 +14,7 @@ headers = {
     "Authorization": 'Bearer {0}'.format(api_key),
     "Content-Type": "application/json"
 }
-client = Client(host=os.environ.get('MOCK_HOST'),
+client = Client(host=os.environ.get('LOCAL_HOST'),
                 request_headers=headers,
                 version=3)
 
