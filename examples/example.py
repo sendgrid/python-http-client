@@ -4,17 +4,14 @@ if __name__ == '__main__' and __package__ is None:
     from os import sys, path
     sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
     from python_http_client.client import Client
-    from python_http_client.config import Config
 
 
-local_path = '{0}/..'.format(os.path.abspath(os.path.dirname(__file__)))
-Config(local_path)
 api_key = os.environ.get('SENDGRID_API_KEY')
 headers = {
     "Authorization": 'Bearer {0}'.format(api_key),
     "Content-Type": "application/json"
 }
-client = Client(host=os.environ.get('LOCAL_HOST'),
+client = Client(host='http://localhost:4010',
                 request_headers=headers,
                 version=3)
 

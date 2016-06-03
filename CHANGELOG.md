@@ -3,11 +3,15 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.2.4] - 2016-3-02
+## [2.0.0] - 2016-06-03
+### Changed
+- Made the Response variables non-redundant. e.g. response.response_body becomes response.body
+
+## [1.2.4] - 2016-03-02
 ### Fixed
 - Getting README to display in PyPi
 
-## [1.2.3] - 2016-3-01
+## [1.2.3] - 2016-03-01
 ### Added
 - Can now reuse part of the chaining construction for multiple urls/requests
 - Thanks to [Kevin Gillette](https://github.com/extemporalgenome)!

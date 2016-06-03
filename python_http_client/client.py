@@ -21,8 +21,8 @@ class Response(object):
         :type response:  urllib response object
         """
         self._status_code = response.getcode()
-        self._response_body = response.read()
-        self._response_headers = response.info()
+        self._body = response.read()
+        self._headers = response.info()
 
     @property
     def status_code(self):
@@ -32,18 +32,18 @@ class Response(object):
         return self._status_code
 
     @property
-    def response_body(self):
+    def body(self):
         """
         :return: response from the API
         """
-        return self._response_body
+        return self._body
 
     @property
-    def response_headers(self):
+    def headers(self):
         """
         :return: dict of response headers
         """
-        return self._response_headers
+        return self._headers
 
 
 class Client(object):

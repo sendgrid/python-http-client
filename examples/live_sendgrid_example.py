@@ -2,9 +2,7 @@ import os
 import json
 import python_http_client
 
-path = '{0}/..'.format(os.path.abspath(os.path.dirname(__file__)))
-python_http_client.Config(path)
-host = os.environ.get('HOST')  # http://api.sendgrid.com
+host = "https://api.sendgrid.com"
 api_key = os.environ.get('SENDGRID_API_KEY')
 request_headers = {
     "Authorization": 'Bearer {0}'.format(api_key),
@@ -17,9 +15,9 @@ client = python_http_client.Client(host=host,
 
 # GET collection
 response = client.api_keys.get()
-print(response.response_headers)
 print(response.status_code)
-print(response.response_body)
+print(response.headers)
+print(response.body)
 
 # POST
 data = {
@@ -31,26 +29,26 @@ data = {
     ]
 }
 response = client.api_keys.post(request_body=data)
-print(response.response_headers)
 print(response.status_code)
-print(response.response_body)
-json_response = json.loads(response.response_body)
+print(response.headers)
+print(response.body)
+json_response = json.loads(response.body)
 api_key_id = json_response['api_key_id']
 
 # GET single
 response = client.api_keys._(api_key_id).get()
-print(response.response_headers)
 print(response.status_code)
-print(response.response_body)
+print(response.headers)
+print(response.body)
 
 # PATCH
 data = {
     "name": "A New Hope"
 }
 response = client.api_keys._(api_key_id).patch(request_body=data)
-print(response.response_headers)
 print(response.status_code)
-print(response.response_body)
+print(response.headers)
+print(response.body)
 
 # PUT
 data = {
@@ -61,11 +59,12 @@ data = {
     ]
 }
 response = client.api_keys._(api_key_id).put(request_body=data)
-print(response.response_headers)
 print(response.status_code)
-print(response.response_body)
+print(response.headers)
+print(response.body)
 
 # DELETE
 response = client.api_keys._(api_key_id).delete()
-print(response.response_headers)
 print(response.status_code)
+print(response.headers)
+

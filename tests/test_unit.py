@@ -4,7 +4,6 @@ try:
     import unittest2 as unittest
 except ImportError:
     import unittest
-from python_http_client.config import Config
 from python_http_client.client import Client, Response
 
 
@@ -47,30 +46,11 @@ class MockClient(Client):
         return MockResponse(self.response_code)
 
 
-class TestConfig(unittest.TestCase):
-    def test_initialization(self):
-        """Make sure your configuration is setup correctly.
-           At a minimum, we need a HOST to be defined in .env
-           to test the configuration module.
-        """
-        local_path = os.path.dirname(path.dirname(path.abspath(__file__)))
-        config = Config(local_path)
-        self.assertEqual(config.local_path_to_env,
-                         '{0}/.env'.format(local_path))
-
-
 class TestClient(unittest.TestCase):
     def setUp(self):
         self.host = 'http://api.test.com'
         self.client = Client(host=self.host)
-        if os.environ.get('TRAVIS'):
-            Config(os.path.abspath(os.path.dirname(__file__)))
-        else:
-            local_path = '{0}/..'\
-                .format(os.path.abspath(os.path.dirname(__file__)))
-            Config(local_path)
-        self.api_key = os.environ.get('SENDGRID_API_KEY')
-        self.host = os.environ.get('MOCK_HOST')
+        self.api_key = "SENDGRID_API_KEY"
         self.request_headers = {
                                  'Content-Type': 'application/json',
                                  'Authorization': 'Bearer ' + self.api_key
