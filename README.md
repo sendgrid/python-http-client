@@ -1,6 +1,8 @@
 [![Travis Badge](https://travis-ci.org/sendgrid/python-http-client.svg?branch=master)](https://travis-ci.org/sendgrid/python-http-client) [![Code Climate](https://codeclimate.com/github/sendgrid/python-http-client/badges/gpa.svg)](https://codeclimate.com/github/sendgrid/python-http-client) [![PyPi Versions](https://img.shields.io/pypi/pyversions/python-http-client.svg)](https://pypi.python.org/pypi/python-http-client/)
 
-**Quickly and easily access any REST or REST-like API.**
+**Quickly and easily access any RESTful or RESTful-like API.**
+
+If you are looking for the SendGrid API client library, please see [this repo](https://github.com/sendgrid/sendgrid-python).
 
 # Announcements
 
