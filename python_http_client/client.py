@@ -190,6 +190,8 @@ class Client(object):
                 if self.request_headers:
                     for key, value in self.request_headers.items():
                         request.add_header(key, value)
+                if data:
+                    request.add_header('Content-Type', 'application/json')
                 request.get_method = lambda: method
                 return Response(self._make_request(opener, request))
             return http_request

@@ -5,8 +5,7 @@ import python_http_client
 host = "https://api.sendgrid.com"
 api_key = os.environ.get('SENDGRID_API_KEY')
 request_headers = {
-    "Authorization": 'Bearer {0}'.format(api_key),
-    "Content-Type": "application/json"
+    "Authorization": 'Bearer {0}'.format(api_key)
 }
 version = 3  # we could also use client.version(3)
 client = python_http_client.Client(host=host,
