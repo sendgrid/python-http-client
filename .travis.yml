@@ -19,7 +19,7 @@ script:
 notifications:
   hipchat:
     rooms:
-      secure: Lo3L/YNWpn9ulGX4D2HlWrBOyxMPlLkFcwxbYViG69Ta6BV+c6YE+Pct43tExlL6sZ+nj5p8X4KRTeOM4sqASrebWA25nyUrNTm+vZYFbi5XfmGvvi8TEsgg0MYRQRWWn/R2z0kZW/fqOY6sqJuoIafMBmC3tayTJRiH1Ct2Cw0=
+      secure: HJMoEh7l01B8tqQcdp4c4Og2lFY2QCAPnt++a4InM1zF+pbQuALQvS50ILJPc7qoBskqfvXhX9t+coSaKVIMPFuXlHC9haYCBxv0TSTA/j/9SnDGwS70U2YWDIi20/YZrPSN874woL6F/D8/vB+IwYxJWIL+ofasXPm/v+QHKLjEKLggyK8SHsU2BPH++0JluelpnaBt6JcCCY6IL8wu/Bf6ohFHf67cwITPzA33Wmla51W5zHSlaVsqKM+UhK5EWCCvU51t/imfL8cf8h7zNxveqGbaq5Fqk7lBEmHtYdUm0P5RdsHHFiyWvf3Kk8kYBkA4VaSqSdV10g/Q2sURW0F4s6ULJqRBtTIcQFKgUcrkBM22+/I8MrfRkVOUrrlPugOeshtuac3xN0tQBZYc1yIik914NeL1im/doZ5MjsNlQckmF8tmwz9uPMpQBWHRGQwc72EiJ3ANfogMhZhI3GIKQffHP8aO+JTCyzzxQ1fUerF4/YgsciAZdbBRVKmYdElvix6vVxS1QyPEjr3AHzhCFso78vRla7yAXoI2RrzbsnoPo/TBsof4sqbtgPgGWSBPJiZOPh3WNZ5NSUjlefk1PyYsdqM+Ywhk8SApo8eKrDK2ghiKmqSB3yDIs4WJN91CJnhUgt8fl5Q2Iz1pCm/999ma+y/VXOqURudE5wg=
     template:
     - '<a href="https://travis-ci.org/%{repository}/builds/%{build_id}">%{repository}
       Build %{build_number}</a> on branch <i>%{branch}</i> by %{author}: <strong>%{message}</strong>
