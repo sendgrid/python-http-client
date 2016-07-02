@@ -98,7 +98,7 @@ class Client(object):
             url += '/{0}'.format(self._url_path[count])
             count += 1
         if query_params:
-            url_values = urlencode(sorted(query_params.items()))
+            url_values = urlencode(sorted(query_params.items()), True)
             url = '{0}?{1}'.format(url, url_values)
         url = self._build_versioned_url(url) if self._version else self.host + url
         return url
