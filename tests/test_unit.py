@@ -93,8 +93,8 @@ class TestClient(unittest.TestCase):
         self.client._version = 3
         url = '{0}/v{1}{2}'.format(self.host,
                                    str(self.client._version),
-                                   '/here/there/1?hello=0&world=1')
-        query_params = {'hello': 0, 'world': 1}
+                                   '/here/there/1?hello=0&world=1&ztest=0&ztest=1')
+        query_params = {'hello': 0, 'world': 1, 'ztest': [0,1]}
         built_url = self.client._build_url(query_params)
         self.assertEqual(built_url, url)
 
