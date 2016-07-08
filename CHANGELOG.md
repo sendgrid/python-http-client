@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.1.1] - 2016-07-08
+### Fixed
+- [Allow multiple values for a parameter](https://github.com/sendgrid/python-http-client/pull/11)
+- Thanks [Chris Henry](https://github.com/chrishenry)!
+
 ## [2.1.0] - 2016-06-03
 ### Added
 - Automatically add Content-Type: application/json when there is a request body
