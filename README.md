@@ -10,6 +10,13 @@ All updates to this project is documented in our [CHANGELOG](https://github.com/
 
 # Installation
 
+## Prerequisites
+
+- Python version 2.6, 2.7, 3.4 or 3.5
+- The SendGrid service, starting at the [free level](https://sendgrid.com/free?source=sendgrid-python)
+
+## Install Package
+
 ```bash
 pip install python_http_client
 ```
