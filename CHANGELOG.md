@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.2.0] - 2016-08-10
+### Added
+- Ability to set the Content-Type header
+
 ## [2.1.1] - 2016-07-08
 ### Fixed
 - [Allow multiple values for a parameter](https://github.com/sendgrid/python-http-client/pull/11)
