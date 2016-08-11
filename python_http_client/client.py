@@ -173,7 +173,7 @@ class Client(object):
         if name in self.methods:
             method = name.upper()
 
-            def http_request(*args, **kwargs):
+            def http_request(*_, **kwargs):
                 """Make the API call
                 :param args: unused
                 :param kwargs:
@@ -181,10 +181,18 @@ class Client(object):
                 """
                 if 'request_headers' in kwargs:
                     self._update_headers(kwargs['request_headers'])
-                data = json.dumps(kwargs['request_body']).encode('utf-8')\
-                    if 'request_body' in kwargs else None
-                params = kwargs['query_params']\
-                    if 'query_params' in kwargs else None
+                if not 'request_body' in kwargs:
+                    data = None
+                else:
+                    # Don't serialize to a JSON formatted str if we don't have a JSON Content-Type
+                    if 'Content-Type' in self.request_headers:
+                        if self.request_headers['Content-Type'] != 'application/json':
+                            data = kwargs['request_body'].encode('utf-8')
+                        else:
+                            data = json.dumps(kwargs['request_body']).encode('utf-8')
+                    else:
+                        data = json.dumps(kwargs['request_body']).encode('utf-8')
+                params = kwargs['query_params'] if 'query_params' in kwargs else None
                 opener = urllib.build_opener()
                 request = urllib.Request(self._build_url(params), data=data)
                 if self.request_headers:

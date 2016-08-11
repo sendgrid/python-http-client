@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.2.1] - 2016-08-10
+### Fixed
+- When Content-Type is not application/json, do not JSON encode the request body
+
 ## [2.2.0] - 2016-08-10
 ### Added
 - Ability to set the Content-Type header
