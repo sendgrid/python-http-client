@@ -50,7 +50,7 @@ global_headers = {"Authorization": "Basic XXXXXXX"}
 client = Client(host='base_url', request_headers=global_headers)
 query_params={"hello":0, "world":1}
 request_headers={"X-Test": "test"}
-data={"some": 1, "awesome", 2, "data", 3}
+data={"some": 1, "awesome": 2, "data": 3}
 response = client.your.api._(param).call.post(request_body=data,
                                               query_params=query_params,
                                               request_headers=request_headers)
