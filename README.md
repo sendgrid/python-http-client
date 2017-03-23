@@ -12,7 +12,7 @@ All updates to this project is documented in our [CHANGELOG](https://github.com/
 
 ## Prerequisites
 
-- Python version 2.6, 2.7, 3.4 or 3.5
+- Python version 2.6, 2.7, 3.4, 3.5 or 3.6
 
 ## Install Package
 

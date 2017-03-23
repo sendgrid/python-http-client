@@ -64,7 +64,7 @@ We welcome direct contributions to the python-http-client code base. Thank you!
 
 ##### Prerequisites #####
 
-- Python 2.6 through 3.5
+- Python 2.6 through 3.6
 - There are no external dependencies
 
 ##### Initial setup: #####
@@ -142,9 +142,10 @@ Add `eval "$(pyenv init -)"` to your shell environment (.profile, .bashrc, etc) 
 pyenv install 2.6.9
 pyenv install 2.7.11
 pyenv install 3.4.3
-pyenv install 3.5.0
+pyenv install 3.5.2
+pyenv install 3.6.0
 python setup.py install
-pyenv local 3.5.0 3.4.3 2.7.8 2.6.9
+pyenv local 3.6.0 3.5.2 3.4.3 2.7.8 2.6.9
 pyenv rehash
 ```
 
