@@ -5,6 +5,7 @@ try:
 except ImportError:
     import unittest
 from python_http_client.client import Client, Response
+from python_http_client.exceptions import handle_error, HTTPError, BadRequestsError, NotFoundError, UnsupportedMediaTypeError, ServiceUnavailableError
 
 
 try:
@@ -19,6 +20,15 @@ try:
     basestring
 except NameError:
     basestring = str
+
+
+class MockException(HTTPError):
+    def __init__(self,code):
+        self.code = code
+        self.reason = 'REASON'
+        self.hdrs = 'HEADERS'
+    def read(self):
+        return 'BODY'
 
 
 class MockResponse(urllib.HTTPSHandler):
@@ -43,7 +53,11 @@ class MockClient(Client):
         Client.__init__(self, host)
 
     def _make_request(self, opener, request):
-        return MockResponse(self.response_code)
+        if 200 <= self.response_code <299:   # if successsful code
+            return MockResponse(self.response_code)
+        else:
+            raise handle_error(MockException(self.response_code))
+
 
 
 class TestClient(unittest.TestCase):
@@ -148,6 +162,20 @@ class TestClient(unittest.TestCase):
         r = mock_client.delete()
         self.assertEqual(r.status_code, 204)
 
+        mock_client.response_code = 400
+        self.assertRaises(BadRequestsError,mock_client.get)
+
+        mock_client.response_code = 404
+        self.assertRaises(NotFoundError,mock_client.post)
+
+        mock_client.response_code = 415
+        self.assertRaises(UnsupportedMediaTypeError,mock_client.patch)
+
+        mock_client.response_code = 503
+        self.assertRaises(ServiceUnavailableError,mock_client.delete)
+
+        mock_client.response_code = 523
+        self.assertRaises(HTTPError,mock_client.delete)
 
 if __name__ == '__main__':
     unittest.main()

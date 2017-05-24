@@ -1,14 +1,16 @@
 """HTTP Client library"""
 import json
-
+from .exceptions import handle_error
 
 try:
     # Python 3
     import urllib.request as urllib
     from urllib.parse import urlencode
+    from urllib.error import HTTPError
 except ImportError:
     # Python 2
     import urllib2 as urllib
+    from urllib2 import HTTPError
     from urllib import urlencode
 
 
@@ -135,7 +137,12 @@ class Client(object):
         :type request: urllib.Request object
         :return: urllib response
         """
-        return opener.open(request)
+        try:
+            return opener.open(request)
+        except HTTPError as err:
+            exc = handle_error(err)
+            exc.__cause__ = None
+            raise exc
 
     def _(self, name):
         """Add variable values to the url.
