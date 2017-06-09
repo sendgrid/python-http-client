@@ -5,7 +5,14 @@ try:
 except ImportError:
     import unittest
 from python_http_client.client import Client, Response
-from python_http_client.exceptions import handle_error, HTTPError, BadRequestsError, NotFoundError, UnsupportedMediaTypeError, ServiceUnavailableError
+from python_http_client.exceptions import (
+    handle_error,
+    HTTPError,
+    BadRequestsError,
+    NotFoundError,
+    UnsupportedMediaTypeError,
+    ServiceUnavailableError
+)
 
 
 try:
@@ -24,7 +31,7 @@ except NameError:
 
 class MockException(HTTPError):
     def __init__(self,code):
-        self.code = code
+        self.status_code = code
         self.reason = 'REASON'
         self.hdrs = 'HEADERS'
     def read(self):

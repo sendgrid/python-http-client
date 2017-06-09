@@ -1,7 +1,7 @@
 class HTTPError(Exception):
 	''' Base of all other errors'''
 	def __init__(self,error):
-		self.code = error.code
+		self.status_code = error.code
 		self.reason = error.reason
 		self.body = error.read()
 		self.headers = error.hdrs
