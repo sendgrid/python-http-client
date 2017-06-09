@@ -31,7 +31,7 @@ except NameError:
 
 class MockException(HTTPError):
     def __init__(self,code):
-        self.status_code = code
+        self.code = code
         self.reason = 'REASON'
         self.hdrs = 'HEADERS'
     def read(self):

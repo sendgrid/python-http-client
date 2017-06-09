@@ -54,7 +54,7 @@ err_dict = { 	400 : BadRequestsError,
 
 def handle_error(error):
 	try:
-		exc = err_dict[error.status_code](error)
+		exc = err_dict[error.code](error)
 	except KeyError as e:
 		return HTTPError(error)
 	return exc
