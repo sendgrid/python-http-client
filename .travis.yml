@@ -13,7 +13,7 @@ install:
 - pip install coveralls
 script:
 - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then unit2 discover; else python -m unittest discover; fi
-- coverage run tests/test_unit.py
+- coverage run --source=python_http_client setup.py tests/test_unit.py
 notifications:
   hipchat:
     rooms:
