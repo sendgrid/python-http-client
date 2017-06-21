@@ -1,60 +1,60 @@
 class HTTPError(Exception):
-	''' Base of all other errors'''
-	def __init__(self,error):
-		self.status_code = error.code
-		self.reason = error.reason
-		self.body = error.read()
-		self.headers = error.hdrs
+    ''' Base of all other errors'''
+    def __init__(self, error):
+        self.status_code = error.code
+        self.reason = error.reason
+        self.body = error.read()
+        self.headers = error.hdrs
 
 class BadRequestsError(HTTPError):
-	pass
+    pass
 
 class UnauthorizedError(HTTPError):
-	pass
+    pass
 
 class ForbiddenError(HTTPError):
-	pass
+    pass
 
 class NotFoundError(HTTPError):
-	pass
+    pass
 
 class MethodNotAllowedError(HTTPError):
-	pass
+    pass
 
 class PayloadTooLargeError(HTTPError):
-	pass
+    pass
 
 class UnsupportedMediaTypeError(HTTPError):
-	pass
+    pass
 
 class TooManyRequestsError(HTTPError):
-	pass
+    pass
 
 class InternalServerError(HTTPError):
-	pass
+    pass
 
 class ServiceUnavailableError(HTTPError):
-	pass
+    pass
 
 class GatewayTimeoutError(HTTPError):
-	pass
+    pass
 
 err_dict = { 	400 : BadRequestsError,
-				401 : UnauthorizedError,
-				403 : ForbiddenError,
-				404 : NotFoundError,
-				405 : MethodNotAllowedError,
-				413 : PayloadTooLargeError,
-				415 : UnsupportedMediaTypeError,
-				429 : TooManyRequestsError,
-				500 : InternalServerError,
-				503 : ServiceUnavailableError,
-				504 : GatewayTimeoutError
+                401 : UnauthorizedError,
+                403 : ForbiddenError,
+                404 : NotFoundError,
+                405 : MethodNotAllowedError,
+                413 : PayloadTooLargeError,
+                415 : UnsupportedMediaTypeError,
+                429 : TooManyRequestsError,
+                500 : InternalServerError,
+                503 : ServiceUnavailableError,
+                504 : GatewayTimeoutError
 }
 
 def handle_error(error):
-	try:
-		exc = err_dict[error.code](error)
-	except KeyError as e:
-		return HTTPError(error)
-	return exc
+    try:
+        exc = err_dict[error.code](error)
+    except KeyError as e:
+        return HTTPError(error)
+    return exc

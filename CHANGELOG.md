@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.3.0] - 2017-06-20
+### Added
+- #17 Added support for error handling
+- Thanks [Dibya Prakash Das](https://github.com/dibyadas)!
+
 ## [2.2.1] - 2016-08-10
 ### Fixed
 - When Content-Type is not application/json, do not JSON encode the request body
