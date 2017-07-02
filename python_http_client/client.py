@@ -121,7 +121,7 @@ class Client(object):
         :type name: string
         :return: A Client object
         """
-        url_path = self._url_path+[name] if name else self._url_path
+        url_path = self._url_path + [name] if name else self._url_path
         return Client(host=self.host,
                       version=self._version,
                       request_headers=self.request_headers,
@@ -188,7 +188,7 @@ class Client(object):
                 """
                 if 'request_headers' in kwargs:
                     self._update_headers(kwargs['request_headers'])
-                if not 'request_body' in kwargs:
+                if 'request_body' not in kwargs:
                     data = None
                 else:
                     # Don't serialize to a JSON formatted str if we don't have a JSON Content-Type
