@@ -1,3 +1,6 @@
+import json
+
+
 class HTTPError(Exception):
     ''' Base of all other errors'''
     def __init__(self, error):
@@ -5,6 +8,13 @@ class HTTPError(Exception):
         self.reason = error.reason
         self.body = error.read()
         self.headers = error.hdrs
+
+    @property
+    def to_dict(self):
+        """
+        :return: dict of response erro from the API
+        """
+        return json.loads(self.body.decode('utf-8'))
 
 
 class BadRequestsError(HTTPError):
