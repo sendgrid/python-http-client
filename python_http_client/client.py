@@ -47,6 +47,13 @@ class Response(object):
         """
         return self._headers
 
+    @property
+    def to_dict(self):
+        """
+        :return: dict of response from the API
+        """
+        return json.loads(self.body.decode('utf-8'))
+
 
 class Client(object):
     """Quickly and easily access any REST or REST-like API."""
@@ -54,7 +61,8 @@ class Client(object):
                  host,
                  request_headers=None,
                  version=None,
-                 url_path=None):
+                 url_path=None,
+                 append_slash=False):
         """
         :param host: Base URL for the api. (e.g. https://api.sendgrid.com)
         :type host:  string
@@ -76,6 +84,8 @@ class Client(object):
         self._url_path = url_path or []
         # These are the supported HTTP verbs
         self.methods = ['delete', 'get', 'patch', 'post', 'put']
+        # APPEND SLASH set
+        self.append_slash = append_slash
 
     def _build_versioned_url(self, url):
         """Subclass this function for your own needs.
@@ -99,6 +109,11 @@ class Client(object):
         while count < len(self._url_path):
             url += '/{0}'.format(self._url_path[count])
             count += 1
+
+        # add slash
+        if self.append_slash:
+            url += '/'
+
         if query_params:
             url_values = urlencode(sorted(query_params.items()), True)
             url = '{0}?{1}'.format(url, url_values)
@@ -121,11 +136,12 @@ class Client(object):
         :type name: string
         :return: A Client object
         """
-        url_path = self._url_path+[name] if name else self._url_path
+        url_path = self._url_path + [name] if name else self._url_path
         return Client(host=self.host,
                       version=self._version,
                       request_headers=self.request_headers,
-                      url_path=url_path)
+                      url_path=url_path,
+                      append_slash=self.append_slash)
 
     def _make_request(self, opener, request):
         """Make the API call and return the response. This is separated into
@@ -188,7 +204,7 @@ class Client(object):
                 """
                 if 'request_headers' in kwargs:
                     self._update_headers(kwargs['request_headers'])
-                if not 'request_body' in kwargs:
+                if 'request_body' not in kwargs:
                     data = None
                 else:
                     # Don't serialize to a JSON formatted str if we don't have a JSON Content-Type
