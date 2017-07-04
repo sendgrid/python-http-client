@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.0] - 2017-07-03
+### Added
+- #19 Added support for slash. Created "to_dict" property in response object and exception class.
+- Thanks [Lucas Cardoso](https://github.com/MrLucasCardoso)!
+
 ## [2.3.0] - 2017-06-20
 ### Added
 - #17 Added support for error handling
