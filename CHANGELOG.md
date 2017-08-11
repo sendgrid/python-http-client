@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.0.0] - 2017-08-11
+### BREAKING CHANGE
+- The breaking change actually happened in [version 2.3.0](https://github.com/sendgrid/python-http-client/releases/tag/v2.3.0), which I mistakenly applied a minor version bump.
+- This version replaces error handling via HTTPError from urllib in favor of custom error handling via the [HTTPError class](https://github.com/sendgrid/python-http-client/blob/master/python_http_client/exceptions.py).
+
 ## [2.4.0] - 2017-07-03
 ### Added
 - #19 Added support for slash. Created "to_dict" property in response object and exception class.
