@@ -58,13 +58,12 @@ class MockResponse(urllib.HTTPSHandler):
 
 class MockClient(Client):
 
-    def __init__(self, host, response_code):
+    def __init__(self, host, response_code, timeout=None):
         self.response_code = 200
         Client.__init__(self, host)
 
-    def _make_request(self, opener, request):
-
-        if 200 <= self.response_code < 299:   # if successful code
+    def _make_request(self, opener, request, timeout=None):
+        if 200 <= self.response_code < 299:   # if successsful code
             return MockResponse(self.response_code)
         else:
             raise handle_error(MockException(self.response_code))
@@ -74,12 +73,11 @@ class TestClient(unittest.TestCase):
 
     def setUp(self):
         self.host = 'http://api.test.com'
-        self.client = Client(host=self.host)
-        self.api_key = 'SENDGRID_API_KEY'
+        self.api_key = "SENDGRID_API_KEY"
         self.request_headers = {
-                                'Content-Type': 'application/json',
-                                'Authorization': 'Bearer ' + self.api_key
-                                }
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + self.api_key,
+        }
         self.client = Client(host=self.host,
                              request_headers=self.request_headers,
                              version=3)
@@ -88,6 +86,7 @@ class TestClient(unittest.TestCase):
         default_client = Client(host=self.host)
         self.assertEqual(default_client.host, self.host)
         self.assertEqual(default_client.request_headers, {})
+        self.assertIs(default_client.timeout, None)
         methods = ['delete', 'get', 'patch', 'post', 'put']
         self.assertEqual(default_client.methods, methods)
         self.assertEqual(default_client._version, None)
@@ -97,13 +96,15 @@ class TestClient(unittest.TestCase):
         version = 3
         client = Client(host=self.host,
                         request_headers=request_headers,
-                        version=version)
+                        version=version,
+                        timeout=10)
         self.assertEqual(client.host, self.host)
         self.assertEqual(client.request_headers, request_headers)
         methods = ['delete', 'get', 'patch', 'post', 'put']
         self.assertEqual(client.methods, methods)
         self.assertEqual(client._version, 3)
         self.assertEqual(client._url_path, [])
+        self.assertEqual(client.timeout, 10)
 
     def test__build_versioned_url(self):
         url = '/api_keys?hello=1&world=2'
