@@ -65,7 +65,7 @@ print response.body
 
 ## Roadmap
 
-If you are intersted in the future direction of this project, please take a look at our [milestones](https://github.com/sendgrid/python-http-client/milestones). We would love to hear your feedback.
+If you are interested in the future direction of this project, please take a look at our [milestones](https://github.com/sendgrid/python-http-client/milestones). We would love to hear your feedback.
 
 ## How to Contribute
 
@@ -88,5 +88,4 @@ python-http-client is guided and supported by the SendGrid [Developer Experience
 
 python-http-client is maintained and funded by SendGrid, Inc. The names and logos for python-http-client are trademarks of SendGrid, Inc.
 
-![SendGrid Logo]
-(https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
+![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
