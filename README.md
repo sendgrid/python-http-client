@@ -78,6 +78,10 @@ Quick links:
 - [Sign the CLA to Create a Pull Request](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#cla)
 - [Improvements to the Codebase](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.mdimprovements_to_the_codebase)
 
+# Troubleshooting
+
+Please see our [troubleshooting guide](https://github.com/sendgrid/python-http-client/blob/master/TROUBLESHOOTING.md) for any issues.
+
 # Thanks
 
 We were inspired by the work done on [birdy](https://github.com/inueni/birdy) and [universalclient](https://github.com/dgreisen/universalclient).
