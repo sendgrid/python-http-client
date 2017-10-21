@@ -10,10 +10,17 @@
 
 If you are looking for the SendGrid API client library, please see [this repo](https://github.com/sendgrid/sendgrid-python).
 
-# Announcements
+# Table of Contents
 
-All updates to this project is documented in our [CHANGELOG](https://github.com/sendgrid/python-http-client/blob/master/CHANGELOG.md).
+* [Installation](#installation)
+* [Quick Start](#quick-start)
+* [Usage](#usage)
+* [Troubleshooting](#troubleshooting)
+* [Announcements](#announcements)
+* [Thanks](#thanks)
+* [About](#about)
 
+<a name="installation"></a>
 # Installation
 
 ## Prerequisites
@@ -32,6 +39,7 @@ or
 easy_install python_http_client
 ```
 
+<a name="quick-start"></a>
 # Quick Start
 
 Here is a quick example:
@@ -65,6 +73,7 @@ print response.headers
 print response.body
 ```
 
+<a name="usage"></a>
 # Usage
 
 - [Example Code](https://github.com/sendgrid/python-http-client/tree/master/examples)
@@ -79,19 +88,27 @@ We encourage contribution to our projects, please see our [CONTRIBUTING](https:/
 
 Quick links:
 
-- [Feature Request](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#feature_request)
-- [Bug Reports](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#submit_a_bug_report)
+- [Feature Request](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#feature-request)
+- [Bug Reports](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#submit-a-bug-report)
 - [Sign the CLA to Create a Pull Request](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#cla)
-- [Improvements to the Codebase](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.mdimprovements_to_the_codebase)
+- [Improvements to the Codebase](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#improvements-to-the-codebase)
 
+<a name="troubleshooting"></a>
 # Troubleshooting
 
 Please see our [troubleshooting guide](https://github.com/sendgrid/python-http-client/blob/master/TROUBLESHOOTING.md) for any issues.
 
+<a name="announcements"></a>
+# Announcements
+
+All updates to this project is documented in our [CHANGELOG](https://github.com/sendgrid/python-http-client/blob/master/CHANGELOG.md).
+
+<a name="thanks"></a>
 # Thanks
 
 We were inspired by the work done on [birdy](https://github.com/inueni/birdy) and [universalclient](https://github.com/dgreisen/universalclient).
 
+<a name="about"></a>
 # About
 
 python-http-client is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
