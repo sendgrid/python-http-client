@@ -3,7 +3,7 @@ Hello! Thank you for choosing to help contribute to one of the SendGrid open sou
 - [CLAs and CCLAs](#cla)
 - [Roadmap & Milestones](#roadmap)
 - [Feature Request](#feature-request)
-- [Submit a Bug Report](#submit-a-bug_report)
+- [Submit a Bug Report](#submit-a-bug-report)
 - [Improvements to the Codebase](#improvements-to-the-codebase)
 - [Understanding the Code Base](#understanding-the-codebase)
 - [Testing](#testing)
