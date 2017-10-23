@@ -3,7 +3,9 @@
 [![BuildStatus](https://travis-ci.org/sendgrid/python-http-client.svg?branch=master)](https://travis-ci.org/sendgrid/python-http-client)
 [![Email Notifications Badge](https://dx.sendgrid.com/badge/python)](https://dx.sendgrid.com/newsletter/python)
 [![Twitter Follow](https://img.shields.io/twitter/follow/sendgrid.svg?style=social&label=Follow)](https://twitter.com/sendgrid)
+[![Codecov branch](https://img.shields.io/codecov/c/github/sendgrid/python-http-client/master.svg?style=flat-square&label=Codecov+Coverage)](https://codecov.io/gh/sendgrid/python-http-client)
 [![Code Climate](https://codeclimate.com/github/sendgrid/python-http-client/badges/gpa.svg)](https://codeclimate.com/github/sendgrid/python-http-client)
+[![GitHub contributors](https://img.shields.io/github/contributors/sendgrid/python-http-client.svg)](https://github.com/sendgrid/python-http-client/graphs/contributors)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.txt)
 
 **Quickly and easily access any RESTful or RESTful-like API.**
