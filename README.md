@@ -15,6 +15,8 @@ If you are looking for the SendGrid API client library, please see [this repo](h
 * [Installation](#installation)
 * [Quick Start](#quick-start)
 * [Usage](#usage)
+* [Roadmap](#roadmap)
+* [How to Contribute](#contribute)
 * [Troubleshooting](#troubleshooting)
 * [Announcements](#announcements)
 * [Thanks](#thanks)
@@ -78,11 +80,13 @@ print response.body
 
 - [Example Code](https://github.com/sendgrid/python-http-client/tree/master/examples)
 
-## Roadmap
+<a name="roadmap"></a>
+# Roadmap
 
 If you are interested in the future direction of this project, please take a look at our [milestones](https://github.com/sendgrid/python-http-client/milestones). We would love to hear your feedback.
 
-## How to Contribute
+<a name="contribute"></a>
+# How to Contribute
 
 We encourage contribution to our projects, please see our [CONTRIBUTING](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md) guide for details.
 
