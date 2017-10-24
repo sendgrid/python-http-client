@@ -19,6 +19,7 @@ If you are looking for the SendGrid API client library, please see [this repo](h
 * [Announcements](#announcements)
 * [Thanks](#thanks)
 * [About](#about)
+* [License](#license)
 
 <a name="installation"></a>
 # Installation
@@ -115,6 +116,7 @@ python-http-client is guided and supported by the SendGrid [Developer Experience
 
 python-http-client is maintained and funded by SendGrid, Inc. The names and logos for python-http-client are trademarks of SendGrid, Inc.
 
+<a name="license"></a>
 # License
 
 [The MIT License (MIT)](LICENSE.txt)
