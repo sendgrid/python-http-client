@@ -143,7 +143,7 @@ class Client(object):
                       url_path=url_path,
                       append_slash=self.append_slash)
 
-    def _make_request(self, opener, request):
+    def _make_request(self, opener, request, timeout=4):
         """Make the API call and return the response. This is separated into
            it's own function, so we can mock it easily for testing.
 
@@ -151,10 +151,12 @@ class Client(object):
         :type opener:
         :param request: url payload to request
         :type request: urllib.Request object
+        :param timeout: timeout for request in seconds, default 4 sec
+        :type integer:
         :return: urllib response
         """
         try:
-            return opener.open(request)
+            return opener.open(request, timeout=timeout)
         except HTTPError as err:
             exc = handle_error(err)
             exc.__cause__ = None
@@ -224,7 +226,7 @@ class Client(object):
                 if data and not ('Content-Type' in self.request_headers):
                     request.add_header('Content-Type', 'application/json')
                 request.get_method = lambda: method
-                return Response(self._make_request(opener, request))
+                return Response(self._make_request(opener, request, timeout=4))
             return http_request
         else:
             # Add a segment to the URL
