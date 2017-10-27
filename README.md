@@ -44,6 +44,16 @@ or
 easy_install python_http_client
 ```
 
+## API Key
+
+Store your SendGrid API key in a .env file
+
+```bash
+cp .env_sample .env
+```
+
+Edit the `.env` file and add your API key.
+
 <a name="quick-start"></a>
 # Quick Start
 
