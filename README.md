@@ -19,6 +19,7 @@ If you are looking for the SendGrid API client library, please see [this repo](h
 * [Usage](#usage)
 * [Roadmap](#roadmap)
 * [How to Contribute](#contribute)
+- [Local set up](#local_setup)
 * [Troubleshooting](#troubleshooting)
 * [Announcements](#announcements)
 * [Thanks](#thanks)
@@ -99,6 +100,17 @@ Quick links:
 - [Bug Reports](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#submit-a-bug-report)
 - [Sign the CLA to Create a Pull Request](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#cla)
 - [Improvements to the Codebase](https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#improvements-to-the-codebase)
+
+<a name="local_setup"></a>
+
+# Local Setup of the project
+
+The simplest local development workflow is by using docker.
+
+> Steps
+
+1. Install Docker
+2. Run `docker-compose up` (This runs tests by default)
 
 <a name="troubleshooting"></a>
 # Troubleshooting
