@@ -9,7 +9,8 @@ request_headers = {
 }
 version = 3  # we could also use client.version(3)
 client = python_http_client.Client(host=host,
-    request_headers=request_headers, version=version)
+                                   request_headers=request_headers,
+                                   version=version)
 
 # GET collection
 response = client.api_keys.get()
