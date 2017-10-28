@@ -8,9 +8,10 @@ request_headers = {
     "Authorization": 'Bearer {0}'.format(api_key)
 }
 version = 3  # we could also use client.version(3)
-client = python_http_client.Client(host=host,
-                                   request_headers=request_headers,
-                                   version=version)
+client = python_http_client.\
+            Client(host=host,
+            request_headers=request_headers,
+            version=version)
 
 # GET collection
 response = client.api_keys.get()
@@ -66,4 +67,3 @@ print(response.body)
 response = client.api_keys._(api_key_id).delete()
 print(response.status_code)
 print(response.headers)
-
