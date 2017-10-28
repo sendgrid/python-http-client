@@ -210,9 +210,9 @@ class Client(object):
                 else:
                     # Don't serialize to a JSON formatted str if
                     # we don't have a JSON Content-Type
-                    if 'Content-Type' in self.request_headers:
-                        if (self.request_headers['Content-Type']
-                                != 'application/json'):
+                    content_type = self.request_headers.get('Content-Type')
+                    if content_type is not None:
+                        if content_type != 'application/json':
                             data = kwargs['request_body']
                         else:
                             data = json.dumps(kwargs['request_body'])
