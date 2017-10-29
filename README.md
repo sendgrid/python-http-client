@@ -110,7 +110,8 @@ The simplest local development workflow is by using docker.
 > Steps
 
 1. Install Docker
-2. Run `docker-compose up` (This runs tests by default)
+2. Run `docker-compose build` (This builds the container)
+3. Run `docker-compose up` (This runs tests by default)
 
 <a name="troubleshooting"></a>
 # Troubleshooting
