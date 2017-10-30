@@ -30,10 +30,11 @@ except NameError:
 
 
 class MockException(HTTPError):
-    def __init__(self,code):
+    def __init__(self, code):
         self.code = code
         self.reason = 'REASON'
         self.hdrs = 'HEADERS'
+
     def read(self):
         return 'BODY'
 
@@ -60,11 +61,10 @@ class MockClient(Client):
         Client.__init__(self, host)
 
     def _make_request(self, opener, request):
-        if 200 <= self.response_code <299:   # if successsful code
+        if 200 <= self.response_code < 299:   # if successsful code
             return MockResponse(self.response_code)
         else:
             raise handle_error(MockException(self.response_code))
-
 
 
 class TestClient(unittest.TestCase):
@@ -73,8 +73,8 @@ class TestClient(unittest.TestCase):
         self.client = Client(host=self.host)
         self.api_key = "SENDGRID_API_KEY"
         self.request_headers = {
-                                 'Content-Type': 'application/json',
-                                 'Authorization': 'Bearer ' + self.api_key
+                                'Content-Type': 'application/json',
+                                'Authorization': 'Bearer ' + self.api_key
                                 }
         self.client = Client(host=self.host,
                              request_headers=self.request_headers,
@@ -114,8 +114,9 @@ class TestClient(unittest.TestCase):
         self.client._version = 3
         url = '{0}/v{1}{2}'.format(self.host,
                                    str(self.client._version),
-                                   '/here/there/1?hello=0&world=1&ztest=0&ztest=1')
-        query_params = {'hello': 0, 'world': 1, 'ztest': [0,1]}
+                                   '/here/there/1?hello=0&' +
+                                   'world=1&ztest=0&ztest=1')
+        query_params = {'hello': 0, 'world': 1, 'ztest': [0, 1]}
         built_url = self.client._build_url(query_params)
         self.assertEqual(built_url, url)
 
@@ -170,19 +171,20 @@ class TestClient(unittest.TestCase):
         self.assertEqual(r.status_code, 204)
 
         mock_client.response_code = 400
-        self.assertRaises(BadRequestsError,mock_client.get)
+        self.assertRaises(BadRequestsError, mock_client.get)
 
         mock_client.response_code = 404
-        self.assertRaises(NotFoundError,mock_client.post)
+        self.assertRaises(NotFoundError, mock_client.post)
 
         mock_client.response_code = 415
-        self.assertRaises(UnsupportedMediaTypeError,mock_client.patch)
+        self.assertRaises(UnsupportedMediaTypeError, mock_client.patch)
 
         mock_client.response_code = 503
-        self.assertRaises(ServiceUnavailableError,mock_client.delete)
+        self.assertRaises(ServiceUnavailableError, mock_client.delete)
 
         mock_client.response_code = 523
-        self.assertRaises(HTTPError,mock_client.delete)
+        self.assertRaises(HTTPError, mock_client.delete)
+
 
 if __name__ == '__main__':
     unittest.main()

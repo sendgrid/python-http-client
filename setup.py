@@ -6,11 +6,13 @@ long_description = 'Please see our GitHub README'
 if os.path.exists('README.txt'):
     long_description = open('README.txt').read()
 
+
 def getRequires():
     deps = []
     if (2, 6) <= sys.version_info < (2, 7):
         deps.append('unittest2')
     return deps
+
 
 base_url = 'https://github.com/sendgrid/'
 version = '3.0.0'
