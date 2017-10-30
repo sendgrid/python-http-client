@@ -212,17 +212,15 @@ class Client(object):
                     # Don't serialize to a JSON formatted str if we don't have
                     # a JSON Content-Type
                     if 'Content-Type' in self.request_headers:
-                        if (self.request_headers['Content-Type']
-                                != 'application/json'):
+                        if (self.request_headers['Content-Type'] !=
+                                'application/json'):
                             data = kwargs['request_body'].encode('utf-8')
                         else:
                             data = json.dumps(
-                                kwargs['request_body']
-                            ).encode('utf-8')
+                                kwargs['request_body']).encode('utf-8')
                     else:
                         data = json.dumps(
-                            kwargs['request_body']
-                        ).encode('utf-8')
+                            kwargs['request_body']).encode('utf-8')
                 params = (kwargs['query_params']
                           if 'query_params' in kwargs
                           else None)
