@@ -8,12 +8,7 @@ python:
 - '3.5'
 fail_fast: true
 before_install:
-    - pip install pep8
-script:
-    # Run pep8 on all .py files in all subfolders
-    # (I ignore "E402: module level import not at top of file"
-    # because of use case sys.path.append('..'); import <module>)
-    - find . -name \*.py -exec pep8 --ignore=E402 {} +
+    - pip install pycodestyle
 install:
 - if [[ "$TRAVIS_PYTHON_VERSION" == 2.6* ]]; then travis_retry pip install unittest2; fi
 - if [[ "$TRAVIS_PYTHON_VERSION" == 2.6* ]]; then travis_retry pip uninstall -y pbr; fi
@@ -21,10 +16,8 @@ install:
 - if [[ "$TRAVIS_PYTHON_VERSION" != "3.2" ]]; then travis_retry pip install coverage; fi
 - python setup.py install
 script:
-# Run pep8 on all .py files in all subfolders
-# (I ignore "E402: module level import not at top of file"
-# because of use case sys.path.append('..'); import <module>)
-- find . -name \*.py -exec pep8 --ignore=E402 {} +      
+# Run pycodestyle
+- pycodestyle
 - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then unit2 discover; else python -m unittest discover; fi
 notifications:
   hipchat:
