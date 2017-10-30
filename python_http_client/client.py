@@ -16,6 +16,7 @@ except ImportError:
 
 class Response(object):
     """Holds the response from an API call."""
+
     def __init__(self, response):
         """
         :param response: The return value from a open call
@@ -57,6 +58,7 @@ class Response(object):
 
 class Client(object):
     """Quickly and easily access any REST or REST-like API."""
+
     def __init__(self,
                  host,
                  request_headers=None,
@@ -117,7 +119,8 @@ class Client(object):
         if query_params:
             url_values = urlencode(sorted(query_params.items()), True)
             url = '{0}?{1}'.format(url, url_values)
-        url = self._build_versioned_url(url) if self._version else self.host + url
+        url = self._build_versioned_url(
+            url) if self._version else self.host + url
         return url
 
     def _update_headers(self, request_headers):
@@ -212,9 +215,11 @@ class Client(object):
                         if self.request_headers['Content-Type'] != 'application/json':
                             data = kwargs['request_body'].encode('utf-8')
                         else:
-                            data = json.dumps(kwargs['request_body']).encode('utf-8')
+                            data = json.dumps(
+                                kwargs['request_body']).encode('utf-8')
                     else:
-                        data = json.dumps(kwargs['request_body']).encode('utf-8')
+                        data = json.dumps(
+                            kwargs['request_body']).encode('utf-8')
                 params = kwargs['query_params'] if 'query_params' in kwargs else None
                 opener = urllib.build_opener()
                 request = urllib.Request(self._build_url(params), data=data)

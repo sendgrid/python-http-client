@@ -3,6 +3,7 @@ import json
 
 class HTTPError(Exception):
     ''' Base of all other errors'''
+
     def __init__(self, error):
         self.status_code = error.code
         self.reason = error.reason
