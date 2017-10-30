@@ -160,5 +160,6 @@ def static_version():
                           version=3)
     run_tested_code(client, 10)
 
+
 dynamic_result = dynamic_version()
 static_result = static_version()

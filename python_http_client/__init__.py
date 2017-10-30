@@ -1,5 +1,5 @@
-from .client import Client
-from .exceptions import (
+from .client import Client  # noqa
+from .exceptions import (  # noqa
     HTTPError,
     BadRequestsError,
     UnauthorizedError,
@@ -13,4 +13,3 @@ from .exceptions import (
     ServiceUnavailableError,
     GatewayTimeoutError
 )
-
