@@ -221,9 +221,9 @@ class Client(object):
                     else:
                         data = json.dumps(
                             kwargs['request_body']).encode('utf-8')
-                params = (kwargs['query_params']
-                          if 'query_params' in kwargs
-                          else None)
+                params = None
+                if 'query_params' in kwargs:
+                    params = kwargs['query_params']
                 opener = urllib.build_opener()
                 request = urllib.Request(self._build_url(params), data=data)
                 if self.request_headers:
