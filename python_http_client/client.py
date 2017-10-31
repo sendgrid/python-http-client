@@ -229,3 +229,9 @@ class Client(object):
         else:
             # Add a segment to the URL
             return self._(name)
+
+    def __getstate__(self):
+        return self.__dict__
+
+    def __setstate__(self, state):
+        self.__dict__ = state
