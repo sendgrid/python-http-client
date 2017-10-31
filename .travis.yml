@@ -12,8 +12,12 @@ install:
 - if [[ "$TRAVIS_PYTHON_VERSION" == "3.2" ]]; then travis_retry pip install coverage==3.7.1; fi
 - if [[ "$TRAVIS_PYTHON_VERSION" != "3.2" ]]; then travis_retry pip install coverage; fi
 - python setup.py install
+- pip install codecov
 script:
 - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then unit2 discover; else python -m unittest discover; fi
+- coverage run tests.py
+after_success:
+- codecov
 notifications:
   hipchat:
     rooms:
