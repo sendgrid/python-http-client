@@ -185,5 +185,11 @@ class TestClient(unittest.TestCase):
         self.assertRaises(HTTPError, mock_client.delete)
 
 
+    def test_client_pickle_unpickle(self):
+        pickled_client = pickle.dumps(self.client)
+        unpickled_client = pickle.loads(pickled_client)
+        self.assertDictEqual(self.client.__dict__, unpickled_client.__dict__, "original client and unpickled client must have the same state")
+
+
 if __name__ == '__main__':
     unittest.main()
