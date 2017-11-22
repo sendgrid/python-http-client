@@ -2,6 +2,7 @@ import sys
 import os
 from setuptools import setup
 
+
 long_description = 'Please see our GitHub README'
 if os.path.exists('README.txt'):
     long_description = open('README.txt').read()
