@@ -2,7 +2,7 @@ import json
 
 
 class HTTPError(Exception):
-    ''' Base of all other errors'''
+    """Base of all other errors"""
     def __init__(self, error):
         self.status_code = error.code
         self.reason = error.reason
@@ -12,7 +12,7 @@ class HTTPError(Exception):
     @property
     def to_dict(self):
         """
-        :return: dict of response erro from the API
+        :return: dict of response error from the API
         """
         return json.loads(self.body.decode('utf-8'))
 
