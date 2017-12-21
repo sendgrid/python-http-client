@@ -16,6 +16,7 @@ except ImportError:
 
 class Response(object):
     """Holds the response from an API call."""
+
     def __init__(self, response):
         """
         :param response: The return value from a open call
@@ -57,6 +58,7 @@ class Response(object):
 
 class Client(object):
     """Quickly and easily access any REST or REST-like API."""
+
     def __init__(self,
                  host,
                  request_headers=None,
@@ -225,6 +227,7 @@ class Client(object):
                     else:
                         data = json.dumps(
                             kwargs['request_body']).encode('utf-8')
+
                 if 'query_params' in kwargs:
                     params = kwargs['query_params']
                 else:
