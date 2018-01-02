@@ -64,7 +64,7 @@ class MockClient(Client):
 
     def _make_request(self, opener, request):
 
-        if 200 <= self.response_code < 299:   # if successsful code
+        if 200 <= self.response_code < 299:   # if successful code
             return MockResponse(self.response_code)
         else:
             raise handle_error(MockException(self.response_code))
