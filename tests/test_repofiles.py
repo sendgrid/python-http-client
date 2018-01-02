@@ -26,13 +26,13 @@ class RepoFiles(unittest.TestCase):
     ]
 
     def _all_file(self, files):
-        '''
+        """
         Checks the list of files and sees if they exist. If all of them don't
         exist, returns False. Otherwise, return True.
-        '''
+        """
         return all(map(lambda f: not path.isfile(f), files))
 
-    def test_file_existance(self):
+    def test_file_existence(self):
         missing = list(filter(self._all_file, self.FILES))
         self.assertTrue(len(missing) == 0,
                         "Files %s aren't found" % str(missing))
