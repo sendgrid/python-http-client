@@ -131,7 +131,7 @@ class Client(object):
         """Update the headers for the request
 
         :param request_headers: headers to set for the API call
-        :type response: dictionary
+        :type request_headers: dictionary
         :return: dictionary
         """
         self.request_headers.update(request_headers)
