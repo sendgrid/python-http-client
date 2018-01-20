@@ -23,6 +23,9 @@ after_script:
 # Run pycodestyle
 - pycodestyle
 - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then unit2 discover; else python -m unittest discover; fi
+- coverage run tests.py
+after_success:
+- codecov
 notifications:
   hipchat:
     rooms:
