@@ -125,7 +125,7 @@ class Client(object):
         if self._version:
             url = self._build_versioned_url(url)
         else:
-            self.host + url
+            url = self.host + url
         return url
 
     def _update_headers(self, request_headers):
@@ -219,11 +219,11 @@ class Client(object):
                 if 'request_body' not in kwargs:
                     data = None
                 else:
-                    # Don't serialize to a JSON formatted str if we don't have
-                    # a JSON Content-Type
+                    # Don't serialize to a JSON formatted str
+                    # if we don't have a JSON Content-Type
                     if 'Content-Type' in self.request_headers:
-                        if (self.request_headers['Content-Type'] !=
-                                'application/json'):
+                        if self.request_headers['Content-Type'] != 'application\
+                        /json':
                             data = kwargs['request_body'].encode('utf-8')
                         else:
                             data = json.dumps(
@@ -231,9 +231,12 @@ class Client(object):
                     else:
                         data = json.dumps(
                             kwargs['request_body']).encode('utf-8')
-                params = None
+
                 if 'query_params' in kwargs:
                     params = kwargs['query_params']
+                else:
+                    params = None
+
                 opener = urllib.build_opener()
                 request = urllib.Request(self._build_url(params), data=data)
                 if self.request_headers:
