@@ -1,11 +1,10 @@
-import os
 import pickle
-from os import path
+
 try:
     import unittest2 as unittest
 except ImportError:
     import unittest
-from python_http_client.client import Client, Response
+from python_http_client.client import Client
 from python_http_client.exceptions import (
     handle_error,
     HTTPError,
@@ -15,14 +14,12 @@ from python_http_client.exceptions import (
     ServiceUnavailableError
 )
 
-
 try:
     # Python 3
     import urllib.request as urllib
 except ImportError:
     # Python 2
     import urllib2 as urllib
-
 
 try:
     basestring
@@ -63,7 +60,7 @@ class MockClient(Client):
         Client.__init__(self, host)
 
     def _make_request(self, opener, request, timeout=None):
-        if 200 <= self.response_code < 299:   # if successful code
+        if 200 <= self.response_code < 299:  # if successful code
             return MockResponse(self.response_code)
         else:
             raise handle_error(MockException(self.response_code))
@@ -76,7 +73,7 @@ class TestClient(unittest.TestCase):
         self.api_key = "SENDGRID_API_KEY"
         self.request_headers = {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + self.api_key,
+            'Authorization': 'Bearer ' + self.api_key
         }
         self.client = Client(host=self.host,
                              request_headers=self.request_headers,
@@ -154,7 +151,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(client._version, 3)
 
         # Test GET
-        mock_client._url_path+['test']
+        mock_client._url_path + ['test']
         r = mock_client.get()
         self.assertEqual(r.status_code, 200)
 
@@ -191,11 +188,14 @@ class TestClient(unittest.TestCase):
         mock_client.response_code = 523
         self.assertRaises(HTTPError, mock_client.delete)
 
-
     def test_client_pickle_unpickle(self):
         pickled_client = pickle.dumps(self.client)
         unpickled_client = pickle.loads(pickled_client)
-        self.assertDictEqual(self.client.__dict__, unpickled_client.__dict__, "original client and unpickled client must have the same state")
+        self.assertDictEqual(
+            self.client.__dict__,
+            unpickled_client.__dict__,
+            "original client and unpickled client must have the same state"
+        )
 
 
 if __name__ == '__main__':
