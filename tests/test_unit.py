@@ -1,3 +1,4 @@
+import pickle
 try:
     import unittest2 as unittest
 except ImportError:
