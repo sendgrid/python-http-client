@@ -55,11 +55,11 @@ class MockResponse(urllib.HTTPSHandler):
 
 class MockClient(Client):
 
-    def __init__(self, host, response_code):
+    def __init__(self, host, response_code, timeout=None):
         self.response_code = 200
         Client.__init__(self, host)
 
-    def _make_request(self, opener, request):
+    def _make_request(self, opener, request, timeout=None):
         if 200 <= self.response_code < 299:  # if successful code
             return MockResponse(self.response_code)
         else:
@@ -70,8 +70,7 @@ class TestClient(unittest.TestCase):
 
     def setUp(self):
         self.host = 'http://api.test.com'
-        self.client = Client(host=self.host)
-        self.api_key = 'SENDGRID_API_KEY'
+        self.api_key = "SENDGRID_API_KEY"
         self.request_headers = {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + self.api_key
@@ -84,6 +83,7 @@ class TestClient(unittest.TestCase):
         default_client = Client(host=self.host)
         self.assertEqual(default_client.host, self.host)
         self.assertEqual(default_client.request_headers, {})
+        self.assertIs(default_client.timeout, None)
         methods = ['delete', 'get', 'patch', 'post', 'put']
         self.assertEqual(default_client.methods, methods)
         self.assertEqual(default_client._version, None)
@@ -93,13 +93,15 @@ class TestClient(unittest.TestCase):
         version = 3
         client = Client(host=self.host,
                         request_headers=request_headers,
-                        version=version)
+                        version=version,
+                        timeout=10)
         self.assertEqual(client.host, self.host)
         self.assertEqual(client.request_headers, request_headers)
         methods = ['delete', 'get', 'patch', 'post', 'put']
         self.assertEqual(client.methods, methods)
         self.assertEqual(client._version, 3)
         self.assertEqual(client._url_path, [])
+        self.assertEqual(client.timeout, 10)
 
     def test__build_versioned_url(self):
         url = '/api_keys?hello=1&world=2'
@@ -112,13 +114,12 @@ class TestClient(unittest.TestCase):
         self.client._url_path = self.client._url_path + ['there']
         self.client._url_path = self.client._url_path + [1]
         self.client._version = 3
-
-        url = '{0}/v{1}{2}'.format(self.host,
-                                   str(self.client._version),
-                                   '/here/there/1?hello=0&' +
-                                   'world=1&ztest=0&ztest=1')
+        url = '{0}/v{1}{2}'.format(
+            self.host,
+            str(self.client._version),
+            '/here/there/1?hello=0&world=1&ztest=0&ztest=1'
+        )
         query_params = {'hello': 0, 'world': 1, 'ztest': [0, 1]}
-
         built_url = self.client._build_url(query_params)
         self.assertEqual(built_url, url)
 

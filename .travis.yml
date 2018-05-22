@@ -10,6 +10,7 @@ fail_fast: true
 before_install:
     - pip install pycodestyle
 install:
+- pip install codecov
 - if [[ "$TRAVIS_PYTHON_VERSION" == 2.6* ]]; then travis_retry pip install unittest2; fi
 - if [[ "$TRAVIS_PYTHON_VERSION" == 2.6* ]]; then travis_retry pip uninstall -y pbr; fi
 - if [[ "$TRAVIS_PYTHON_VERSION" == "3.2" ]]; then travis_retry pip install coverage==3.7.1; fi
@@ -23,6 +24,7 @@ after_script:
 # Run pycodestyle
 - pycodestyle
 - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then unit2 discover; else python -m unittest discover; fi
+- coverage run tests/test_unit.py
 notifications:
   hipchat:
     rooms:
@@ -33,7 +35,8 @@ notifications:
       <a href="https://github.com/sendgrid/%{repository}/commits/%{commit}">View on
       GitHub</a>'
     format: html
-    notify: false
+after_success:
+  - codecov
 env:
   global:
   - secure: 7j0Ox9ZQss0PewrhGih86Ro0pQJpv23Bb0uABJV7kKN/W37ofrG0m6joamf8EhDDleaPoIqfbARhUpAlqFZF0Uo/5rREqpKkmP4e1zuYMu20VbFv6PXwZ+7ByAuKXN2/Xs54MImlL1+RaduMPNRpbcfT1mdqJgSC+3tVcWodzuRG9RPzxtWYLe93QfwNHV/VMsDPDIY12FZTErbXd/hBCEQXep5rNfK+TtLIGn0ZnS7TktTcD0ld+0ruhunbDjnkpXPVSJDuLaGRpotq0oyaGifnjVM5gVubP+KCL3h24tIXjJ7uI36Eu3EuF4qsg0fmNjuM/WjgwZ9Ta4I2MHlXtFs//qMMArOw5AvPg25adrEwGO4Veh3I3tJGL7hJeM7AZX4rAycXiGIHvpP2G/nX6e/EqRrnFBDOStmBhxEaknLJ/p2Cv6AOvxTMKDo8y+tJY1jp3H1iwCBYyW6KuFKVPDYtu8VLxJunaqNX4LxiJN7VHgvTSgqImjzEy5tVxVt079ciyeznSKKGHLHDAl1ioQpmv/Oyas007A4PKJJAf73go8Yt+GM6qe3K6U3tIBKWL8e0cK1kejk9TLC0D9KXbmhmK81QzpBdQfkrveYi/kucVv0zdrGl+Uy8zcq+vYxceyCdDYcTxCS66bWNFTD2t1dML5gRpdNVVSc27ZM9wtA=

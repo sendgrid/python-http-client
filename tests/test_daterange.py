@@ -14,7 +14,10 @@ class DateRangeTest(unittest.TestCase):
                                 '../LICENSE.txt')
         self.pattern = 'Copyright (c) 2012 - %s SendGrid, Inc.' % (
                         time.strftime("%Y"))
-        self.licensefile = open(self.openlicensefile).read()
+        fh = open(self.openlicensefile)
+        self.licensefile = fh.read()
+        fh.close()
 
     def test__daterange(self):
         self.assertTrue(self.pattern in self.licensefile)
+
