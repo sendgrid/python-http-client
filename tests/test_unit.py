@@ -1,4 +1,6 @@
+import os
 import pickle
+from os import path
 try:
     import unittest2 as unittest
 except ImportError:
