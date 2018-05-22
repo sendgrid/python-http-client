@@ -53,7 +53,10 @@ class Response(object):
         """
         :return: dict of response from the API
         """
-        return json.loads(self.body.decode('utf-8'))
+        if self.body:
+            return json.loads(self.body.decode('utf-8'))
+        else:
+            return None
 
 
 class Client(object):
