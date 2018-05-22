@@ -2,7 +2,7 @@ try:
     import unittest2 as unittest
 except ImportError:
     import unittest
-from python_http_client.client import Client
+from python_http_client.client import Client, Response
 from python_http_client.exceptions import (
     handle_error,
     HTTPError,
@@ -59,7 +59,7 @@ class MockClient(Client):
         self.response_code = 200
         Client.__init__(self, host)
 
-    def _make_request(self, opener, request):
+    def _make_request(self, opener, request, timeout=None):
         if 200 <= self.response_code < 299:   # if successful code
             return MockResponse(self.response_code)
         else:
