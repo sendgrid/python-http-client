@@ -16,6 +16,7 @@ except ImportError:
 
 class Response(object):
     """Holds the response from an API call."""
+
     def __init__(self, response):
         """
         :param response: The return value from a open call
@@ -57,12 +58,14 @@ class Response(object):
 
 class Client(object):
     """Quickly and easily access any REST or REST-like API."""
+
     def __init__(self,
                  host,
                  request_headers=None,
                  version=None,
                  url_path=None,
-                 append_slash=False):
+                 append_slash=False,
+                 timeout=None):
         """
         :param host: Base URL for the api. (e.g. https://api.sendgrid.com)
         :type host:  string
@@ -86,6 +89,7 @@ class Client(object):
         self.methods = ['delete', 'get', 'patch', 'post', 'put']
         # APPEND SLASH set
         self.append_slash = append_slash
+        self.timeout = timeout
 
     def _build_versioned_url(self, url):
         """Subclass this function for your own needs.
@@ -117,6 +121,7 @@ class Client(object):
         if query_params:
             url_values = urlencode(sorted(query_params.items()), True)
             url = '{0}?{1}'.format(url, url_values)
+
         if self._version:
             url = self._build_versioned_url(url)
         else:
@@ -144,9 +149,10 @@ class Client(object):
                       version=self._version,
                       request_headers=self.request_headers,
                       url_path=url_path,
-                      append_slash=self.append_slash)
+                      append_slash=self.append_slash,
+                      timeout=self.timeout)
 
-    def _make_request(self, opener, request):
+    def _make_request(self, opener, request, timeout=None):
         """Make the API call and return the response. This is separated into
            it's own function, so we can mock it easily for testing.
 
@@ -154,10 +160,13 @@ class Client(object):
         :type opener:
         :param request: url payload to request
         :type request: urllib.Request object
+        :param timeout: timeout value or None
+        :type timeout: float
         :return: urllib response
         """
+        timeout = timeout or self.timeout
         try:
-            return opener.open(request)
+            return opener.open(request, timeout=timeout)
         except HTTPError as err:
             exc = handle_error(err)
             exc.__cause__ = None
@@ -230,10 +239,11 @@ class Client(object):
                 if self.request_headers:
                     for key, value in self.request_headers.items():
                         request.add_header(key, value)
-                if data and not ('Content-Type' in self.request_headers):
+                if data and ('Content-Type' not in self.request_headers):
                     request.add_header('Content-Type', 'application/json')
                 request.get_method = lambda: method
-                return Response(self._make_request(opener, request))
+                timeout = kwargs.pop('timeout', None)
+                return Response(self._make_request(opener, request, timeout=timeout))
             return http_request
         else:
             # Add a segment to the URL

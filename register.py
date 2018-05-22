@@ -1,6 +1,8 @@
 import pypandoc
 
+
 output = pypandoc.convert('README.md', 'rst')
+
 with open('README.txt', 'w+') as f:
     f.write(output)
 
