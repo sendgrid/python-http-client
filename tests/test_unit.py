@@ -1,11 +1,10 @@
-import os
 import pickle
-from os import path
+
 try:
     import unittest2 as unittest
 except ImportError:
     import unittest
-from python_http_client.client import Client, Response
+from python_http_client.client import Client
 from python_http_client.exceptions import (
     handle_error,
     HTTPError,
@@ -15,14 +14,12 @@ from python_http_client.exceptions import (
     ServiceUnavailableError
 )
 
-
 try:
     # Python 3
     import urllib.request as urllib
 except ImportError:
     # Python 2
     import urllib2 as urllib
-
 
 try:
     basestring
@@ -58,13 +55,12 @@ class MockResponse(urllib.HTTPSHandler):
 
 class MockClient(Client):
 
-    def __init__(self, host, response_code):
+    def __init__(self, host, response_code, timeout=None):
         self.response_code = 200
         Client.__init__(self, host)
 
-    def _make_request(self, opener, request):
-
-        if 200 <= self.response_code < 299:   # if successful code
+    def _make_request(self, opener, request, timeout=None):
+        if 200 <= self.response_code < 299:  # if successful code
             return MockResponse(self.response_code)
         else:
             raise handle_error(MockException(self.response_code))
@@ -74,12 +70,11 @@ class TestClient(unittest.TestCase):
 
     def setUp(self):
         self.host = 'http://api.test.com'
-        self.client = Client(host=self.host)
-        self.api_key = 'SENDGRID_API_KEY'
+        self.api_key = "SENDGRID_API_KEY"
         self.request_headers = {
-                                'Content-Type': 'application/json',
-                                'Authorization': 'Bearer ' + self.api_key
-                                }
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + self.api_key
+        }
         self.client = Client(host=self.host,
                              request_headers=self.request_headers,
                              version=3)
@@ -88,6 +83,7 @@ class TestClient(unittest.TestCase):
         default_client = Client(host=self.host)
         self.assertEqual(default_client.host, self.host)
         self.assertEqual(default_client.request_headers, {})
+        self.assertIs(default_client.timeout, None)
         methods = ['delete', 'get', 'patch', 'post', 'put']
         self.assertEqual(default_client.methods, methods)
         self.assertEqual(default_client._version, None)
@@ -97,13 +93,15 @@ class TestClient(unittest.TestCase):
         version = 3
         client = Client(host=self.host,
                         request_headers=request_headers,
-                        version=version)
+                        version=version,
+                        timeout=10)
         self.assertEqual(client.host, self.host)
         self.assertEqual(client.request_headers, request_headers)
         methods = ['delete', 'get', 'patch', 'post', 'put']
         self.assertEqual(client.methods, methods)
         self.assertEqual(client._version, 3)
         self.assertEqual(client._url_path, [])
+        self.assertEqual(client.timeout, 10)
 
     def test__build_versioned_url(self):
         url = '/api_keys?hello=1&world=2'
@@ -116,13 +114,12 @@ class TestClient(unittest.TestCase):
         self.client._url_path = self.client._url_path + ['there']
         self.client._url_path = self.client._url_path + [1]
         self.client._version = 3
-
-        url = '{0}/v{1}{2}'.format(self.host,
-                                   str(self.client._version),
-                                   '/here/there/1?hello=0&' +
-                                   'world=1&ztest=0&ztest=1')
+        url = '{0}/v{1}{2}'.format(
+            self.host,
+            str(self.client._version),
+            '/here/there/1?hello=0&world=1&ztest=0&ztest=1'
+        )
         query_params = {'hello': 0, 'world': 1, 'ztest': [0, 1]}
-
         built_url = self.client._build_url(query_params)
         self.assertEqual(built_url, url)
 
@@ -154,7 +151,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(client._version, 3)
 
         # Test GET
-        mock_client._url_path+['test']
+        mock_client._url_path + ['test']
         r = mock_client.get()
         self.assertEqual(r.status_code, 200)
 
@@ -191,11 +188,14 @@ class TestClient(unittest.TestCase):
         mock_client.response_code = 523
         self.assertRaises(HTTPError, mock_client.delete)
 
-
     def test_client_pickle_unpickle(self):
         pickled_client = pickle.dumps(self.client)
         unpickled_client = pickle.loads(pickled_client)
-        self.assertDictEqual(self.client.__dict__, unpickled_client.__dict__, "original client and unpickled client must have the same state")
+        self.assertDictEqual(
+            self.client.__dict__,
+            unpickled_client.__dict__,
+            "original client and unpickled client must have the same state"
+        )
 
 
 if __name__ == '__main__':

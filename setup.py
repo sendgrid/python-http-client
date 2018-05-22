@@ -8,7 +8,7 @@ if os.path.exists('README.txt'):
     long_description = open('README.txt').read()
 
 
-def getRequires():
+def get_requires():
     deps = []
     if (2, 6) <= sys.version_info < (2, 7):
         deps.append('unittest2')
@@ -28,7 +28,7 @@ setup(
     license='MIT',
     description='HTTP REST client, simplified for Python',
     long_description=long_description,
-    install_requires=getRequires(),
+    install_requires=get_requires(),
     keywords=[
         'REST',
         'HTTP',
