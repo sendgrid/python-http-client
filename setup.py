@@ -16,7 +16,7 @@ def get_requires():
 
 
 base_url = 'https://github.com/sendgrid/'
-version = '3.0.0'
+version = '3.1.0'
 setup(
     name='python_http_client',
     version=version,
