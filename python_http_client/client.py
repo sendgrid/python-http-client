@@ -63,6 +63,9 @@ class Response(object):
 class Client(object):
     """Quickly and easily access any REST or REST-like API."""
 
+    # These are the supported HTTP verbs
+    methods = {'delete', 'get', 'patch', 'post', 'put'}
+
     def __init__(self,
                  host,
                  request_headers=None,
@@ -89,8 +92,6 @@ class Client(object):
         self._version = version
         # _url_path keeps track of the dynamically built url
         self._url_path = url_path or []
-        # These are the supported HTTP verbs
-        self.methods = ['delete', 'get', 'patch', 'post', 'put']
         # APPEND SLASH set
         self.append_slash = append_slash
         self.timeout = timeout

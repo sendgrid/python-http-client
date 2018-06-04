@@ -2,11 +2,13 @@ import pickle
 import unittest
 
 from python_http_client.client import Client
-from python_http_client.exceptions import (BadRequestsError, HTTPError,
-                                           NotFoundError,
-                                           ServiceUnavailableError,
-                                           UnsupportedMediaTypeError,
-                                           handle_error)
+from python_http_client.exceptions import (
+    BadRequestsError, HTTPError,
+    NotFoundError,
+    ServiceUnavailableError,
+    UnsupportedMediaTypeError,
+    handle_error
+)
 
 try:
     # Python 3
@@ -80,7 +82,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(default_client.host, self.host)
         self.assertEqual(default_client.request_headers, {})
         self.assertIs(default_client.timeout, None)
-        methods = ['delete', 'get', 'patch', 'post', 'put']
+        methods = {'delete', 'get', 'patch', 'post', 'put'}
         self.assertEqual(default_client.methods, methods)
         self.assertIsNone(default_client._version)
         self.assertEqual(default_client._url_path, [])
@@ -93,7 +95,7 @@ class TestClient(unittest.TestCase):
                         timeout=10)
         self.assertEqual(client.host, self.host)
         self.assertEqual(client.request_headers, request_headers)
-        methods = ['delete', 'get', 'patch', 'post', 'put']
+        methods = {'delete', 'get', 'patch', 'post', 'put'}
         self.assertEqual(client.methods, methods)
         self.assertEqual(client._version, 3)
         self.assertEqual(client._url_path, [])
@@ -160,7 +162,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(client._version, 3)
 
         # Test GET
-        mock_client._url_path + ['test']
+        mock_client._url_path += ['test']
         r = mock_client.get()
         self.assertEqual(r.status_code, 200)
 
