@@ -1,9 +1,6 @@
 import pickle
+import unittest
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
 from python_http_client.client import Client
 from python_http_client.exceptions import (
     handle_error,

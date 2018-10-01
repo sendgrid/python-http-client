@@ -66,7 +66,7 @@ We welcome direct contributions to the python-http-client code base. Thank you!
 
 ##### Prerequisites #####
 
-- Python 2.6 through 3.6
+- Python 2.7 and 3.4+
 - There are no external dependencies
 
 ##### Initial setup: #####
@@ -112,14 +112,6 @@ All test files are in the [`tests`](https://github.com/sendgrid/python-http-clie
 
 For the purposes of contributing to this repo, please update the [`test_unit.py`](https://github.com/sendgrid/python-http-client/blob/master/test/test_unit.py) file with unit tests as you modify the code.
 
-For Python 2.6.*:
-
-```bash
-unit2 discover -v
-```
-
-For Python 2.7.* and up:
-
 ```bash
 python -m unittest discover -v
 ```
@@ -141,13 +133,12 @@ The above local "Initial setup" is complete
 Add `eval "$(pyenv init -)"` to your shell environment (.profile, .bashrc, etc) after installing tox, you only need to do this once.
 
 ```bash
-pyenv install 2.6.9
 pyenv install 2.7.11
 pyenv install 3.4.3
 pyenv install 3.5.2
 pyenv install 3.6.0
 python setup.py install
-pyenv local 3.6.0 3.5.2 3.4.3 2.7.8 2.6.9
+pyenv local 3.6.0 3.5.2 3.4.3 2.7.8
 pyenv rehash
 ```
 
