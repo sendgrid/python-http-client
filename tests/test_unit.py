@@ -83,7 +83,7 @@ class TestClient(unittest.TestCase):
         self.assertIs(default_client.timeout, None)
         methods = ['delete', 'get', 'patch', 'post', 'put']
         self.assertEqual(default_client.methods, methods)
-        self.assertEqual(default_client._version, None)
+        self.assertIsNone(default_client._version)
         self.assertEqual(default_client._url_path, [])
 
         request_headers = {'X-Test': 'test', 'X-Test2': 1}
@@ -123,7 +123,7 @@ class TestClient(unittest.TestCase):
     def test__update_headers(self):
         request_headers = {'X-Test': 'Test'}
         self.client._update_headers(request_headers)
-        self.assertTrue('X-Test' in self.client.request_headers)
+        self.assertIn('X-Test', self.client.request_headers)
         self.client.request_headers.pop('X-Test', None)
 
     def test__build_client(self):

@@ -15,5 +15,4 @@ class DateRangeTest(unittest.TestCase):
         fh.close()
 
     def test__daterange(self):
-        self.assertTrue(self.pattern in self.licensefile)
-
+        self.assertIn(self.pattern, self.licensefile)
