@@ -103,7 +103,7 @@ class TestClient(unittest.TestCase):
     def test__build_versioned_url(self):
         url = '/api_keys?hello=1&world=2'
         versioned_url = self.client._build_versioned_url(url)
-        url = '{0}/v{1}{2}'.format(self.host, str(self.client._version), url)
+        url = '{}/v{}{}'.format(self.host, str(self.client._version), url)
         self.assertEqual(versioned_url, url)
 
     def test__build_url(self):
@@ -111,7 +111,7 @@ class TestClient(unittest.TestCase):
         self.client._url_path = self.client._url_path + ['there']
         self.client._url_path = self.client._url_path + [1]
         self.client._version = 3
-        url = '{0}/v{1}{2}'.format(
+        url = '{}/v{}{}'.format(
             self.host,
             str(self.client._version),
             '/here/there/1?hello=0&world=1&ztest=0&ztest=1'
