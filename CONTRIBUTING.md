@@ -66,7 +66,7 @@ We welcome direct contributions to the python-http-client code base. Thank you!
 
 ##### Prerequisites #####
 
-- Python 2.6 through 3.6
+- Python 2.6, 2.7 or 3.3+
 - There are no external dependencies
 
 ##### Initial setup: #####
