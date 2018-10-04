@@ -19,7 +19,7 @@ class RepoFiles(unittest.TestCase):
         ['./.github/ISSUE_TEMPLATE'],
         ['./LICENSE.md', './LICENSE.txt'],
         ['./.github/PULL_REQUEST_TEMPLATE'],
-        ['./README.md'],
+        ['./README.rst'],
         ['./TROUBLESHOOTING.md'],
         ['./USAGE.md'],
         ['./USE_CASES.md']
