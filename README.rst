@@ -165,7 +165,7 @@ License
 .. _birdy: https://github.com/inueni/birdy
 .. _universalclient: https://github.com/dgreisen/universalclient
 .. _Developer Experience Team: mailto:dx@sendgrid.com
-.. _The MIT License (MIT): LICENSE.txt
+.. _The MIT License (MIT): https://github.com/sendgrid/python-http-client/blob/master/LICENSE.txt
 
 .. |Build Status| image:: https://travis-ci.org/sendgrid/python-http-client.svg?branch=master
    :target: https://travis-ci.org/sendgrid/python-http-client
