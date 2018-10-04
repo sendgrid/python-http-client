@@ -1,7 +1,7 @@
 .. image:: https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png
    :target: https://www.sendgrid.com
 
-|Build Status| |Email Notifications Badge| |Twitter Follow| |Codecov branch| |Code Climate| |GitHub contributors| |MIT licensed|
+|Build Status| |Email Notifications Badge| |Twitter Follow| |Codecov branch| |Code Climate| |Python Versions| |PyPI Version| |GitHub contributors| |MIT licensed|
 
 **Quickly and easily access any RESTful or RESTful-like API.**
 
@@ -177,6 +177,10 @@ License
    :target: https://codecov.io/gh/sendgrid/python-http-client
 .. |Code Climate| image:: https://codeclimate.com/github/sendgrid/python-http-client/badges/gpa.svg
    :target: https://codeclimate.com/github/sendgrid/python-http-client
+.. |Python Versions| image:: https://img.shields.io/pypi/pyversions/python-http-client.svg
+   :target: https://pypi.org/project/python-http-client
+.. |PyPI Version| image:: https://img.shields.io/pypi/v/python-http-client.svg
+   :target: https://pypi.org/project/python-http-client
 .. |GitHub contributors| image:: https://img.shields.io/github/contributors/sendgrid/python-http-client.svg
    :target: https://github.com/sendgrid/python-http-client/graphs/contributors
 .. |MIT licensed| image:: https://img.shields.io/badge/license-MIT-blue.svg
