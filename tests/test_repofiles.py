@@ -22,7 +22,8 @@ class RepoFiles(unittest.TestCase):
         ['./README.rst'],
         ['./TROUBLESHOOTING.md'],
         ['./USAGE.md'],
-        ['./USE_CASES.md']
+        ['./USE_CASES.md'],
+        ['./VERSION.txt']
     ]
 
     def _all_file(self, files):
