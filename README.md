@@ -116,7 +116,7 @@ Quick links:
 
 # Local Setup of the project
 
-The simplest local development workflow is by using docker.
+The simplest local development workflow is by using Docker.
 
 > Steps
 
@@ -137,7 +137,7 @@ All updates to this project is documented in our [CHANGELOG](https://github.com/
 <a name="thanks"></a>
 # Thanks
 
-We were inspired by the work done on [birdy](https://github.com/inueni/birdy) and [universalclient](https://github.com/dgreisen/universalclient).
+We were inspired by the work done on [Birdy](https://github.com/inueni/birdy) and [Universal Client](https://github.com/dgreisen/universalclient).
 
 <a name="about"></a>
 # About
