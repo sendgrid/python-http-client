@@ -225,8 +225,8 @@ class Client(object):
                     # Don't serialize to a JSON formatted str
                     # if we don't have a JSON Content-Type
                     if 'Content-Type' in self.request_headers:
-                        if self.request_headers['Content-Type'] != 'application\
-                        /json':
+                        if self.request_headers['Content-Type'] != \
+                           'application/json':
                             data = kwargs['request_body'].encode('utf-8')
                         else:
                             data = json.dumps(
@@ -249,7 +249,9 @@ class Client(object):
                     request.add_header('Content-Type', 'application/json')
                 request.get_method = lambda: method
                 timeout = kwargs.pop('timeout', None)
-                return Response(self._make_request(opener, request, timeout=timeout))
+                return Response(
+                    self._make_request(opener, request, timeout=timeout)
+                )
             return http_request
         else:
             # Add a segment to the URL
