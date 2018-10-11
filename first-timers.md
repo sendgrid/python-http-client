@@ -32,7 +32,7 @@ To make a pull request, follow these steps:
    [interactive rebase](https://help.github.com/articles/interactive-rebase)
    feature to tidy up your commits before making them public. Probably you will also have to create tests (if needed) or create or update the example code that demonstrates the functionality of this change to the code.
  6. __Locally merge (or rebase)__ the upstream development branch into your topic branch:
-    ```    
+  ```    
     git pull [--rebase] upstream master
    ``` 
    
@@ -42,7 +42,7 @@ To make a pull request, follow these steps:
    ```
  8. __[Open a Pull Request](https://help.github.com/articles/creating-a-pull-request/#changing-the-branch-range-and-destination-repository/)__
     with a clear title and description against the `master` branch. All tests must be passing before we will review the PR.
-  ### Important notice
+### Important notice
  Before creating a pull request, make sure that you respect the repository's constraints regarding contributions. You can find them in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
  ## Repositories with Open, Easy, Help Wanted, Issue Filters
  * [Python SDK](https://github.com/sendgrid/sendgrid-python/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
