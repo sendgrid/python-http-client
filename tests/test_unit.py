@@ -1,9 +1,6 @@
 import pickle
+import unittest
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
 from python_http_client.client import Client
 from python_http_client.exceptions import (
     handle_error,
@@ -86,7 +83,7 @@ class TestClient(unittest.TestCase):
         self.assertIs(default_client.timeout, None)
         methods = ['delete', 'get', 'patch', 'post', 'put']
         self.assertEqual(default_client.methods, methods)
-        self.assertEqual(default_client._version, None)
+        self.assertIsNone(default_client._version)
         self.assertEqual(default_client._url_path, [])
 
         request_headers = {'X-Test': 'test', 'X-Test2': 1}
@@ -106,7 +103,7 @@ class TestClient(unittest.TestCase):
     def test__build_versioned_url(self):
         url = '/api_keys?hello=1&world=2'
         versioned_url = self.client._build_versioned_url(url)
-        url = '{0}/v{1}{2}'.format(self.host, str(self.client._version), url)
+        url = '{}/v{}{}'.format(self.host, str(self.client._version), url)
         self.assertEqual(versioned_url, url)
 
     def test__build_url(self):
@@ -114,7 +111,7 @@ class TestClient(unittest.TestCase):
         self.client._url_path = self.client._url_path + ['there']
         self.client._url_path = self.client._url_path + [1]
         self.client._version = 3
-        url = '{0}/v{1}{2}'.format(
+        url = '{}/v{}{}'.format(
             self.host,
             str(self.client._version),
             '/here/there/1?hello=0&world=1&ztest=0&ztest=1'
@@ -126,7 +123,7 @@ class TestClient(unittest.TestCase):
     def test__update_headers(self):
         request_headers = {'X-Test': 'Test'}
         self.client._update_headers(request_headers)
-        self.assertTrue('X-Test' in self.client.request_headers)
+        self.assertIn('X-Test', self.client.request_headers)
         self.client.request_headers.pop('X-Test', None)
 
     def test__build_client(self):

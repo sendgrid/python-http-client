@@ -47,7 +47,7 @@ A software bug is a demonstrable issue in the code base. In order for us to diag
 
 Before you decide to create a new issue, please try the following:
 
-1. Check the Github issues tab if the identified issue has already been reported, if so, please add a +1 to the existing post.
+1. Check the GitHub issues tab if the identified issue has already been reported, if so, please add a +1 to the existing post.
 2. Update to the latest version of this code and check if issue has already been fixed
 3. Copy and fill in the Bug Report Template we have provided below
 
@@ -66,7 +66,7 @@ We welcome direct contributions to the python-http-client code base. Thank you!
 
 ##### Prerequisites #####
 
-- Python 2.6, 2.7 or 3.3+
+- Python 2.7 and 3.4+
 - There are no external dependencies
 
 ##### Initial setup: #####
@@ -112,14 +112,6 @@ All test files are in the [`tests`](https://github.com/sendgrid/python-http-clie
 
 For the purposes of contributing to this repo, please update the [`test_unit.py`](https://github.com/sendgrid/python-http-client/blob/master/test/test_unit.py) file with unit tests as you modify the code.
 
-For Python 2.6.*:
-
-```bash
-unit2 discover -v
-```
-
-For Python 2.7.* and up:
-
 ```bash
 python -m unittest discover -v
 ```
@@ -141,13 +133,12 @@ The above local "Initial setup" is complete
 Add `eval "$(pyenv init -)"` to your shell environment (.profile, .bashrc, etc) after installing tox, you only need to do this once.
 
 ```bash
-pyenv install 2.6.9
 pyenv install 2.7.11
 pyenv install 3.4.3
 pyenv install 3.5.2
 pyenv install 3.6.0
 python setup.py install
-pyenv local 3.6.0 3.5.2 3.4.3 2.7.8 2.6.9
+pyenv local 3.6.0 3.5.2 3.4.3 2.7.8
 pyenv rehash
 ```
 
@@ -229,4 +220,4 @@ If you have any additional questions, please feel free to [email](mailto:dx@send
 
 <a name="code-reviews"></a>
 ## Code Reviews
-If you can, please look at open PRs and review them. Give feedback and help us merge these PRs much faster! If you don't know how, Github has some great [information on how to review a Pull Request](https://help.github.com/articles/about-pull-request-reviews/).
+If you can, please look at open PRs and review them. Give feedback and help us merge these PRs much faster! If you don't know how, GitHub has some great [information on how to review a Pull Request](https://help.github.com/articles/about-pull-request-reviews/).
