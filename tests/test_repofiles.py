@@ -21,8 +21,7 @@ class RepoFiles(unittest.TestCase):
         ['./.github/PULL_REQUEST_TEMPLATE'],
         ['./README.md'],
         ['./TROUBLESHOOTING.md'],
-        ['./USAGE.md'],
-        ['./USE_CASES.md']
+        ['./USAGE.md']
     ]
 
     def _all_file(self, files):
