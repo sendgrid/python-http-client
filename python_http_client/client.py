@@ -102,7 +102,7 @@ class Client(object):
         :type url: string
         :return: string
         """
-        return '{0}/v{1}{2}'.format(self.host, str(self._version), url)
+        return '{}/v{}{}'.format(self.host, str(self._version), url)
 
     def _build_url(self, query_params):
         """Build the final URL to be passed to urllib
@@ -114,7 +114,7 @@ class Client(object):
         url = ''
         count = 0
         while count < len(self._url_path):
-            url += '/{0}'.format(self._url_path[count])
+            url += '/{}'.format(self._url_path[count])
             count += 1
 
         # add slash
@@ -123,7 +123,7 @@ class Client(object):
 
         if query_params:
             url_values = urlencode(sorted(query_params.items()), True)
-            url = '{0}?{1}'.format(url, url_values)
+            url = '{}?{}'.format(url, url_values)
 
         if self._version:
             url = self._build_versioned_url(url)
