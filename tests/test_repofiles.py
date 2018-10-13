@@ -1,8 +1,5 @@
+import unittest
 from os import path
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
 
 
 class RepoFiles(unittest.TestCase):
@@ -21,8 +18,7 @@ class RepoFiles(unittest.TestCase):
         ['./.github/PULL_REQUEST_TEMPLATE'],
         ['./README.md'],
         ['./TROUBLESHOOTING.md'],
-        ['./USAGE.md'],
-        ['./USE_CASES.md']
+        ['./USAGE.md']
     ]
 
     def _all_file(self, files):
@@ -34,5 +30,5 @@ class RepoFiles(unittest.TestCase):
 
     def test_file_existence(self):
         missing = list(filter(self._all_file, self.FILES))
-        self.assertTrue(len(missing) == 0,
-                        "Files %s aren't found" % str(missing))
+        self.assertEqual(len(missing), 0,
+                         "Files %s aren't found" % str(missing))
