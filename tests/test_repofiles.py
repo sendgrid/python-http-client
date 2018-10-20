@@ -31,4 +31,5 @@ class RepoFiles(unittest.TestCase):
     def test_file_existence(self):
         missing = list(filter(self._all_file, self.FILES))
         self.assertEqual(len(missing), 0,
-                         "Files %s aren't found" % str(missing))
+                         "Files {} aren't found".format(missing)
+                         )

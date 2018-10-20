@@ -128,7 +128,7 @@ class Client(object):
         if self._version:
             url = self._build_versioned_url(url)
         else:
-            url = self.host + url
+            url = '{}{}'.fomat(self.host, url)
         return url
 
     def _update_headers(self, request_headers):
@@ -147,7 +147,7 @@ class Client(object):
         :type name: string
         :return: A Client object
         """
-        url_path = self._url_path + [name] if name else self._url_path
+        url_path = '{}{}'.format(self._url_path, [name]) if name else self._url_path
         return Client(host=self.host,
                       version=self._version,
                       request_headers=self.request_headers,

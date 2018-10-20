@@ -70,7 +70,7 @@ class TestClient(unittest.TestCase):
         self.api_key = "SENDGRID_API_KEY"
         self.request_headers = {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + self.api_key
+            'Authorization': 'Bearer {}'.format(self.api_key)
         }
         self.client = Client(host=self.host,
                              request_headers=self.request_headers,
@@ -107,9 +107,9 @@ class TestClient(unittest.TestCase):
         self.assertEqual(versioned_url, url)
 
     def test__build_url(self):
-        self.client._url_path = self.client._url_path + ['here']
-        self.client._url_path = self.client._url_path + ['there']
-        self.client._url_path = self.client._url_path + [1]
+        self.client._url_path = '{}{}'.format(self.client._url_path, ['here'])
+        self.client._url_path = '{}{}'.format(self.client._url_path, ['there'])
+        self.client._url_path = '{}{}'.format(self.client._url_path, [1])
         self.client._version = 3
         url = '{}/v{}{}'.format(
             self.host,
