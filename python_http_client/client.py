@@ -128,7 +128,7 @@ class Client(object):
         if self._version:
             url = self._build_versioned_url(url)
         else:
-            url = '{}{}'.fomat(self.host, url)
+            url = '{}{}'.format(self.host, url)
         return url
 
     def _update_headers(self, request_headers):
