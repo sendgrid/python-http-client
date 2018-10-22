@@ -1,14 +1,18 @@
+import io
 import os
-from setuptools import setup
+from distutils.file_util import copy_file
+from setuptools import find_packages, setup
 
 
-long_description = 'Please see our GitHub README'
-if os.path.exists('README.txt'):
-    long_description = open('README.txt').read()
-
-
+dir_path = os.path.abspath(os.path.dirname(__file__))
+readme = io.open(os.path.join(dir_path, 'README.rst'), encoding='utf-8').read()
+version = io.open(os.path.join(dir_path, 'VERSION.txt'), encoding='utf-8').read().strip()
 base_url = 'https://github.com/sendgrid/'
-version = '3.1.0'
+
+copy_file(os.path.join(dir_path, 'VERSION.txt'),
+          os.path.join(dir_path, 'python_http_client', 'VERSION.txt'),
+          verbose=0)
+
 setup(
     name='python_http_client',
     version=version,
@@ -16,10 +20,11 @@ setup(
     author_email='dx@sendgrid.com',
     url='{}python-http-client'.format(base_url),
     download_url='{}python-http-client/tarball/{}'.format(base_url, version),
-    packages=['python_http_client'],
+    packages=find_packages(),
+    include_package_data=True,
     license='MIT',
     description='HTTP REST client, simplified for Python',
-    long_description=long_description,
+    long_description=readme,
     keywords=[
         'REST',
         'HTTP',
