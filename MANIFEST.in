@@ -1,1 +1,3 @@
-include LICENSE.txt
+include LICENSE.txt VERSION.txt README.rst
+recursive-include python_http_client *.py *.txt
+prune tests

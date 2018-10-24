@@ -68,3 +68,4 @@ cleanup.sh
 *_example.py
 .idea
 README.txt
+python_http_client/VERSION.txt

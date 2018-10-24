@@ -16,9 +16,10 @@ class RepoFiles(unittest.TestCase):
         ['./.github/ISSUE_TEMPLATE'],
         ['./LICENSE.md', './LICENSE.txt'],
         ['./.github/PULL_REQUEST_TEMPLATE'],
-        ['./README.md'],
+        ['./README.rst'],
         ['./TROUBLESHOOTING.md'],
-        ['./USAGE.md']
+        ['./USAGE.md'],
+        ['./VERSION.txt']
     ]
 
     def _all_file(self, files):
@@ -31,4 +32,5 @@ class RepoFiles(unittest.TestCase):
     def test_file_existence(self):
         missing = list(filter(self._all_file, self.FILES))
         self.assertEqual(len(missing), 0,
-                         "Files %s aren't found" % str(missing))
+                         "Files {} aren't found".format(missing)
+                         )

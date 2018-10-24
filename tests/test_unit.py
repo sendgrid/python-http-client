@@ -70,7 +70,7 @@ class TestClient(unittest.TestCase):
         self.api_key = "SENDGRID_API_KEY"
         self.request_headers = {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + self.api_key
+            'Authorization': 'Bearer {}'.format(self.api_key)
         }
         self.client = Client(host=self.host,
                              request_headers=self.request_headers,
