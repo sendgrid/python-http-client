@@ -21,11 +21,10 @@ install:
 - python setup.py install
 - pip install codecov
 script:
+- pycodestyle
 - coverage run -m unittest discover
 after_script:
 - codecov
-# Run pycodestyle
-- pycodestyle
 - python -m unittest discover
 - coverage run tests/test_unit.py
 notifications:
