@@ -6,7 +6,8 @@ from setuptools import find_packages, setup
 
 dir_path = os.path.abspath(os.path.dirname(__file__))
 readme = io.open(os.path.join(dir_path, 'README.rst'), encoding='utf-8').read()
-version = io.open(os.path.join(dir_path, 'VERSION.txt'), encoding='utf-8').read().strip()
+version = io.open(os.path.join(dir_path, 'VERSION.txt'),
+                  encoding='utf-8').read().strip()
 base_url = 'https://github.com/sendgrid/'
 
 copy_file(os.path.join(dir_path, 'VERSION.txt'),
