@@ -21,7 +21,7 @@ Table of Contents
 -  `Thanks <#thanks>`__
 -  `About <#about>`__
 -  `License <#license>`__
--  `Career opportunities <#career>`__
+-  `Career opportunities <#career-opportunities>`__
 
 Installation
 ============
