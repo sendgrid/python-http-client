@@ -133,6 +133,51 @@ Announcements
 
 All updates to this project is documented in our `CHANGELOG`_.
 
+PRODUCT • IRVINE
+Developer Experience Engineer
+As a Developer Experience Engineer at SendGrid, you will write high-quality, customer-friendly 
+code to help developers embed SendGrid’s marketing and transactional email functionality in 
+their applications.  In addition, you will be on the lookout to identify the features they need, and to 
+help the community to contribute their experience. You will be a key contributor to and maintainer 
+of our open source libraries and our process for providing World Class Developer Experience to 
+our community.
+
+What You’ll Do
+* Work in the customer’s best interest, always
+* Work closely with our current Developer Experience Engineering team and product manager, 
+support team, Learning Experience team, and others in the company
+* Maintain and improve the open source helper libraries/SDKs and sample code
+* Help make SendGrid’s libraries and community the best on the internet
+* Create new functionality, merge customer contributions, and build automations to improve the 
+current process
+* Love solving problems big or small in order to make the customer’s life easier
+* Live by and champion our cultural values of Happy, Hungry, Honest, and Humble
+About You
+* A love for making customers’ lives better
+* Desire to write high quality code that will scale well, be shared with the public, and scrutinized 
+by the community
+* Polyglot programmer: comfortable in several popular programming languages including Ruby, 
+Node, Go, PHP, Python, C#, Java
+* Well-versed in test-driven development and troubleshooting your own code
+* Strong experience with API integrations
+* Hands-on knowledge of Swagger/OpenAPI Spec
+* Experience with GitHub and open source communities in general
+* An appreciation for being part of a fast-paced environment
+* Fastidious attention to consistency and accuracy
+* Strong communication skills, ability to express technical concepts in verbal and written form 
+as needed
+* Ability to work in and across geographically distributed teams, build relationships, and 
+integrate your workflow into theirs
+* Bachelor's degree in CS or related equivalent experience required
+About SendGrid
+Founded in 2009, SendGrid built its reputation solving a key pain point of delivering transactional 
+emails that respond to customer behavior (purchase receipts, order confirmations, password 
+resets, etc.). In 2015, SendGrid expanded the platform into marketing email use cases, enabling 
+customers to have one platform for both transactional and marketing email. We deliver over 45 
+billion emails a month for customers like Airbnb, Spotify, and Yelp.
+
+
+
 Thanks
 ======
 
