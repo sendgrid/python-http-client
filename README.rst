@@ -172,7 +172,7 @@ If you're a software engineer who is passionate about #DeveloperExperience and/o
 .. _universalclient: https://github.com/dgreisen/universalclient
 .. _Developer Experience Team: mailto:dx@sendgrid.com
 .. _The MIT License (MIT): https://github.com/sendgrid/python-http-client/blob/master/LICENSE.txt
-:: _this is an incredible opportunity to join our #DX team: https://sendgrid.com/careers/role/1421152/?gh_jid=1421152
+.. _this is an incredible opportunity to join our #DX team: https://sendgrid.com/careers/role/1421152/?gh_jid=1421152
 
 .. |Build Status| image:: https://travis-ci.org/sendgrid/python-http-client.svg?branch=master
    :target: https://travis-ci.org/sendgrid/python-http-client
