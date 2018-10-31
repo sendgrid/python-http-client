@@ -85,7 +85,7 @@ done
 API_RELEASES_URL="https://api.github.com/repos/"${REPO_URI}"/releases"
 
 if [[ ! -f "$CHANGELOG_FILE" ]]; then
-	echo "ERROR: \"$CHANGELOG_FILE\" file doesn't exists."
+	echo "ERROR: \"$CHANGELOG_FILE\" file doesn't exist."
 	exit 1
 fi
 
