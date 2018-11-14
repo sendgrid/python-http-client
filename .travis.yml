@@ -9,12 +9,12 @@ python:
 # Enable 3.7 without globally enabling sudo and dist: xenial for other build jobs
 matrix:
   include:
-    - python: 3.7
-      dist: xenial
-      sudo: true
+  - python: 3.7
+    dist: xenial
+    sudo: true
 fail_fast: true
 before_install:
-    - pip install pycodestyle
+- pip install pycodestyle
 install:
 - pip install codecov
 - travis_retry pip install coverage
@@ -38,17 +38,16 @@ notifications:
       GitHub</a>'
     format: html
 after_success:
-  - codecov
+- codecov
 env:
   global:
   - secure: 7j0Ox9ZQss0PewrhGih86Ro0pQJpv23Bb0uABJV7kKN/W37ofrG0m6joamf8EhDDleaPoIqfbARhUpAlqFZF0Uo/5rREqpKkmP4e1zuYMu20VbFv6PXwZ+7ByAuKXN2/Xs54MImlL1+RaduMPNRpbcfT1mdqJgSC+3tVcWodzuRG9RPzxtWYLe93QfwNHV/VMsDPDIY12FZTErbXd/hBCEQXep5rNfK+TtLIGn0ZnS7TktTcD0ld+0ruhunbDjnkpXPVSJDuLaGRpotq0oyaGifnjVM5gVubP+KCL3h24tIXjJ7uI36Eu3EuF4qsg0fmNjuM/WjgwZ9Ta4I2MHlXtFs//qMMArOw5AvPg25adrEwGO4Veh3I3tJGL7hJeM7AZX4rAycXiGIHvpP2G/nX6e/EqRrnFBDOStmBhxEaknLJ/p2Cv6AOvxTMKDo8y+tJY1jp3H1iwCBYyW6KuFKVPDYtu8VLxJunaqNX4LxiJN7VHgvTSgqImjzEy5tVxVt079ciyeznSKKGHLHDAl1ioQpmv/Oyas007A4PKJJAf73go8Yt+GM6qe3K6U3tIBKWL8e0cK1kejk9TLC0D9KXbmhmK81QzpBdQfkrveYi/kucVv0zdrGl+Uy8zcq+vYxceyCdDYcTxCS66bWNFTD2t1dML5gRpdNVVSc27ZM9wtA=
   - secure: NlSZq/v2vjPQSSjlAbrM1JAfCdBSF/OqmO1HV/7U8HAmyGj7WjAcBkH5qWb5lP/xgUSzP3rEtNBJQNNHHiHHxSY0TtplUkJHrBqZOWGd4nG4GB/w8thj4nOiuok9lQhU2wi4mhRnzw2gGG9XpRpnYqL3a0CWWZ8XilSdL3M1H4fE2rwCSbKo35wpaapAT2BkN/zXeJ62wYX0vsz14EAzRSPlX+zfSo4esjig/B4ubgD1KKq3vRWGX0oU1/b6LYxrRl+OPqql9s3nKa0SuHtzLH4CVM0JTpJ8PxYq/LaLn03evAtgjR3aJJUlXaYL+yVBdATGrtyGUAJTVvRtbWsiaW4KNs+e5eWD+KM1ei18DYHWTMsjRbKLh3DrnUxFSFezMkOgUX4I9aohqPW9q9eTbSi2nR2mEcfDrGPArTZKtmGvx09gil5BAvsYc9A2Ob+TdV0N/bHROdK1R381mY4xWYytZ070+J4YHIKi/AwEJXtYgedc/PDr6fxh9RKDXNybyP2y/i+b72bnij9ZyJc0scDAlRQ4MU/h4cFDohI9quIYpJZ3N3eUeVp7TNX4AT2z+aNj74pBy15eMJv8WYhuBauk3jexhpMQi5yDr7aqlb2/NRyd91oP5QZOcjo7nnPcJp8QyvKtWFeID+c5dV3wcIMeOXmPz1KWWGlJMrV1vZI=
-
 deploy:
   provider: pypi
-  user: ""
+  user: thinkingserious
   password:
-    secure: ""
+    secure: LICjgQDHDZUYFbhrxd/4KGlamfMPMu7Oqf7DCskfJwQqvZTrC7VyvOsPqVtCIIpw/GyE606KagkTEV7nTvwxCWGDQpQ0gkLkUkDzxziJlwKJEjYA3rGzxHCqdGRF6mQLThIpaUwaIpM7Ue4LUyhMSNw7b84F/dg1gWzK+LuqzY6UIRUmu6O2XvwoCWnbmrDrqExgOB7oyBABqlhmISr5x8JeMH+HRSTaHQW0QWeckEYUBPlSdXa4lj1pMfaRIlU3r7vB0Tckh5wtgu/B0t5I7enrdYHxaqIVCsh65c/8pDxXpI7anRCrPFU3SEGbodfe6rtNY4WlhWKaTJIPpQbKFU/NyYIjbox6rhdJ/bbC7hMfAxqTWzp1urJQxdWd5cbDUwNWgukdP5KhWA+iqy35llfb2KlFG6AVKHy4iR93is8hGW2NwCsSlx18W82AqpARJA22TWEIbKbyy6+GoiiIEmXxWleqriTqLuTLpPjyAby4pcW5gqtjVzEJ7Gi+Eq+Ex0pMUdOpXIt3kIk8TAB2chlGWr7+j9GuDN89LY0brSM+Q0fP8X3gohVQI5Afl8A+5ygQW5l//y2dakZ0KLSj6JjSyWMWMahrPHpxdUeNKjfENscU00AJSrskoAJvU1N4oyLIABrA7oMG5ZJXpASsixBimypayCCPJe50p+tEWW4=
   on:
     branch: master
     condition: "$TRAVIS_TEST_RESULT = 0"
