@@ -1,26 +1,34 @@
 Hello! Thank you for choosing to help contribute to one of the SendGrid open source projects. There are many ways you can contribute and help is always welcome. We simply ask that you follow the following contribution policies.
 
-- [CLAs and CCLAs](#cla)
-- [Roadmap & Milestones](#roadmap)
+- [CLAs and CCLAs](#clas-and-cclas)
 - [Feature Request](#feature-request)
 - [Submit a Bug Report](#submit-a-bug-report)
+    - [Please use our Bug Report Template](#please-use-our-bug-report-template)
 - [Improvements to the Codebase](#improvements-to-the-codebase)
-- [Understanding the Code Base](#understanding-the-codebase)
+    - [Development Environment](#development-environment)
+        - [Install and Run Locally](#install-and-run-locally)
+            - [Prerequisites](#prerequisites)
+            - [Initial setup:](#initial-setup)
+            - [Execute:](#execute)
+- [Understanding the Code Base](#understanding-the-code-base)
 - [Testing](#testing)
 - [Testing Multiple Versions of Python](#testing-multiple-versions-of-python)
-- [Style Guidelines & Naming Conventions](#style-guidelines-and-naming-conventions)
+    - [Prerequisites:](#prerequisites)
+    - [Initial setup:](#initial-setup-1)
+    - [Execute:](#execute-1)
+- [Style Guidelines & Naming Conventions](#style-guidelines--naming-conventions)
 - [Creating a Pull Request](#creating-a-pull-request)
 - [Code Reviews](#code-reviews)
 
 <a name="roadmap"></a>
-We use [Milestones](https://github.com/sendgrid/python-http-client/milestones) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions and additional PRs are welcomed and encouraged.
+We use [Milestones](https://github.com/sendgrid/python-http-client/milestones) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions, and additional PRs are welcomed and encouraged.
 
 <a name="cla"></a>
 ## CLAs and CCLAs
 
 Before you get started, SendGrid requires that a SendGrid Contributor License Agreement (CLA) be filled out by every contributor to a SendGrid open source project.
 
-Our goal with the CLA is to clarify the rights of our contributors and reduce other risks arising from inappropriate contributions.  The CLA also clarifies the rights SendGrid holds in each contribution and helps to avoid misunderstandings over what rights each contributor is required to grant to SendGrid when making a contribution.  In this way the CLA encourages broad participation by our open source community and helps us build strong open source projects, free from any individual contributor withholding or revoking rights to any contribution.
+Our goal with the CLA is to clarify the rights of our contributors and reduce other risks arising from inappropriate contributions.  The CLA also clarifies the rights SendGrid holds in each contribution and helps to avoid misunderstandings over what rights each contributor is required to grant to SendGrid when making a contribution.  In this way, the CLA encourages broad participation by our open source community and helps us build strong open source projects, free from any individual contributor withholding or revoking rights to any contribution.
 
 SendGrid does not merge a pull request made against a SendGrid open source project until that pull request is associated with a signed CLA. Copies of the CLA are available [here](https://gist.github.com/SendGridDX/98b42c0a5d500058357b80278fde3be8#file-sendgrid_cla).
 
@@ -47,8 +55,8 @@ A software bug is a demonstrable issue in the code base. In order for us to diag
 
 Before you decide to create a new issue, please try the following:
 
-1. Check the GitHub issues tab if the identified issue has already been reported, if so, please add a +1 to the existing post.
-2. Update to the latest version of this code and check if issue has already been fixed
+1. Check the Github issues tab if the identified issue has already been reported, if so, please add a +1 to the existing post.
+2. Update to the latest version of this code and check if the issue has already been fixed
 3. Copy and fill in the Bug Report Template we have provided below
 
 ### Please use our Bug Report Template
@@ -187,6 +195,7 @@ Please run your code through:
    ```
 
 3. Create a new topic branch off the `development` branch to
+
    contain your feature, change, or fix:
 
    ```bash
@@ -196,7 +205,7 @@ Please run your code through:
 
 4. Commit your changes in logical chunks. Please adhere to these [git commit
    message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-   or your code is unlikely be merged into the main project. Use Git's
+   or your code is unlikely to be merged into the main project. Use Git's
    [interactive rebase](https://help.github.com/articles/interactive-rebase)
    feature to tidy up your commits before making them public.
 
