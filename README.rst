@@ -21,6 +21,7 @@ Table of Contents
 -  `Thanks <#thanks>`__
 -  `About <#about>`__
 -  `License <#license>`__
+-  `Career opportunities <#career-opportunities>`__
 
 Installation
 ============
@@ -151,6 +152,11 @@ License
 
 `The MIT License (MIT)`_
 
+Career opportunities
+=======
+
+If you're a software engineer who is passionate about #DeveloperExperience and/or #OpenSource, `this is an incredible opportunity to join our #DX team`_ as a Developer Experience Engineer and work with @thinkingserious and @aroach! Tell your friends :)
+
 .. _this repo: https://github.com/sendgrid/sendgrid-python
 .. _Example Code: https://github.com/sendgrid/python-http-client/tree/master/examples
 .. _milestones: https://github.com/sendgrid/python-http-client/milestones
@@ -166,6 +172,7 @@ License
 .. _universalclient: https://github.com/dgreisen/universalclient
 .. _Developer Experience Team: mailto:dx@sendgrid.com
 .. _The MIT License (MIT): https://github.com/sendgrid/python-http-client/blob/master/LICENSE.txt
+.. _this is an incredible opportunity to join our #DX team: https://sendgrid.com/careers/role/1421152/?gh_jid=1421152
 
 .. |Build Status| image:: https://travis-ci.org/sendgrid/python-http-client.svg?branch=master
    :target: https://travis-ci.org/sendgrid/python-http-client
