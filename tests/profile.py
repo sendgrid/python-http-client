@@ -161,5 +161,5 @@ def static_version():
     run_tested_code(client, 10)
 
 
-dynamic_result = dynamic_version()
-static_result = static_version()
+dynamic_version()
+static_version()
