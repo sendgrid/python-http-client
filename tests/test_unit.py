@@ -2,21 +2,20 @@ import pickle
 import unittest
 
 from python_http_client.client import Client
-from python_http_client.exceptions import (
-    handle_error,
-    HTTPError,
-    BadRequestsError,
-    NotFoundError,
-    UnsupportedMediaTypeError,
-    ServiceUnavailableError
-)
+from python_http_client.exceptions import (BadRequestsError, HTTPError,
+                                           NotFoundError,
+                                           ServiceUnavailableError,
+                                           UnsupportedMediaTypeError,
+                                           handle_error)
 
 try:
     # Python 3
     import urllib.request as urllib
+    from unittest import mock
 except ImportError:
     # Python 2
     import urllib2 as urllib
+    import mock
 
 try:
     basestring
@@ -119,6 +118,19 @@ class TestClient(unittest.TestCase):
         query_params = {'hello': 0, 'world': 1, 'ztest': [0, 1]}
         built_url = self.client._build_url(query_params)
         self.assertEqual(built_url, url)
+
+    @mock.patch('python_http_client.client.Client._make_request')
+    def test__urllib_headers(self, maker):
+        self.client._update_headers({'X-test': 'Test'})
+        self.client.get()
+        request = maker.call_args[0][1]
+        self.assertIn('X-test', request.headers)
+
+    @mock.patch('python_http_client.client.Client._make_request')
+    def test__urllib_method(self, maker):
+        self.client.delete()
+        request = maker.call_args[0][1]
+        self.assertEqual(request.get_method(), 'DELETE')
 
     def test__update_headers(self):
         request_headers = {'X-Test': 'Test'}
