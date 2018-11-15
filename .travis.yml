@@ -15,6 +15,7 @@ matrix:
 fail_fast: true
 before_install:
 - pip install pycodestyle
+- if [[ "$TRAVIS_PYTHON_VERSION" == 2.7* ]]; then pip install mock; fi
 install:
 - pip install codecov
 - travis_retry pip install coverage
