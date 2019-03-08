@@ -1,5 +1,6 @@
 """HTTP Client library"""
 import json
+import logging
 from .exceptions import handle_error
 
 try:
@@ -13,11 +14,13 @@ except ImportError:
     from urllib2 import HTTPError
     from urllib import urlencode
 
+_logger = logging.getLogger(__name__)
+
 
 class Response(object):
     """Holds the response from an API call."""
 
-    def __init__(self, response):
+    def __init__(self, response, method):
         """
         :param response: The return value from a open call
                          on a urllib.build_opener()
@@ -26,6 +29,14 @@ class Response(object):
         self._status_code = response.getcode()
         self._body = response.read()
         self._headers = response.info()
+        self._method = method
+
+    @property
+    def method(self):
+        """
+        :return: string, method of API call
+        """
+        return self._method
 
     @property
     def status_code(self):
@@ -169,7 +180,8 @@ class Client(object):
         """
         timeout = timeout or self.timeout
         try:
-            return opener.open(request, timeout=timeout)
+            return (opener.open(request, timeout=timeout),
+                    request.get_method())
         except HTTPError as err:
             exc = handle_error(err)
             exc.__cause__ = None
@@ -249,9 +261,22 @@ class Client(object):
                     request.add_header('Content-Type', 'application/json')
                 request.get_method = lambda: method
                 timeout = kwargs.pop('timeout', None)
-                return Response(
-                    self._make_request(opener, request, timeout=timeout)
+                _logger.info(u'{method} Request: {url}'.format(
+                    method=request.get_method(),
+                    url=request.get_full_url()))
+                if request.data:
+                    _logger.info(u'PAYLOAD: {data}'.format(
+                        data=request.data))
+                _logger.info(u'HEADERS: {headers}'.format(
+                    headers=request.headers))
+                response = Response(
+                    *self._make_request(opener, request, timeout=timeout)
                 )
+                _logger.info(u'{method} Response: {status} {body}'.format(
+                    method=response.method,
+                    status=response.status_code,
+                    body=response.body))
+                return response
             return http_request
         else:
             # Add a segment to the URL

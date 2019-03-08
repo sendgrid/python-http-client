@@ -96,3 +96,24 @@ HTTP request to delete elements in a source.
 response = client.api_keys._(api_keys_id).delete()
 # print(response) as shown above
 ```
+
+## LOGGING
+Logging namespace `python_http_client.client` is available on API Client.
+
+Example to stdout:
+
+```
+>>> import logging
+>>> import sys
+>>> logger = logging.getLogger('python_http_client.client')
+>>> logger.setLevel(logging.DEBUG)
+>>> handler = logging.StreamHandler(sys.stdout)
+>>> handler.setLevel(logging.DEBUG)
+>>> formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+>>> handler.setFormatter(formatter)
+>>> logger.addHandler(handler)
+>>> client.templates.get()
+2019-03-08 17:21:25,329 - python_http_client.client - INFO - GET Request: https://api.sendgrid.com/v3/templates
+2019-03-08 17:21:25,329 - python_http_client.client - INFO - HEADERS: {'Authorization': 'Bearer redacted_token', 'Accept': 'application/json', 'User-agent': 'sendgrid/5.6.0;python'}
+2019-03-08 17:21:25,696 - python_http_client.client - INFO - GET Response: 200 {"templates":[]}
+```
