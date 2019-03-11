@@ -261,18 +261,18 @@ class Client(object):
                     request.add_header('Content-Type', 'application/json')
                 request.get_method = lambda: method
                 timeout = kwargs.pop('timeout', None)
-                _logger.info(u'{method} Request: {url}'.format(
+                _logger.info('{method} Request: {url}'.format(
                     method=request.get_method(),
                     url=request.get_full_url()))
                 if request.data:
-                    _logger.info(u'PAYLOAD: {data}'.format(
+                    _logger.info('PAYLOAD: {data}'.format(
                         data=request.data))
-                _logger.info(u'HEADERS: {headers}'.format(
+                _logger.info('HEADERS: {headers}'.format(
                     headers=request.headers))
                 response = Response(
                     *self._make_request(opener, request, timeout=timeout)
                 )
-                _logger.info(u'{method} Response: {status} {body}'.format(
+                _logger.info('{method} Response: {status} {body}'.format(
                     method=response.method,
                     status=response.status_code,
                     body=response.body))
