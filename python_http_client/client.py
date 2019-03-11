@@ -185,6 +185,10 @@ class Client(object):
         except HTTPError as err:
             exc = handle_error(err)
             exc.__cause__ = None
+            _logger.info('{method} Response: {status} {body}'.format(
+                method=request.get_method(),
+                status=exc.status_code,
+                body=exc.body))
             raise exc
 
     def _(self, name):
