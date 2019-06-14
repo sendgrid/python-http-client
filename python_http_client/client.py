@@ -1,5 +1,6 @@
 """HTTP Client library"""
 import json
+
 from .exceptions import handle_error
 
 try:
@@ -62,6 +63,9 @@ class Response(object):
 class Client(object):
     """Quickly and easily access any REST or REST-like API."""
 
+    # These are the supported HTTP verbs
+    methods = {'delete', 'get', 'patch', 'post', 'put'}
+
     def __init__(self,
                  host,
                  request_headers=None,
@@ -88,8 +92,6 @@ class Client(object):
         self._version = version
         # _url_path keeps track of the dynamically built url
         self._url_path = url_path or []
-        # These are the supported HTTP verbs
-        self.methods = ['delete', 'get', 'patch', 'post', 'put']
         # APPEND SLASH set
         self.append_slash = append_slash
         self.timeout = timeout
@@ -211,44 +213,51 @@ class Client(object):
         if name in self.methods:
             method = name.upper()
 
-            def http_request(*_, **kwargs):
+            def http_request(
+                    request_body=None,
+                    query_params=None,
+                    request_headers=None,
+                    timeout=None,
+                    **_):
                 """Make the API call
-                :param args: unused
+                :param timeout: HTTP request timeout. Will be propagated to
+                    urllib client
+                :type timeout: float
+                :param request_headers: HTTP headers. Will be merged into
+                    current client object state
+                :type request_headers: dict
+                :param query_params: HTTP query parameters
+                :type query_params: dict
+                :param request_body: HTTP request body
+                :type request_body: string or json-serializable object
                 :param kwargs:
-                :return: Client object
+                :return: Response object
                 """
-                if 'request_headers' in kwargs:
-                    self._update_headers(kwargs['request_headers'])
-                if 'request_body' not in kwargs:
+                if request_headers:
+                    self._update_headers(request_headers)
+
+                if request_body is None:
                     data = None
                 else:
                     # Don't serialize to a JSON formatted str
                     # if we don't have a JSON Content-Type
-                    if 'Content-Type' in self.request_headers:
-                        if self.request_headers['Content-Type'] != \
-                           'application/json':
-                            data = kwargs['request_body'].encode('utf-8')
-                        else:
-                            data = json.dumps(
-                                kwargs['request_body']).encode('utf-8')
+                    if 'Content-Type' in self.request_headers and \
+                            self.request_headers['Content-Type'] != \
+                            'application/json':
+                        data = request_body.encode('utf-8')
                     else:
-                        data = json.dumps(
-                            kwargs['request_body']).encode('utf-8')
-
-                if 'query_params' in kwargs:
-                    params = kwargs['query_params']
-                else:
-                    params = None
+                        self.request_headers.setdefault(
+                            'Content-Type', 'application/json')
+                        data = json.dumps(request_body).encode('utf-8')
 
                 opener = urllib.build_opener()
-                request = urllib.Request(self._build_url(params), data=data)
-                if self.request_headers:
-                    for key, value in self.request_headers.items():
-                        request.add_header(key, value)
-                if data and ('Content-Type' not in self.request_headers):
-                    request.add_header('Content-Type', 'application/json')
+                request = urllib.Request(
+                    self._build_url(query_params),
+                    headers=self.request_headers,
+                    data=data,
+                )
                 request.get_method = lambda: method
-                timeout = kwargs.pop('timeout', None)
+
                 return Response(
                     self._make_request(opener, request, timeout=timeout)
                 )
