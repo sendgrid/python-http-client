@@ -1,9 +1,9 @@
 # How To Contribute to Twilio SendGrid Repositories via GitHub
 
-Contributing to the Twilio SSendGrid is easy! All you need to do is find an open issue (see the bottom of this page for a list of repositories containing open issues), fix it and submit a pull request. Once you have submitted your pull request, the team can easily review it before it is merged into the repository.
+Contributing to the Twilio SendGrid is easy! All you need to do is find an open issue (see the bottom of this page for a list of repositories containing open issues), fix it and submit a pull request. Once you have submitted your pull request, the team can easily review it before it is merged into the repository.
 To make a pull request, follow these steps:
 
-1. Log into GitHub. If you do not already have a GitHub account, you will have to create one in order to submit a change. Click the Sign up link in the upper right-hand corner to create an account. Enter your username, password, and email address. If you are an employee of Twilio SSendGrid, please use your full name with your GitHub account and enter Twilio SSendGrid as your company so we can easily identify you.
+1. Log into GitHub. If you do not already have a GitHub account, you will have to create one in order to submit a change. Click the Sign up link in the upper right-hand corner to create an account. Enter your username, password, and email address. If you are an employee of Twilio SendGrid, please use your full name with your GitHub account and enter Twilio SendGrid as your company so we can easily identify you.
    <img src="/static/img/github-signup.png" width="800">
 2. **[Fork](https://help.github.com/fork-a-repo/)** the [python-http-client](https://github.com/sendgrid/python-http-client) repository:
 
