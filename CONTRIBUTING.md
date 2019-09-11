@@ -1,6 +1,7 @@
 Hello! Thank you for choosing to help contribute to one of the Twilio SendGrid open source projects. There are many ways you can contribute and help is always welcome. We simply ask that you follow the following contribution policies.
 
-- [CLAs and CCLAs](#clas-and-cclas)
+**All third party contributors acknowledge that any contributions they provide will be made under the same open source license that the open source project is provided under.**
+
 - [Feature Request](#feature-request)
 - [Submit a Bug Report](#submit-a-bug-report)
     - [Please use our Bug Report Template](#please-use-our-bug-report-template)
@@ -22,17 +23,6 @@ Hello! Thank you for choosing to help contribute to one of the Twilio SendGrid o
 
 <a name="roadmap"></a>
 We use [Milestones](https://github.com/sendgrid/python-http-client/milestones) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions, and additional PRs are welcomed and encouraged.
-
-<a name="cla"></a>
-## CLAs and CCLAs
-
-Before you get started, Twilio SendGrid requires that a Twilio SendGrid Contributor License Agreement (CLA) be filled out by every contributor to a Twilio SendGrid open source project.
-
-Our goal with the CLA is to clarify the rights of our contributors and reduce other risks arising from inappropriate contributions.  The CLA also clarifies the rights Twilio SendGrid holds in each contribution and helps to avoid misunderstandings over what rights each contributor is required to grant to Twilio SendGrid when making a contribution.  In this way, the CLA encourages broad participation by our open source community and helps us build strong open source projects, free from any individual contributor withholding or revoking rights to any contribution.
-
-Twilio SendGrid does not merge a pull request made against a Twilio SendGrid open source project until that pull request is associated with a signed CLA. Copies of the CLA are available [here](https://gist.github.com/SendGridDX/98b42c0a5d500058357b80278fde3be8#file-sendgrid_cla).
-
-When you create a Pull Request, after a few seconds, a comment will appear with a link to the CLA. Click the link and fill out the brief form and then click the "I agree" button and you are all set. You will not be asked to re-sign the CLA unless we make a change.
 
 There are a few ways to contribute, which we'll enumerate below:
 
