@@ -9,7 +9,7 @@ class DateRangeTest(unittest.TestCase):
         self.openlicensefile = os.path.join(
                                 os.path.dirname(__file__),
                                 '../LICENSE.txt')
-        self.pattern = 'Copyright (c) 2012 - %s SendGrid, Inc.' % (
+        self.pattern = 'Copyright (c) 2012 - %s Twilio SendGrid, Inc.' % (
                         time.strftime("%Y"))
         fh = open(self.openlicensefile)
         self.licensefile = fh.read()
