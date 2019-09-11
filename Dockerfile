@@ -28,7 +28,7 @@ RUN python2.7 get-pip.py && \
     pip install tox && \
     rm get-pip.py
 
-# set up default sendgrid env
+# set up default Twilio SendGrid env
 WORKDIR /root/sources
 RUN git clone https://github.com/sendgrid/sendgrid-python.git && \
     git clone https://github.com/sendgrid/python-http-client.git

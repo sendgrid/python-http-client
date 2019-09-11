@@ -1,11 +1,11 @@
-.. image:: https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png
+.. image:: https://github.com/sendgrid/sendgrid-python/raw/master/twilio_sendgrid_logo.png
    :target: https://www.sendgrid.com
 
 |Build Status| |Email Notifications Badge| |Twitter Follow| |Codecov branch| |Code Climate| |Python Versions| |PyPI Version| |GitHub contributors| |MIT licensed|
 
 **Quickly and easily access any RESTful or RESTful-like API.**
 
-If you are looking for the SendGrid API client library, please see `this repo`_.
+If you are looking for the Twilio SendGrid API client library, please see `this repo`_.
 
 Table of Contents
 =================
@@ -47,7 +47,7 @@ or
 API Key
 -------
 
-Store your SendGrid API key in a ``.env`` file.
+Store your Twilio SendGrid API key in a ``.env`` file.
 
 .. code:: bash
 
@@ -142,10 +142,10 @@ We were inspired by the work done on `birdy`_ and `universalclient`_.
 About
 =====
 
-**python-http-client** is guided and supported by the SendGrid `Developer Experience Team`_.
+**python-http-client** is guided and supported by the Twilio SendGrid `Developer Experience Team`_.
 
-**python-http-client** is maintained and funded by SendGrid, Inc.
-The names and logos for **python-http-client** are trademarks of SendGrid, Inc.
+**python-http-client** is maintained and funded by Twilio SendGrid, Inc.
+The names and logos for **python-http-client** are trademarks of Twilio SendGrid, Inc.
 
 License
 =======
