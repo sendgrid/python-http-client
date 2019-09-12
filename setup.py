@@ -25,6 +25,7 @@ setup(
     include_package_data=True,
     license='MIT',
     description='HTTP REST client, simplified for Python',
+    long_description_content_type = 'text/x-rst',
     long_description=readme,
     keywords=[
         'REST',
