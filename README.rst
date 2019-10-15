@@ -131,6 +131,8 @@ Please see our `troubleshooting guide`_ for any issues.
 Announcements
 =============
 
+If you're a software engineer who is passionate about #DeveloperExperience and/or #OpenSource, this is an incredible opportunity to join our #DX team as a Developer Experience Engineer and work with @thinkingserious and @aroach! Tell your friends :)
+
 All updates to this project is documented in our `CHANGELOG`_.
 
 Thanks
