@@ -17,33 +17,18 @@ before_install:
 - pip install pycodestyle
 - if [[ "$TRAVIS_PYTHON_VERSION" == 2.7* ]]; then pip install mock; fi
 install:
-- pip install codecov
-- travis_retry pip install coverage
-- python setup.py install
-- pip install codecov
+- pip install virtualenv --upgrade
+- make install
+- make test-install
 script:
 - pycodestyle
 - coverage run -m unittest discover
 after_script:
 - codecov
-- python -m unittest discover
+- make test
 - coverage run tests/test_unit.py
-notifications:
-  hipchat:
-    rooms:
-      secure: HJMoEh7l01B8tqQcdp4c4Og2lFY2QCAPnt++a4InM1zF+pbQuALQvS50ILJPc7qoBskqfvXhX9t+coSaKVIMPFuXlHC9haYCBxv0TSTA/j/9SnDGwS70U2YWDIi20/YZrPSN874woL6F/D8/vB+IwYxJWIL+ofasXPm/v+QHKLjEKLggyK8SHsU2BPH++0JluelpnaBt6JcCCY6IL8wu/Bf6ohFHf67cwITPzA33Wmla51W5zHSlaVsqKM+UhK5EWCCvU51t/imfL8cf8h7zNxveqGbaq5Fqk7lBEmHtYdUm0P5RdsHHFiyWvf3Kk8kYBkA4VaSqSdV10g/Q2sURW0F4s6ULJqRBtTIcQFKgUcrkBM22+/I8MrfRkVOUrrlPugOeshtuac3xN0tQBZYc1yIik914NeL1im/doZ5MjsNlQckmF8tmwz9uPMpQBWHRGQwc72EiJ3ANfogMhZhI3GIKQffHP8aO+JTCyzzxQ1fUerF4/YgsciAZdbBRVKmYdElvix6vVxS1QyPEjr3AHzhCFso78vRla7yAXoI2RrzbsnoPo/TBsof4sqbtgPgGWSBPJiZOPh3WNZ5NSUjlefk1PyYsdqM+Ywhk8SApo8eKrDK2ghiKmqSB3yDIs4WJN91CJnhUgt8fl5Q2Iz1pCm/999ma+y/VXOqURudE5wg=
-    template:
-    - '<a href="https://travis-ci.org/%{repository}/builds/%{build_id}">%{repository}
-      Build %{build_number}</a> on branch <i>%{branch}</i> by %{author}: <strong>%{message}</strong>
-      <a href="https://github.com/sendgrid/%{repository}/commits/%{commit}">View on
-      GitHub</a>'
-    format: html
 after_success:
 - codecov
-env:
-  global:
-  - secure: 7j0Ox9ZQss0PewrhGih86Ro0pQJpv23Bb0uABJV7kKN/W37ofrG0m6joamf8EhDDleaPoIqfbARhUpAlqFZF0Uo/5rREqpKkmP4e1zuYMu20VbFv6PXwZ+7ByAuKXN2/Xs54MImlL1+RaduMPNRpbcfT1mdqJgSC+3tVcWodzuRG9RPzxtWYLe93QfwNHV/VMsDPDIY12FZTErbXd/hBCEQXep5rNfK+TtLIGn0ZnS7TktTcD0ld+0ruhunbDjnkpXPVSJDuLaGRpotq0oyaGifnjVM5gVubP+KCL3h24tIXjJ7uI36Eu3EuF4qsg0fmNjuM/WjgwZ9Ta4I2MHlXtFs//qMMArOw5AvPg25adrEwGO4Veh3I3tJGL7hJeM7AZX4rAycXiGIHvpP2G/nX6e/EqRrnFBDOStmBhxEaknLJ/p2Cv6AOvxTMKDo8y+tJY1jp3H1iwCBYyW6KuFKVPDYtu8VLxJunaqNX4LxiJN7VHgvTSgqImjzEy5tVxVt079ciyeznSKKGHLHDAl1ioQpmv/Oyas007A4PKJJAf73go8Yt+GM6qe3K6U3tIBKWL8e0cK1kejk9TLC0D9KXbmhmK81QzpBdQfkrveYi/kucVv0zdrGl+Uy8zcq+vYxceyCdDYcTxCS66bWNFTD2t1dML5gRpdNVVSc27ZM9wtA=
-  - secure: NlSZq/v2vjPQSSjlAbrM1JAfCdBSF/OqmO1HV/7U8HAmyGj7WjAcBkH5qWb5lP/xgUSzP3rEtNBJQNNHHiHHxSY0TtplUkJHrBqZOWGd4nG4GB/w8thj4nOiuok9lQhU2wi4mhRnzw2gGG9XpRpnYqL3a0CWWZ8XilSdL3M1H4fE2rwCSbKo35wpaapAT2BkN/zXeJ62wYX0vsz14EAzRSPlX+zfSo4esjig/B4ubgD1KKq3vRWGX0oU1/b6LYxrRl+OPqql9s3nKa0SuHtzLH4CVM0JTpJ8PxYq/LaLn03evAtgjR3aJJUlXaYL+yVBdATGrtyGUAJTVvRtbWsiaW4KNs+e5eWD+KM1ei18DYHWTMsjRbKLh3DrnUxFSFezMkOgUX4I9aohqPW9q9eTbSi2nR2mEcfDrGPArTZKtmGvx09gil5BAvsYc9A2Ob+TdV0N/bHROdK1R381mY4xWYytZ070+J4YHIKi/AwEJXtYgedc/PDr6fxh9RKDXNybyP2y/i+b72bnij9ZyJc0scDAlRQ4MU/h4cFDohI9quIYpJZ3N3eUeVp7TNX4AT2z+aNj74pBy15eMJv8WYhuBauk3jexhpMQi5yDr7aqlb2/NRyd91oP5QZOcjo7nnPcJp8QyvKtWFeID+c5dV3wcIMeOXmPz1KWWGlJMrV1vZI=
 deploy:
   provider: pypi
   user: thinkingserious
