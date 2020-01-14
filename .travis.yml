@@ -13,7 +13,7 @@ matrix:
     sudo: true
 fail_fast: true
 before_install:
-- pip install pycodestyle
+- pip install pycodestyle coverage codecov
 - if [[ "$TRAVIS_PYTHON_VERSION" == 2.7* ]]; then pip install mock; fi
 install:
 - pip install virtualenv --upgrade

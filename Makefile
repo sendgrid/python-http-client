@@ -7,9 +7,6 @@ venv:
 install: venv
 	. venv/bin/activate; pip install -r requirements.txt
 
-test-install: install
-	. venv/bin/activate; pip install -r tests/requirements.txt
-
 test:
 	. venv/bin/activate; python -m unittest discover -v
 
