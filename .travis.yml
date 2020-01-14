@@ -6,7 +6,6 @@ python:
 - '3.4'
 - '3.5'
 - '3.6'
-# Enable 3.7 without globally enabling sudo and dist: xenial for other build jobs
 matrix:
   include:
   - python: 3.7
@@ -31,9 +30,9 @@ after_success:
 - codecov
 deploy:
   provider: pypi
-  user: thinkingserious
+  user: __token__
   password:
-    secure: LICjgQDHDZUYFbhrxd/4KGlamfMPMu7Oqf7DCskfJwQqvZTrC7VyvOsPqVtCIIpw/GyE606KagkTEV7nTvwxCWGDQpQ0gkLkUkDzxziJlwKJEjYA3rGzxHCqdGRF6mQLThIpaUwaIpM7Ue4LUyhMSNw7b84F/dg1gWzK+LuqzY6UIRUmu6O2XvwoCWnbmrDrqExgOB7oyBABqlhmISr5x8JeMH+HRSTaHQW0QWeckEYUBPlSdXa4lj1pMfaRIlU3r7vB0Tckh5wtgu/B0t5I7enrdYHxaqIVCsh65c/8pDxXpI7anRCrPFU3SEGbodfe6rtNY4WlhWKaTJIPpQbKFU/NyYIjbox6rhdJ/bbC7hMfAxqTWzp1urJQxdWd5cbDUwNWgukdP5KhWA+iqy35llfb2KlFG6AVKHy4iR93is8hGW2NwCsSlx18W82AqpARJA22TWEIbKbyy6+GoiiIEmXxWleqriTqLuTLpPjyAby4pcW5gqtjVzEJ7Gi+Eq+Ex0pMUdOpXIt3kIk8TAB2chlGWr7+j9GuDN89LY0brSM+Q0fP8X3gohVQI5Afl8A+5ygQW5l//y2dakZ0KLSj6JjSyWMWMahrPHpxdUeNKjfENscU00AJSrskoAJvU1N4oyLIABrA7oMG5ZJXpASsixBimypayCCPJe50p+tEWW4=
+    secure: pFkY2d3epVf8qqJrlr/jtX+ssB1R5xHVhxpncKedCD9m837jtXn4Kz+tfhGUmPgg6SQm5x+uchDJZ7i8BPHTsDhXgz7OZ+O/iDOVNLY8aZHoo/slBeruxqXRFo6oYY+E8ISlLQWqteENAbZ4u5qDTEqjg3PS2EnPda2pXC79R0XRwlr7zGoyhDj6G2uqutPU4fbWJ4O5TYaXiC01eDthpu4Z2jqirBg7AdIQp3uAj85DrVDmmb1v9S2cgx0vHhdSWlebCmyxt8uY/iszC3tOK4ekB6af1u6m6fxLEM5ozhZq0JXoSg4FlqBlv9CC2/QRvemPQo7cZPhvHmbTEFjTPoM5tuBgfOmamWJFLd25saw1zQ6UxfOhNEDnitr7uy63kPi9mvmq0gXjWECf0G+N9wIuLO/WcDOp4PkIoPHsH5h2EqLul3xvu9CXQ6pOeMd3Co2JKtdaVVJcAHiq0l5mlxn8Q403meYt/qlBWR6O5ze2LU3ib3uu441DtqtLulYeWk6zknPP6i7yixTzRxGghtvLoBC+77f6nSdjNljV8ajcNSCZe+6QXQHCZYWhcgQTs6Y/Y8lq4EeN5Zlywzpr/3LkraRrCIk6+Qn94OOx+4Hn2IZqBhg01C5vs2OK0a9/hnsxsEr7C/3nHPbfFfrKl/6kKjPTLLk+NlpPKVioEQY=
   on:
     branch: master
     condition: "$TRAVIS_TEST_RESULT = 0"
