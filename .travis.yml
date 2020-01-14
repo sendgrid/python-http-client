@@ -20,7 +20,7 @@ install:
 - make install
 - make test-install
 script:
-- pycodestyle
+- pycodestyle --exclude=venv
 - coverage run -m unittest discover
 after_script:
 - codecov
