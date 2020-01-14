@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+[2019-09-12] Version 3.2.1
+---------------------------
+
 [2019-09-11] Version 3.2.0
 ---------------------------
 
