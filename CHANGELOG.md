@@ -3,7 +3,9 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [3.2.0] - 2019-09-11
+[2019-09-11] Version 3.2.0
+---------------------------
+
 ### Added
 - [PR #91](https://github.com/sendgrid/python-http-client/pull/91): Add support for Python 3.7. Thanks, [Hugo van Kemenade](https://github.com/hugovk)!
 - [PR #96](https://github.com/sendgrid/python-http-client/pull/96): Create a use cases directory. Thanks, [
