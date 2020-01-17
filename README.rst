@@ -165,7 +165,7 @@ License
 .. _birdy: https://github.com/inueni/birdy
 .. _universalclient: https://github.com/dgreisen/universalclient
 .. _Developer Experience Team: mailto:dx@sendgrid.com
-.. _The MIT License (MIT): https://github.com/sendgrid/python-http-client/blob/master/LICENSE.txt
+.. _The MIT License (MIT): https://github.com/sendgrid/python-http-client/blob/master/LICENSE.md
 .. _this is an incredible opportunity to join our #DX team: https://sendgrid.com/careers/role/1421152/?gh_jid=1421152
 
 .. |Build Status| image:: https://travis-ci.org/sendgrid/python-http-client.svg?branch=master
@@ -185,4 +185,4 @@ License
 .. |GitHub contributors| image:: https://img.shields.io/github/contributors/sendgrid/python-http-client.svg
    :target: https://github.com/sendgrid/python-http-client/graphs/contributors
 .. |MIT licensed| image:: https://img.shields.io/badge/license-MIT-blue.svg
-   :target: https://github.com/sendgrid/python-http-client/blob/master/LICENSE.txt
+   :target: https://github.com/sendgrid/python-http-client/blob/master/LICENSE.md
