@@ -3,6 +3,18 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+[2020-01-22] Version 3.2.2
+--------------------------
+**Library - Docs**
+- [PR #136](https://github.com/sendgrid/python-http-client/pull/136): baseline all the templated markdown docs. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Fix**
+- [PR #135](https://github.com/sendgrid/python-http-client/pull/135): version number to match most recently released. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Library - Chore**
+- [PR #134](https://github.com/sendgrid/python-http-client/pull/134): prep the repo for automated releasing. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+
 [2019-09-12] Version 3.2.1
 ---------------------------
 
