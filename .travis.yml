@@ -37,3 +37,4 @@ deploy:
     branch: master
     condition: "$TRAVIS_TEST_RESULT = 0"
     tags: true
+    skip_cleanup: true
