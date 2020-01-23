@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+[2020-01-23] Version 3.2.4
+--------------------------
+**Library - Fix**
+- [PR #138](https://github.com/sendgrid/python-http-client/pull/138): update pypi token to use environment variable. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+
 [2020-01-22] Version 3.2.3
 --------------------------
 **Library - Fix**
