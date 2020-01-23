@@ -32,9 +32,10 @@ deploy:
   provider: pypi
   user: __token__
   password:
-    secure: pFkY2d3epVf8qqJrlr/jtX+ssB1R5xHVhxpncKedCD9m837jtXn4Kz+tfhGUmPgg6SQm5x+uchDJZ7i8BPHTsDhXgz7OZ+O/iDOVNLY8aZHoo/slBeruxqXRFo6oYY+E8ISlLQWqteENAbZ4u5qDTEqjg3PS2EnPda2pXC79R0XRwlr7zGoyhDj6G2uqutPU4fbWJ4O5TYaXiC01eDthpu4Z2jqirBg7AdIQp3uAj85DrVDmmb1v9S2cgx0vHhdSWlebCmyxt8uY/iszC3tOK4ekB6af1u6m6fxLEM5ozhZq0JXoSg4FlqBlv9CC2/QRvemPQo7cZPhvHmbTEFjTPoM5tuBgfOmamWJFLd25saw1zQ6UxfOhNEDnitr7uy63kPi9mvmq0gXjWECf0G+N9wIuLO/WcDOp4PkIoPHsH5h2EqLul3xvu9CXQ6pOeMd3Co2JKtdaVVJcAHiq0l5mlxn8Q403meYt/qlBWR6O5ze2LU3ib3uu441DtqtLulYeWk6zknPP6i7yixTzRxGghtvLoBC+77f6nSdjNljV8ajcNSCZe+6QXQHCZYWhcgQTs6Y/Y8lq4EeN5Zlywzpr/3LkraRrCIk6+Qn94OOx+4Hn2IZqBhg01C5vs2OK0a9/hnsxsEr7C/3nHPbfFfrKl/6kKjPTLLk+NlpPKVioEQY=
+    secure: $PYPI_TOKEN
   on:
     branch: master
     condition: "$TRAVIS_TEST_RESULT = 0"
     tags: true
     skip_cleanup: true
+    python: "3.6"
