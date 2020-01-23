@@ -38,3 +38,4 @@ deploy:
     condition: "$TRAVIS_TEST_RESULT = 0"
     tags: true
     skip_cleanup: true
+    python: "3.6"
