@@ -1,7 +1,7 @@
 import io
 import os
 from distutils.file_util import copy_file
-from setuptools import find_packages, setup
+from setuptools import setup
 
 
 dir_path = os.path.abspath(os.path.dirname(__file__))
@@ -21,7 +21,7 @@ setup(
     author_email='dx@sendgrid.com',
     url='{}python-http-client'.format(base_url),
     download_url='{}python-http-client/tarball/{}'.format(base_url, version),
-    packages=find_packages(),
+    packages=['python_http_client'],
     include_package_data=True,
     license='MIT',
     description='HTTP REST client, simplified for Python',
