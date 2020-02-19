@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+[2020-02-19] Version 3.2.5
+--------------------------
+**Library - Fix**
+- [PR #132](https://github.com/sendgrid/python-http-client/pull/132): Exclude tests directory from package data. Thanks to [@bwind](https://github.com/bwind)!
+
+
 [2020-01-23] Version 3.2.4
 --------------------------
 **Library - Fix**
