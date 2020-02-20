@@ -1,33 +1,29 @@
+dist: xenial # required for Python >= 3.7
 language: python
-sudo: false
 cache: pip
 python:
-- '2.7'
-- '3.4'
-- '3.5'
-- '3.6'
-matrix:
-  include:
-  - python: 3.7
-    dist: xenial
-    sudo: true
-fail_fast: true
+  - '2.7'
+  - '3.4'
+  - '3.5'
+  - '3.6'
+  - '3.7'
+  - '3.8'
 before_install:
-- pip install pycodestyle coverage codecov
-- if [[ "$TRAVIS_PYTHON_VERSION" == 2.7* ]]; then pip install mock; fi
+  - pip install pycodestyle coverage codecov
+  - if [[ "$TRAVIS_PYTHON_VERSION" == 2.7* ]]; then pip install mock; fi
 install:
-- pip install virtualenv --upgrade
-- make install
-- make test-install
+  - pip install virtualenv --upgrade
+  - make install
+  - make test-install
 script:
-- pycodestyle --exclude=venv
-- coverage run -m unittest discover
+  - pycodestyle --exclude=venv
+  - coverage run -m unittest discover
 after_script:
-- codecov
-- make test
-- coverage run tests/test_unit.py
+  - codecov
+  - make test
+  - coverage run tests/test_unit.py
 after_success:
-- codecov
+  - codecov
 deploy:
   provider: pypi
   user: __token__
@@ -38,4 +34,4 @@ deploy:
     condition: "$TRAVIS_TEST_RESULT = 0"
     tags: true
     skip_cleanup: true
-    python: "3.6"
+    python: '3.6'
