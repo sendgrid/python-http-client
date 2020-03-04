@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+[2020-03-04] Version 3.2.6
+--------------------------
+**Library - Chore**
+- [PR #140](https://github.com/sendgrid/python-http-client/pull/140): add Python 3.8 to Travis. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
 [2020-02-19] Version 3.2.5
 --------------------------
 **Library - Fix**
