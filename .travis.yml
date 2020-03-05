@@ -27,11 +27,10 @@ after_success:
 deploy:
   provider: pypi
   user: __token__
-  password:
-    secure: $PYPI_TOKEN
+  password: $PYPI_TOKEN
+  skip_cleanup: true
   on:
     branch: master
     condition: "$TRAVIS_TEST_RESULT = 0"
     tags: true
-    skip_cleanup: true
     python: '3.6'
