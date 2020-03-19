@@ -5,9 +5,10 @@ from setuptools import setup
 
 
 dir_path = os.path.abspath(os.path.dirname(__file__))
-readme = io.open(os.path.join(dir_path, 'README.rst'), encoding='utf-8').read()
-version = io.open(os.path.join(dir_path, 'VERSION.txt'),
-                  encoding='utf-8').read().strip()
+with io.open(os.path.join(dir_path, 'README.rst'), encoding='utf-8') as readme_file:
+    readme = readme_file.read()
+with io.open(os.path.join(dir_path, 'VERSION.txt'), encoding='utf-8') as version_file:
+    version = version_file.read().strip()
 base_url = 'https://github.com/sendgrid/'
 
 copy_file(os.path.join(dir_path, 'VERSION.txt'),

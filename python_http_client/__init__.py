@@ -19,4 +19,5 @@ from .exceptions import (  # noqa
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 if os.path.isfile(os.path.join(dir_path, 'VERSION.txt')):
-    __version__ = open(os.path.join(dir_path, 'VERSION.txt')).read().strip()
+    with open(os.path.join(dir_path, 'VERSION.txt')) as version_file:
+        __version__ = version_file.read().strip()
