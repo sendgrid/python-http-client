@@ -1,17 +1,21 @@
 import io
 import os
+
 from distutils.file_util import copy_file
 from setuptools import setup
 
-
 dir_path = os.path.abspath(os.path.dirname(__file__))
-with io.open(os.path.join(dir_path, 'README.rst'), encoding='utf-8') as readme_file:
+readme_path = os.path.join(dir_path, 'README.rst')
+version_path = os.path.join(dir_path, 'VERSION.txt')
+
+with io.open(readme_path, encoding='utf-8') as readme_file:
     readme = readme_file.read()
-with io.open(os.path.join(dir_path, 'VERSION.txt'), encoding='utf-8') as version_file:
+with io.open(version_path, encoding='utf-8') as version_file:
     version = version_file.read().strip()
+
 base_url = 'https://github.com/sendgrid/'
 
-copy_file(os.path.join(dir_path, 'VERSION.txt'),
+copy_file(version_path,
           os.path.join(dir_path, 'python_http_client', 'VERSION.txt'),
           verbose=0)
 

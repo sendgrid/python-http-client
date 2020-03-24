@@ -9,14 +9,11 @@ class DateRangeTest(unittest.TestCase):
         self.openlicensefile = os.path.join(
                                 os.path.dirname(__file__),
                                 '../LICENSE.md')
-        self.pattern = 'Copyright (c) %s Twilio SendGrid, Inc.' % (
+        self.pattern = 'Copyright (C) %s, Twilio SendGrid, Inc.' % (
                         time.strftime("%Y"))
         fh = open(self.openlicensefile)
-        self.licensefile = fh.read()
+        self.license_file = fh.read()
         fh.close()
 
     def test__daterange(self):
-        try:
-            self.assertIn(self.pattern, self.licensefile)
-        except AssertionError:
-            warnings.warn("License file does not contain a current year!")
+        self.assertIn(self.pattern, self.license_file)
