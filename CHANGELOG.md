@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+[2020-04-01] Version 3.2.7
+--------------------------
+**Library - Fix**
+- [PR #128](https://github.com/sendgrid/python-http-client/pull/128): Remove ResourceWarning on module import. Thanks to [@connesy](https://github.com/connesy)!
+
+
 [2020-03-04] Version 3.2.6
 --------------------------
 **Library - Chore**
