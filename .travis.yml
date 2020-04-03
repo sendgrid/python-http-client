@@ -34,3 +34,11 @@ deploy:
     condition: "$TRAVIS_TEST_RESULT = 0"
     tags: true
     python: '3.6'
+
+notifications:
+  slack:
+    if: branch = master
+    on_success: never
+    on_failure: change
+    rooms:
+      - secure: nlMB50M0ay7TeG9pf4IKLUXTfaw6dRS14DMa59l3dAy20bLgg4QSuxl/8lsO3tdBzTjONlpzX5NCR184WO98Kf6dJuYGp5OzfaV2DYYMu12ksbt6bSWyPiYxg3FtKlgWowJs1nRytXz6QoaumZjtoPxfJptq+bUKeZu+4sRT6NButyuUHHAwlOinjZF2UtENoi0zxia+v8EHdEgSJq1HEBmZ+4X/ZUerZndYXM5Lxfy+NHvFCxu/2/D4oQcu92Wfp+/Z1lWNeemspd+XJ5ZVNmB+kJvF8A0O+AFFlGyT8nSimfqyJoxWDT0rQm9u6MtWJol1Jso7iSe0J00fVmgdEFQMLmdcMChAGcGFzFem6C9cMA6xOfDeXS1DosHCObItVrU+YtQYPHzDN2Ubpr1T495+kvdGHVgcYy3UmOFb8Vc0NbQ7nabtlBAlLR2QcouusJmGyjTt7hDrZz6XynKgTZ4vEq7/x3aRgcYD9Oei5fZ2enjzbX3c2Jv7vrzhwAsNp0N+FNx6Nnl1v+UzQtS8XyUCOLK+LYbq+cYKaToowHNWkZM9+0pcdX8DwAHB05aiIBfE18JbjdY0bz1P+4+hmStCUPIjEKyjEPBIuXKMsYCjr092HrJkSMhGWUwJFX+R5hmACm+cQQFDjXXrpzpnXr2xHgbRbb0tX73nchF25kY=
