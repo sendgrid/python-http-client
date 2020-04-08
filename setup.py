@@ -23,7 +23,7 @@ setup(
     name='python_http_client',
     version=version,
     author='Elmer Thomas',
-    author_email='dx@sendgrid.com',
+    author_email='help@twilio.com',
     url='{}python-http-client'.format(base_url),
     download_url='{}python-http-client/tarball/{}'.format(base_url, version),
     packages=['python_http_client'],

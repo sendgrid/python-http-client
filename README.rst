@@ -141,8 +141,6 @@ We were inspired by the work done on `birdy`_ and `universalclient`_.
 About
 =====
 
-**python-http-client** is guided and supported by the Twilio SendGrid `Developer Experience Team`_.
-
 **python-http-client** is maintained and funded by Twilio SendGrid, Inc.
 The names and logos for **python-http-client** are trademarks of Twilio SendGrid, Inc.
 
@@ -164,7 +162,6 @@ License
 .. _CHANGELOG: https://github.com/sendgrid/python-http-client/blob/master/CHANGELOG.md
 .. _birdy: https://github.com/inueni/birdy
 .. _universalclient: https://github.com/dgreisen/universalclient
-.. _Developer Experience Team: mailto:dx@sendgrid.com
 .. _The MIT License (MIT): https://github.com/sendgrid/python-http-client/blob/master/LICENSE.md
 .. _this is an incredible opportunity to join our #DX team: https://sendgrid.com/careers/role/1421152/?gh_jid=1421152
 
