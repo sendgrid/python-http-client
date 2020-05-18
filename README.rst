@@ -65,7 +65,7 @@ Here is a quick example:
 
     import python_http_client
 
-    global_headers = {"Authorization": "Basic XXXXXXX"}
+    global_headers = {"Authorization": "Bearer XXXXXXX"}
     client = Client(host='base_url', request_headers=global_headers)
     client.your.api._(param).call.get()
     print(response.status_code)
@@ -78,7 +78,7 @@ Here is a quick example:
 
     import python_http_client
 
-    global_headers = {"Authorization": "Basic XXXXXXX"}
+    global_headers = {"Authorization": "Bearer XXXXXXX"}
     client = Client(host='base_url', request_headers=global_headers)
     query_params = {"hello":0, "world":1}
     request_headers = {"X-Test": "test"}
