@@ -1,55 +1,45 @@
+dist: xenial # required for Python >= 3.7
 language: python
-sudo: false
 cache: pip
 python:
-- '2.7'
-- '3.4'
-- '3.5'
-- '3.6'
-# Enable 3.7 without globally enabling sudo and dist: xenial for other build jobs
-matrix:
-  include:
-  - python: 3.7
-    dist: xenial
-    sudo: true
-fail_fast: true
+  - '2.7'
+  - '3.4'
+  - '3.5'
+  - '3.6'
+  - '3.7'
+  - '3.8'
 before_install:
-- pip install pycodestyle
-- if [[ "$TRAVIS_PYTHON_VERSION" == 2.7* ]]; then pip install mock; fi
+  - pip install pycodestyle coverage codecov
+  - if [[ "$TRAVIS_PYTHON_VERSION" == 2.7* ]]; then pip install mock; fi
 install:
-- pip install codecov
-- travis_retry pip install coverage
-- python setup.py install
-- pip install codecov
+  - pip install virtualenv --upgrade
+  - make install
+  - make test-install
 script:
-- pycodestyle
-- coverage run -m unittest discover
+  - pycodestyle --exclude=venv
+  - coverage run -m unittest discover
 after_script:
-- codecov
-- python -m unittest discover
-- coverage run tests/test_unit.py
-notifications:
-  hipchat:
-    rooms:
-      secure: HJMoEh7l01B8tqQcdp4c4Og2lFY2QCAPnt++a4InM1zF+pbQuALQvS50ILJPc7qoBskqfvXhX9t+coSaKVIMPFuXlHC9haYCBxv0TSTA/j/9SnDGwS70U2YWDIi20/YZrPSN874woL6F/D8/vB+IwYxJWIL+ofasXPm/v+QHKLjEKLggyK8SHsU2BPH++0JluelpnaBt6JcCCY6IL8wu/Bf6ohFHf67cwITPzA33Wmla51W5zHSlaVsqKM+UhK5EWCCvU51t/imfL8cf8h7zNxveqGbaq5Fqk7lBEmHtYdUm0P5RdsHHFiyWvf3Kk8kYBkA4VaSqSdV10g/Q2sURW0F4s6ULJqRBtTIcQFKgUcrkBM22+/I8MrfRkVOUrrlPugOeshtuac3xN0tQBZYc1yIik914NeL1im/doZ5MjsNlQckmF8tmwz9uPMpQBWHRGQwc72EiJ3ANfogMhZhI3GIKQffHP8aO+JTCyzzxQ1fUerF4/YgsciAZdbBRVKmYdElvix6vVxS1QyPEjr3AHzhCFso78vRla7yAXoI2RrzbsnoPo/TBsof4sqbtgPgGWSBPJiZOPh3WNZ5NSUjlefk1PyYsdqM+Ywhk8SApo8eKrDK2ghiKmqSB3yDIs4WJN91CJnhUgt8fl5Q2Iz1pCm/999ma+y/VXOqURudE5wg=
-    template:
-    - '<a href="https://travis-ci.org/%{repository}/builds/%{build_id}">%{repository}
-      Build %{build_number}</a> on branch <i>%{branch}</i> by %{author}: <strong>%{message}</strong>
-      <a href="https://github.com/sendgrid/%{repository}/commits/%{commit}">View on
-      GitHub</a>'
-    format: html
+  - codecov
+  - make test
+  - coverage run tests/test_unit.py
 after_success:
-- codecov
-env:
-  global:
-  - secure: 7j0Ox9ZQss0PewrhGih86Ro0pQJpv23Bb0uABJV7kKN/W37ofrG0m6joamf8EhDDleaPoIqfbARhUpAlqFZF0Uo/5rREqpKkmP4e1zuYMu20VbFv6PXwZ+7ByAuKXN2/Xs54MImlL1+RaduMPNRpbcfT1mdqJgSC+3tVcWodzuRG9RPzxtWYLe93QfwNHV/VMsDPDIY12FZTErbXd/hBCEQXep5rNfK+TtLIGn0ZnS7TktTcD0ld+0ruhunbDjnkpXPVSJDuLaGRpotq0oyaGifnjVM5gVubP+KCL3h24tIXjJ7uI36Eu3EuF4qsg0fmNjuM/WjgwZ9Ta4I2MHlXtFs//qMMArOw5AvPg25adrEwGO4Veh3I3tJGL7hJeM7AZX4rAycXiGIHvpP2G/nX6e/EqRrnFBDOStmBhxEaknLJ/p2Cv6AOvxTMKDo8y+tJY1jp3H1iwCBYyW6KuFKVPDYtu8VLxJunaqNX4LxiJN7VHgvTSgqImjzEy5tVxVt079ciyeznSKKGHLHDAl1ioQpmv/Oyas007A4PKJJAf73go8Yt+GM6qe3K6U3tIBKWL8e0cK1kejk9TLC0D9KXbmhmK81QzpBdQfkrveYi/kucVv0zdrGl+Uy8zcq+vYxceyCdDYcTxCS66bWNFTD2t1dML5gRpdNVVSc27ZM9wtA=
-  - secure: NlSZq/v2vjPQSSjlAbrM1JAfCdBSF/OqmO1HV/7U8HAmyGj7WjAcBkH5qWb5lP/xgUSzP3rEtNBJQNNHHiHHxSY0TtplUkJHrBqZOWGd4nG4GB/w8thj4nOiuok9lQhU2wi4mhRnzw2gGG9XpRpnYqL3a0CWWZ8XilSdL3M1H4fE2rwCSbKo35wpaapAT2BkN/zXeJ62wYX0vsz14EAzRSPlX+zfSo4esjig/B4ubgD1KKq3vRWGX0oU1/b6LYxrRl+OPqql9s3nKa0SuHtzLH4CVM0JTpJ8PxYq/LaLn03evAtgjR3aJJUlXaYL+yVBdATGrtyGUAJTVvRtbWsiaW4KNs+e5eWD+KM1ei18DYHWTMsjRbKLh3DrnUxFSFezMkOgUX4I9aohqPW9q9eTbSi2nR2mEcfDrGPArTZKtmGvx09gil5BAvsYc9A2Ob+TdV0N/bHROdK1R381mY4xWYytZ070+J4YHIKi/AwEJXtYgedc/PDr6fxh9RKDXNybyP2y/i+b72bnij9ZyJc0scDAlRQ4MU/h4cFDohI9quIYpJZ3N3eUeVp7TNX4AT2z+aNj74pBy15eMJv8WYhuBauk3jexhpMQi5yDr7aqlb2/NRyd91oP5QZOcjo7nnPcJp8QyvKtWFeID+c5dV3wcIMeOXmPz1KWWGlJMrV1vZI=
+  - codecov
 deploy:
   provider: pypi
-  user: thinkingserious
-  password:
-    secure: LICjgQDHDZUYFbhrxd/4KGlamfMPMu7Oqf7DCskfJwQqvZTrC7VyvOsPqVtCIIpw/GyE606KagkTEV7nTvwxCWGDQpQ0gkLkUkDzxziJlwKJEjYA3rGzxHCqdGRF6mQLThIpaUwaIpM7Ue4LUyhMSNw7b84F/dg1gWzK+LuqzY6UIRUmu6O2XvwoCWnbmrDrqExgOB7oyBABqlhmISr5x8JeMH+HRSTaHQW0QWeckEYUBPlSdXa4lj1pMfaRIlU3r7vB0Tckh5wtgu/B0t5I7enrdYHxaqIVCsh65c/8pDxXpI7anRCrPFU3SEGbodfe6rtNY4WlhWKaTJIPpQbKFU/NyYIjbox6rhdJ/bbC7hMfAxqTWzp1urJQxdWd5cbDUwNWgukdP5KhWA+iqy35llfb2KlFG6AVKHy4iR93is8hGW2NwCsSlx18W82AqpARJA22TWEIbKbyy6+GoiiIEmXxWleqriTqLuTLpPjyAby4pcW5gqtjVzEJ7Gi+Eq+Ex0pMUdOpXIt3kIk8TAB2chlGWr7+j9GuDN89LY0brSM+Q0fP8X3gohVQI5Afl8A+5ygQW5l//y2dakZ0KLSj6JjSyWMWMahrPHpxdUeNKjfENscU00AJSrskoAJvU1N4oyLIABrA7oMG5ZJXpASsixBimypayCCPJe50p+tEWW4=
+  user: __token__
+  password: $PYPI_TOKEN
+  skip_cleanup: true
   on:
     branch: master
     condition: "$TRAVIS_TEST_RESULT = 0"
     tags: true
+    python: '3.6'
+
+notifications:
+  slack:
+    if: branch = master
+    on_pull_requests: false
+    on_success: never
+    on_failure: change
+    rooms:
+      - secure: nlMB50M0ay7TeG9pf4IKLUXTfaw6dRS14DMa59l3dAy20bLgg4QSuxl/8lsO3tdBzTjONlpzX5NCR184WO98Kf6dJuYGp5OzfaV2DYYMu12ksbt6bSWyPiYxg3FtKlgWowJs1nRytXz6QoaumZjtoPxfJptq+bUKeZu+4sRT6NButyuUHHAwlOinjZF2UtENoi0zxia+v8EHdEgSJq1HEBmZ+4X/ZUerZndYXM5Lxfy+NHvFCxu/2/D4oQcu92Wfp+/Z1lWNeemspd+XJ5ZVNmB+kJvF8A0O+AFFlGyT8nSimfqyJoxWDT0rQm9u6MtWJol1Jso7iSe0J00fVmgdEFQMLmdcMChAGcGFzFem6C9cMA6xOfDeXS1DosHCObItVrU+YtQYPHzDN2Ubpr1T495+kvdGHVgcYy3UmOFb8Vc0NbQ7nabtlBAlLR2QcouusJmGyjTt7hDrZz6XynKgTZ4vEq7/x3aRgcYD9Oei5fZ2enjzbX3c2Jv7vrzhwAsNp0N+FNx6Nnl1v+UzQtS8XyUCOLK+LYbq+cYKaToowHNWkZM9+0pcdX8DwAHB05aiIBfE18JbjdY0bz1P+4+hmStCUPIjEKyjEPBIuXKMsYCjr092HrJkSMhGWUwJFX+R5hmACm+cQQFDjXXrpzpnXr2xHgbRbb0tX73nchF25kY=

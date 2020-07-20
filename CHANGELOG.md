@@ -3,6 +3,77 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+[2020-04-01] Version 3.2.7
+--------------------------
+**Library - Fix**
+- [PR #128](https://github.com/sendgrid/python-http-client/pull/128): Remove ResourceWarning on module import. Thanks to [@connesy](https://github.com/connesy)!
+
+
+[2020-03-04] Version 3.2.6
+--------------------------
+**Library - Chore**
+- [PR #140](https://github.com/sendgrid/python-http-client/pull/140): add Python 3.8 to Travis. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
+[2020-02-19] Version 3.2.5
+--------------------------
+**Library - Fix**
+- [PR #132](https://github.com/sendgrid/python-http-client/pull/132): Exclude tests directory from package data. Thanks to [@bwind](https://github.com/bwind)!
+
+
+[2020-01-23] Version 3.2.4
+--------------------------
+**Library - Fix**
+- [PR #138](https://github.com/sendgrid/python-http-client/pull/138): update pypi token to use environment variable. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+
+[2020-01-22] Version 3.2.3
+--------------------------
+**Library - Fix**
+- [PR #137](https://github.com/sendgrid/python-http-client/pull/137): add skip cleanup. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+
+[2020-01-22] Version 3.2.2
+--------------------------
+**Library - Docs**
+- [PR #136](https://github.com/sendgrid/python-http-client/pull/136): baseline all the templated markdown docs. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Fix**
+- [PR #135](https://github.com/sendgrid/python-http-client/pull/135): version number to match most recently released. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Library - Chore**
+- [PR #134](https://github.com/sendgrid/python-http-client/pull/134): prep the repo for automated releasing. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+
+[2019-09-12] Version 3.2.1
+---------------------------
+
+[2019-09-11] Version 3.2.0
+---------------------------
+
+### Added
+- [PR #91](https://github.com/sendgrid/python-http-client/pull/91): Add support for Python 3.7. Thanks, [Hugo van Kemenade](https://github.com/hugovk)!
+- [PR #96](https://github.com/sendgrid/python-http-client/pull/96): Create a use cases directory. Thanks, [
+Nathan Seebarran](https://github.com/nathan78906)!
+- [PR #90](https://github.com/sendgrid/python-http-client/pull/90): Drop support for EOL Python. Thanks, [Hugo van Kemenade](https://github.com/hugovk)!
+- [PR #93](https://github.com/sendgrid/python-http-client/pull/93): Converted README and version as file. Thanks, [Nikita Titov](https://github.com/StrikerRUS)!
+- [PR #104](https://github.com/sendgrid/python-http-client/pull/104): Add first-timers.md file for newcomers. Thanks, [Ely Alamillo](https://github.com/ely-alamillo)!
+- [PR #107](https://github.com/sendgrid/python-http-client/pull/107): Update CONTRIBUTING - contribution guideline to branch off development. Thanks, [Alex](https://github.com/myzeprog)!
+- [PR #115](https://github.com/sendgrid/python-http-client/pull/115): Updated Readme with career listing. Thanks, [Pratham Sharma](https://github.com/prathamsharma92)!
+- [PR #112](https://github.com/sendgrid/python-http-client/pull/112): Bash script to auto-generate release notes. Thanks, [Shivansh Saini](https://github.com/shivanshs9)!
+- [PR #102](https://github.com/sendgrid/python-http-client/pull/102): Initial travis config for pypi deployment. Thanks, [George Kussumoto](https://github.com/georgeyk)!
+- [PR #119](https://github.com/sendgrid/python-http-client/pull/119): Auto deploy credentials.
+- [PR #88](https://github.com/sendgrid/python-http-client/pull/88): Client refactor. Thanks, [Slam](https://github.com/3lnc)!
+- [PR #122](https://github.com/sendgrid/python-http-client/pull/122): Let test_datarange show only a warning instead of fail on AssertionError. Thanks, [Lumír 'Frenzy' Balhar](https://github.com/frenzymadness)!
+
+### Fixed
+- [PR #89](https://github.com/sendgrid/python-http-client/pull/89): Add missing Travis-CI python 3.6 support. Thanks, [Eugene Duboviy](https://github.com/duboviy)!
+- [PR #105](https://github.com/sendgrid/python-http-client/pull/105): Add missed Python 3.7 classifier. Thanks, [Nikita Titov](https://github.com/StrikerRUS)!
+- [PR #111](https://github.com/sendgrid/python-http-client/pull/111): String Formatting and PEP-8 fixes. Thanks, [Mohammed Rishad](https://github.com/vkmrishad)!
+- [PR #118](https://github.com/sendgrid/python-http-client/pull/118): Remove dead code in profile.py. Thanks, [gy741](https://github.com/gy741)!
+- [PR #100](https://github.com/sendgrid/python-http-client/pull/100): Conformance to style standards. Thanks, [Moises Meirelles](https://github.com/mosesmeirelles)!
+- [PR #120](https://github.com/sendgrid/python-http-client/pull/120): Fix a year in LICENSE.txt file to fix test__daterange. Thanks, [Lumír 'Frenzy' Balhar](https://github.com/frenzymadness)!
+
 ## [3.1.0] - 2018-05-23
 ### Added
 - [Update register.py to use pypandoc](https://github.com/sendgrid/python-http-client/commit/6a3a63e2511b3df9c9ef23eebd5bcd80ad8821ae)

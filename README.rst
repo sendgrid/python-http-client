@@ -1,11 +1,11 @@
-.. image:: https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png
+.. image:: https://github.com/sendgrid/sendgrid-python/raw/master/twilio_sendgrid_logo.png
    :target: https://www.sendgrid.com
 
 |Build Status| |Email Notifications Badge| |Twitter Follow| |Codecov branch| |Code Climate| |Python Versions| |PyPI Version| |GitHub contributors| |MIT licensed|
 
 **Quickly and easily access any RESTful or RESTful-like API.**
 
-If you are looking for the SendGrid API client library, please see `this repo`_.
+If you are looking for the Twilio SendGrid API client library, please see `this repo`_.
 
 Table of Contents
 =================
@@ -21,7 +21,6 @@ Table of Contents
 -  `Thanks <#thanks>`__
 -  `About <#about>`__
 -  `License <#license>`__
--  `Career opportunities <#career-opportunities>`__
 
 Installation
 ============
@@ -47,7 +46,7 @@ or
 API Key
 -------
 
-Store your SendGrid API key in a ``.env`` file.
+Store your Twilio SendGrid API key in a ``.env`` file.
 
 .. code:: bash
 
@@ -66,7 +65,7 @@ Here is a quick example:
 
     import python_http_client
 
-    global_headers = {"Authorization": "Basic XXXXXXX"}
+    global_headers = {"Authorization": "Bearer XXXXXXX"}
     client = Client(host='base_url', request_headers=global_headers)
     client.your.api._(param).call.get()
     print(response.status_code)
@@ -79,7 +78,7 @@ Here is a quick example:
 
     import python_http_client
 
-    global_headers = {"Authorization": "Basic XXXXXXX"}
+    global_headers = {"Authorization": "Bearer XXXXXXX"}
     client = Client(host='base_url', request_headers=global_headers)
     query_params = {"hello":0, "world":1}
     request_headers = {"X-Test": "test"}
@@ -111,7 +110,6 @@ Quick links:
 
 -  `Feature Request`_
 -  `Bug Reports`_
--  `Sign the CLA to Create a Pull Request`_
 -  `Improvements to the Codebase`_
 -  `Review Pull Requests`_
 
@@ -142,20 +140,13 @@ We were inspired by the work done on `birdy`_ and `universalclient`_.
 About
 =====
 
-**python-http-client** is guided and supported by the SendGrid `Developer Experience Team`_.
-
-**python-http-client** is maintained and funded by SendGrid, Inc.
-The names and logos for **python-http-client** are trademarks of SendGrid, Inc.
+**python-http-client** is maintained and funded by Twilio SendGrid, Inc.
+The names and logos for **python-http-client** are trademarks of Twilio SendGrid, Inc.
 
 License
 =======
 
 `The MIT License (MIT)`_
-
-Career opportunities
-=======
-
-If you're a software engineer who is passionate about #DeveloperExperience and/or #OpenSource, `this is an incredible opportunity to join our #DX team`_ as a Developer Experience Engineer and work with @thinkingserious and @aroach! Tell your friends :)
 
 .. _this repo: https://github.com/sendgrid/sendgrid-python
 .. _Example Code: https://github.com/sendgrid/python-http-client/tree/master/examples
@@ -163,15 +154,13 @@ If you're a software engineer who is passionate about #DeveloperExperience and/o
 .. _CONTRIBUTING: https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md
 .. _Feature Request: https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#feature-request
 .. _Bug Reports: https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#submit-a-bug-report
-.. _Sign the CLA to Create a Pull Request: https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#cla
 .. _Improvements to the Codebase: https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#improvements-to-the-codebase
 .. _Review Pull Requests: https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#code-reviews
 .. _troubleshooting guide: https://github.com/sendgrid/python-http-client/blob/master/TROUBLESHOOTING.md
 .. _CHANGELOG: https://github.com/sendgrid/python-http-client/blob/master/CHANGELOG.md
 .. _birdy: https://github.com/inueni/birdy
 .. _universalclient: https://github.com/dgreisen/universalclient
-.. _Developer Experience Team: mailto:dx@sendgrid.com
-.. _The MIT License (MIT): https://github.com/sendgrid/python-http-client/blob/master/LICENSE.txt
+.. _The MIT License (MIT): https://github.com/sendgrid/python-http-client/blob/master/LICENSE.md
 .. _this is an incredible opportunity to join our #DX team: https://sendgrid.com/careers/role/1421152/?gh_jid=1421152
 
 .. |Build Status| image:: https://travis-ci.org/sendgrid/python-http-client.svg?branch=master
@@ -191,4 +180,4 @@ If you're a software engineer who is passionate about #DeveloperExperience and/o
 .. |GitHub contributors| image:: https://img.shields.io/github/contributors/sendgrid/python-http-client.svg
    :target: https://github.com/sendgrid/python-http-client/graphs/contributors
 .. |MIT licensed| image:: https://img.shields.io/badge/license-MIT-blue.svg
-   :target: https://github.com/sendgrid/python-http-client/blob/master/LICENSE.txt
+   :target: https://github.com/sendgrid/python-http-client/blob/master/LICENSE.md
