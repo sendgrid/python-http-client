@@ -39,7 +39,7 @@ class MockResponse(requests.Response):
 
     def __init__(self, response_code):
         self.status_code = response_code
-        self.content = 'RESPONSE BODY'
+        self._content = 'RESPONSE BODY'
         self.headers = 'HEADERS'
 
 
