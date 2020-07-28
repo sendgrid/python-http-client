@@ -251,14 +251,15 @@ class Client(object):
 
                 opener = requests.Session()
                 request = requests.Request(
+                    method=method,
                     url=self._build_url(query_params),
                     headers=self.request_headers,
                     data=data,
                 )
-                request.get_method = lambda: method
+                prepared = request.prepare()
 
                 return Response(
-                    self._make_request(opener, request, timeout=timeout)
+                    self._make_request(opener, prepared, timeout=timeout)
                 )
             return http_request
         else:
