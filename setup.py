@@ -4,6 +4,10 @@ import os
 from distutils.file_util import copy_file
 from setuptools import setup
 
+requires = [
+    'requests>=2.24.0,<3'
+]
+
 dir_path = os.path.abspath(os.path.dirname(__file__))
 readme_path = os.path.join(dir_path, 'README.rst')
 version_path = os.path.join(dir_path, 'VERSION.txt')
@@ -37,6 +41,7 @@ setup(
         'HTTP',
         'API'],
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
+    install_requires=requires,
     classifiers=[
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
