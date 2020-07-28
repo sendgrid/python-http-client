@@ -1,16 +1,15 @@
 """HTTP Client library"""
 import json
+import requests
 
 from .exceptions import handle_error
 
 try:
     # Python 3
-    import urllib.request as urllib
     from urllib.parse import urlencode
     from urllib.error import HTTPError
 except ImportError:
     # Python 2
-    import urllib2 as urllib
     from urllib2 import HTTPError
     from urllib import urlencode
 
@@ -24,9 +23,9 @@ class Response(object):
                          on a urllib.build_opener()
         :type response:  urllib response object
         """
-        self._status_code = response.getcode()
-        self._body = response.read()
-        self._headers = response.info()
+        self._status_code = response.status_code
+        self._body = response.content
+        self._headers = response.headers
 
     @property
     def status_code(self):
@@ -171,7 +170,7 @@ class Client(object):
         """
         timeout = timeout or self.timeout
         try:
-            return opener.open(request, timeout=timeout)
+            return opener.send(request, timeout=timeout)
         except HTTPError as err:
             exc = handle_error(err)
             exc.__cause__ = None
@@ -250,9 +249,9 @@ class Client(object):
                             'Content-Type', 'application/json')
                         data = json.dumps(request_body).encode('utf-8')
 
-                opener = urllib.build_opener()
-                request = urllib.Request(
-                    self._build_url(query_params),
+                opener = requests.Session()
+                request = requests.Request(
+                    url=self._build_url(query_params),
                     headers=self.request_headers,
                     data=data,
                 )
