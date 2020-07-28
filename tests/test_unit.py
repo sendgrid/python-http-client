@@ -124,7 +124,7 @@ class TestClient(unittest.TestCase):
     def test__requests_method(self, maker):
         self.client.delete()
         request = maker.call_args[0][1]
-        self.assertEqual(request.get_method(), 'DELETE')
+        self.assertEqual(request.method, 'DELETE')
 
     def test__update_headers(self):
         request_headers = {'X-Test': 'Test'}
