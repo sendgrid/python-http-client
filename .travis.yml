@@ -30,14 +30,14 @@ deploy:
   password: $PYPI_TOKEN
   skip_cleanup: true
   on:
-    branch: master
+    branch: main
     condition: "$TRAVIS_TEST_RESULT = 0"
     tags: true
     python: '3.6'
 
 notifications:
   slack:
-    if: branch = master
+    if: branch = main
     on_pull_requests: false
     on_success: never
     on_failure: change
