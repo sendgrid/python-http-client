@@ -1,5 +1,6 @@
 import pickle
 import unittest
+import requests
 
 from python_http_client.client import Client
 from python_http_client.exceptions import (
@@ -12,11 +13,9 @@ from python_http_client.exceptions import (
 
 try:
     # Python 3
-    import urllib.request as urllib
     from unittest import mock
 except ImportError:
     # Python 2
-    import urllib2 as urllib
     import mock
 
 try:
@@ -36,19 +35,12 @@ class MockException(HTTPError):
         return 'BODY'
 
 
-class MockResponse(urllib.HTTPSHandler):
+class MockResponse(requests.Response):
 
     def __init__(self, response_code):
-        self.response_code = response_code
-
-    def getcode(self):
-        return self.response_code
-
-    def info(self):
-        return 'HEADERS'
-
-    def read(self):
-        return 'RESPONSE BODY'
+        self.status_code = response_code
+        self.content = 'RESPONSE BODY'
+        self.headers = 'HEADERS'
 
 
 class MockClient(Client):
@@ -122,14 +114,14 @@ class TestClient(unittest.TestCase):
         self.assertEqual(built_url, url)
 
     @mock.patch('python_http_client.client.Client._make_request')
-    def test__urllib_headers(self, maker):
+    def test__requests_headers(self, maker):
         self.client._update_headers({'X-test': 'Test'})
         self.client.get()
         request = maker.call_args[0][1]
         self.assertIn('X-test', request.headers)
 
     @mock.patch('python_http_client.client.Client._make_request')
-    def test__urllib_method(self, maker):
+    def test__requests_method(self, maker):
         self.client.delete()
         request = maker.call_args[0][1]
         self.assertEqual(request.get_method(), 'DELETE')
