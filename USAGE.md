@@ -113,7 +113,7 @@ Example to stdout:
 >>> handler.setFormatter(formatter)
 >>> logger.addHandler(handler)
 >>> client.templates.get()
-2019-03-08 17:21:25,329 - python_http_client.client - INFO - GET Request: https://api.sendgrid.com/v3/templates
-2019-03-08 17:21:25,329 - python_http_client.client - INFO - HEADERS: {'Authorization': 'Bearer redacted_token', 'Accept': 'application/json', 'User-agent': 'sendgrid/5.6.0;python'}
-2019-03-08 17:21:25,696 - python_http_client.client - INFO - GET Response: 200 {"templates":[]}
+2019-03-08 17:21:25,329 - python_http_client.client - DEBUG - GET Request: https://api.sendgrid.com/v3/templates
+2019-03-08 17:21:25,329 - python_http_client.client - DEBUG - HEADERS: {'Authorization': 'Bearer redacted_token', 'Accept': 'application/json', 'User-agent': 'sendgrid/5.6.0;python'}
+2019-03-08 17:21:25,696 - python_http_client.client - DEBUG - GET Response: 200 {"templates":[]}
 ```
