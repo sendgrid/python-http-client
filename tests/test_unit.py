@@ -59,7 +59,7 @@ class MockClient(Client):
 
     def _make_request(self, opener, request, timeout=None):
         if 200 <= self.response_code < 299:  # if successful code
-            return MockResponse(self.response_code), request.get_method()
+            return MockResponse(self.response_code)
         else:
             raise handle_error(MockException(self.response_code))
 
@@ -165,29 +165,24 @@ class TestClient(unittest.TestCase):
         mock_client._url_path += ['test']
         r = mock_client.get()
         self.assertEqual(r.status_code, 200)
-        self.assertEqual(r.method, 'GET')
 
         # Test POST
         r = mock_client.put()
         self.assertEqual(r.status_code, 200)
-        self.assertEqual(r.method, 'PUT')
 
         # Test PATCH
         r = mock_client.patch()
         self.assertEqual(r.status_code, 200)
-        self.assertEqual(r.method, 'PATCH')
 
         # Test POST
         mock_client.response_code = 201
         r = mock_client.post()
         self.assertEqual(r.status_code, 201)
-        self.assertEqual(r.method, 'POST')
 
         # Test DELETE
         mock_client.response_code = 204
         r = mock_client.delete()
         self.assertEqual(r.status_code, 204)
-        self.assertEqual(r.method, 'DELETE')
 
         mock_client.response_code = 400
         self.assertRaises(BadRequestsError, mock_client.get)

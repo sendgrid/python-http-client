@@ -20,7 +20,7 @@ _logger = logging.getLogger(__name__)
 class Response(object):
     """Holds the response from an API call."""
 
-    def __init__(self, response, method):
+    def __init__(self, response):
         """
         :param response: The return value from a open call
                          on a urllib.build_opener()
@@ -29,14 +29,6 @@ class Response(object):
         self._status_code = response.getcode()
         self._body = response.read()
         self._headers = response.info()
-        self._method = method
-
-    @property
-    def method(self):
-        """
-        :return: string, method of API call
-        """
-        return self._method
 
     @property
     def status_code(self):
@@ -181,15 +173,14 @@ class Client(object):
         """
         timeout = timeout or self.timeout
         try:
-            return (opener.open(request, timeout=timeout),
-                    request.get_method())
+            return opener.open(request, timeout=timeout)
         except HTTPError as err:
-            exc = handle_error(err)
-            exc.__cause__ = None
-            _logger.info('{method} Response: {status} {body}'.format(
+            _logger.debug('{method} Response: {status} {body}'.format(
                 method=request.get_method(),
                 status=exc.status_code,
                 body=exc.body))
+            exc = handle_error(err)
+            exc.__cause__ = None
             raise exc
 
     def _(self, name):
@@ -272,20 +263,19 @@ class Client(object):
                     data=data,
                 )
                 request.get_method = lambda: method
-                timeout = kwargs.pop('timeout', None)
-                _logger.info('{method} Request: {url}'.format(
+                _logger.debug('{method} Request: {url}'.format(
                     method=request.get_method(),
                     url=request.get_full_url()))
                 if request.data:
-                    _logger.info('PAYLOAD: {data}'.format(
+                    _logger.debug('PAYLOAD: {data}'.format(
                         data=request.data))
-                _logger.info('HEADERS: {headers}'.format(
+                _logger.debug('HEADERS: {headers}'.format(
                     headers=request.headers))
                 response = Response(
-                    *self._make_request(opener, request, timeout=timeout)
+                    self._make_request(opener, request, timeout=timeout)
                 )
-                _logger.info('{method} Response: {status} {body}'.format(
-                    method=response.method,
+                _logger.debug('{method} Response: {status} {body}'.format(
+                    method=method,
                     status=response.status_code,
                     body=response.body))
                 return response
