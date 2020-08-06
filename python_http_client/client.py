@@ -263,22 +263,27 @@ class Client(object):
                     data=data,
                 )
                 request.get_method = lambda: method
+
                 _logger.debug('{method} Request: {url}'.format(
-                    method=request.get_method(),
+                    method=method,
                     url=request.get_full_url()))
                 if request.data:
                     _logger.debug('PAYLOAD: {data}'.format(
                         data=request.data))
                 _logger.debug('HEADERS: {headers}'.format(
                     headers=request.headers))
+
                 response = Response(
                     self._make_request(opener, request, timeout=timeout)
                 )
+
                 _logger.debug('{method} Response: {status} {body}'.format(
                     method=method,
                     status=response.status_code,
                     body=response.body))
+
                 return response
+
             return http_request
         else:
             # Add a segment to the URL
