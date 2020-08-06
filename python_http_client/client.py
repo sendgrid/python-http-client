@@ -1,6 +1,6 @@
 """HTTP Client library"""
 import json
-
+import logging
 from .exceptions import handle_error
 
 try:
@@ -13,6 +13,8 @@ except ImportError:
     import urllib2 as urllib
     from urllib2 import HTTPError
     from urllib import urlencode
+
+_logger = logging.getLogger(__name__)
 
 
 class Response(object):
@@ -173,6 +175,10 @@ class Client(object):
         try:
             return opener.open(request, timeout=timeout)
         except HTTPError as err:
+            _logger.debug('{method} Response: {status} {body}'.format(
+                method=request.get_method(),
+                status=exc.status_code,
+                body=exc.body))
             exc = handle_error(err)
             exc.__cause__ = None
             raise exc
@@ -258,9 +264,26 @@ class Client(object):
                 )
                 request.get_method = lambda: method
 
-                return Response(
+                _logger.debug('{method} Request: {url}'.format(
+                    method=method,
+                    url=request.get_full_url()))
+                if request.data:
+                    _logger.debug('PAYLOAD: {data}'.format(
+                        data=request.data))
+                _logger.debug('HEADERS: {headers}'.format(
+                    headers=request.headers))
+
+                response = Response(
                     self._make_request(opener, request, timeout=timeout)
                 )
+
+                _logger.debug('{method} Response: {status} {body}'.format(
+                    method=method,
+                    status=response.status_code,
+                    body=response.body))
+
+                return response
+
             return http_request
         else:
             # Add a segment to the URL
