@@ -110,7 +110,7 @@ All PRs require passing tests before the PR will be reviewed.
 
 All test files are in the [`tests`](tests) directory.
 
-For the purposes of contributing to this repo, please update the [`test_unit.py`](test/test_unit.py) file with unit tests as you modify the code.
+For the purposes of contributing to this repo, please update the [`test_unit.py`](tests/test_unit.py) file with unit tests as you modify the code.
 
 ```bash
 python -m unittest discover -v
