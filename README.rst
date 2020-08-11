@@ -1,4 +1,4 @@
-.. image:: https://github.com/sendgrid/sendgrid-python/raw/master/twilio_sendgrid_logo.png
+.. image:: https://github.com/sendgrid/sendgrid-python/raw/HEAD/twilio_sendgrid_logo.png
    :target: https://www.sendgrid.com
 
 |Build Status| |Email Notifications Badge| |Twitter Follow| |Codecov branch| |Code Climate| |Python Versions| |PyPI Version| |GitHub contributors| |MIT licensed|
@@ -151,27 +151,27 @@ License
 `The MIT License (MIT)`_
 
 .. _this repo: https://github.com/sendgrid/sendgrid-python
-.. _Example Code: https://github.com/sendgrid/python-http-client/tree/master/examples
+.. _Example Code: https://github.com/sendgrid/python-http-client/tree/HEAD/examples
 .. _milestones: https://github.com/sendgrid/python-http-client/milestones
-.. _CONTRIBUTING: https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md
-.. _Feature Request: https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#feature-request
-.. _Bug Reports: https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#submit-a-bug-report
-.. _Improvements to the Codebase: https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#improvements-to-the-codebase
-.. _Review Pull Requests: https://github.com/sendgrid/python-http-client/blob/master/CONTRIBUTING.md#code-reviews
-.. _troubleshooting guide: https://github.com/sendgrid/python-http-client/blob/master/TROUBLESHOOTING.md
-.. _CHANGELOG: https://github.com/sendgrid/python-http-client/blob/master/CHANGELOG.md
+.. _CONTRIBUTING: https://github.com/sendgrid/python-http-client/blob/HEAD/CONTRIBUTING.md
+.. _Feature Request: https://github.com/sendgrid/python-http-client/blob/HEAD/CONTRIBUTING.md#feature-request
+.. _Bug Reports: https://github.com/sendgrid/python-http-client/blob/HEAD/CONTRIBUTING.md#submit-a-bug-report
+.. _Improvements to the Codebase: https://github.com/sendgrid/python-http-client/blob/HEAD/CONTRIBUTING.md#improvements-to-the-codebase
+.. _Review Pull Requests: https://github.com/sendgrid/python-http-client/blob/HEAD/CONTRIBUTING.md#code-reviews
+.. _troubleshooting guide: https://github.com/sendgrid/python-http-client/blob/HEAD/TROUBLESHOOTING.md
+.. _CHANGELOG: https://github.com/sendgrid/python-http-client/blob/HEAD/CHANGELOG.md
 .. _birdy: https://github.com/inueni/birdy
 .. _universalclient: https://github.com/dgreisen/universalclient
-.. _The MIT License (MIT): https://github.com/sendgrid/python-http-client/blob/master/LICENSE.md
+.. _The MIT License (MIT): https://github.com/sendgrid/python-http-client/blob/HEAD/LICENSE.md
 .. _this is an incredible opportunity to join our #DX team: https://sendgrid.com/careers/role/1421152/?gh_jid=1421152
 
-.. |Build Status| image:: https://travis-ci.org/sendgrid/python-http-client.svg?branch=master
+.. |Build Status| image:: https://travis-ci.org/sendgrid/python-http-client.svg?branch=main
    :target: https://travis-ci.org/sendgrid/python-http-client
 .. |Email Notifications Badge| image:: https://dx.sendgrid.com/badge/python
    :target: https://dx.sendgrid.com/newsletter/python
 .. |Twitter Follow| image:: https://img.shields.io/twitter/follow/sendgrid.svg?style=social&label=Follow
    :target: https://twitter.com/sendgrid
-.. |Codecov branch| image:: https://img.shields.io/codecov/c/github/sendgrid/python-http-client/master.svg?style=flat-square&label=Codecov+Coverage
+.. |Codecov branch| image:: https://img.shields.io/codecov/c/github/sendgrid/python-http-client/main.svg?style=flat-square&label=Codecov+Coverage
    :target: https://codecov.io/gh/sendgrid/python-http-client
 .. |Code Climate| image:: https://codeclimate.com/github/sendgrid/python-http-client/badges/gpa.svg
    :target: https://codeclimate.com/github/sendgrid/python-http-client
@@ -182,4 +182,4 @@ License
 .. |GitHub contributors| image:: https://img.shields.io/github/contributors/sendgrid/python-http-client.svg
    :target: https://github.com/sendgrid/python-http-client/graphs/contributors
 .. |MIT licensed| image:: https://img.shields.io/badge/license-MIT-blue.svg
-   :target: https://github.com/sendgrid/python-http-client/blob/master/LICENSE.md
+   :target: https://github.com/sendgrid/python-http-client/blob/HEAD/LICENSE.md

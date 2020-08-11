@@ -78,7 +78,7 @@ cd python-http-client
 
 ##### Execute: #####
 
-See the [examples folder](https://github.com/sendgrid/python-http-client/tree/master/examples) to get started quickly.
+See the [examples folder](examples) to get started quickly.
 
 <a name="understanding-the-codebase"></a>
 ## Understanding the Code Base
@@ -93,11 +93,11 @@ Unit and profiling tests.
 
 **/python_http_client/client.py**
 
-An HTTP client with a fluent interface using method chaining and reflection. By returning self on [__getattr__](https://github.com/sendgrid/python-http-client/blob/master/client.py#L74) and [_()](https://github.com/sendgrid/python-http-client/blob/master/client.py#L70), we can dynamically build the URL using method chaining and [__getattr__](https://github.com/sendgrid/python-http-client/blob/master/client.py#L74) allows us to dynamically receive the method calls to achieve reflection.
+An HTTP client with a fluent interface using method chaining and reflection. By returning self on [__getattr__](python_http_client/client.py#L198), we can dynamically build the URL using method chaining and [__getattr__](python_http_client/client.py#L198) allows us to dynamically receive the method calls to achieve reflection.
 
 This allows for the following mapping from a URL to a method chain:
 
-`/api_client/{api_key_id}/version` maps to `client.api_client._(api_key_id).version.<method>()` where <method> is a [HTTP verb](https://github.com/sendgrid/python-http-client/blob/master/client.py#L24).
+`/api_client/{api_key_id}/version` maps to `client.api_client._(api_key_id).version.<method>()` where <method> is a [HTTP verb](python_http_client/client.py#L69).
 
 **/python_http_client/config.py**
 
@@ -108,9 +108,9 @@ Loads the environment variables, if applicable.
 
 All PRs require passing tests before the PR will be reviewed.
 
-All test files are in the [`tests`](https://github.com/sendgrid/python-http-client/tree/master/tests) directory.
+All test files are in the [`tests`](tests) directory.
 
-For the purposes of contributing to this repo, please update the [`test_unit.py`](https://github.com/sendgrid/python-http-client/blob/master/test/test_unit.py) file with unit tests as you modify the code.
+For the purposes of contributing to this repo, please update the [`test_unit.py`](tests/test_unit.py) file with unit tests as you modify the code.
 
 ```bash
 python -m unittest discover -v

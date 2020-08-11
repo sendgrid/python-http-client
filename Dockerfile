@@ -1,6 +1,6 @@
 FROM ubuntu:xenial
 ENV PYTHON_VERSIONS='python2.7 python3.4 python3.5 python3.6 python3.7' \
-    OAI_SPEC_URL="https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/oai_stoplight.json"
+    OAI_SPEC_URL="https://raw.githubusercontent.com/sendgrid/sendgrid-oai/HEAD/oai_stoplight.json"
 
 # install testing versions of python, including old versions, from deadsnakes
 RUN set -x \
@@ -17,7 +17,7 @@ RUN set -x \
 WORKDIR /root
 
 # install Prism
-ADD https://raw.githubusercontent.com/stoplightio/prism/master/install.sh install.sh
+ADD https://raw.githubusercontent.com/stoplightio/prism/HEAD/install.sh install.sh
 RUN chmod +x ./install.sh && \
     ./install.sh && \
     rm ./install.sh

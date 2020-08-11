@@ -33,7 +33,7 @@ To make a pull request, follow these steps:
    feature to tidy up your commits before making them public. Probably you will also have to create tests (if needed) or create or update the example code that demonstrates the functionality of this change to the code.
  6. __Locally merge (or rebase)__ the upstream development branch into your topic branch:
   ```    
-    git pull [--rebase] upstream master
+    git pull [--rebase] upstream main
    ``` 
    
  7. __Push__ your topic branch up to your fork:
@@ -41,7 +41,7 @@ To make a pull request, follow these steps:
    git push origin <topic-branch-name>
    ```
  8. __[Open a Pull Request](https://help.github.com/articles/creating-a-pull-request/#changing-the-branch-range-and-destination-repository/)__
-    with a clear title and description against the `master` branch. All tests must be passing before we will review the PR.
+    with a clear title and description against the `main` branch. All tests must be passing before we will review the PR.
 ### Important notice
  Before creating a pull request, make sure that you respect the repository's constraints regarding contributions. You can find them in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
  ## Repositories with Open, Easy, Help Wanted, Issue Filters
