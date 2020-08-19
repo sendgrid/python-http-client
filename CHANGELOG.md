@@ -3,6 +3,15 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+[2020-08-19] Version 3.3.0
+--------------------------
+**Library - Chore**
+- [PR #143](https://github.com/sendgrid/python-http-client/pull/143): update GitHub branch references to use HEAD. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Library - Feature**
+- [PR #123](https://github.com/sendgrid/python-http-client/pull/123): add API logging to client. Thanks to [@tysonholub](https://github.com/tysonholub)!
+
+
 [2020-04-01] Version 3.2.7
 --------------------------
 **Library - Fix**
