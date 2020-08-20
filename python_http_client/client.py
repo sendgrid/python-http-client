@@ -175,12 +175,12 @@ class Client(object):
         try:
             return opener.open(request, timeout=timeout)
         except HTTPError as err:
+            exc = handle_error(err)
+            exc.__cause__ = None
             _logger.debug('{method} Response: {status} {body}'.format(
                 method=request.get_method(),
                 status=exc.status_code,
                 body=exc.body))
-            exc = handle_error(err)
-            exc.__cause__ = None
             raise exc
 
     def _(self, name):
