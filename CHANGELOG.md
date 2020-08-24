@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+[2020-08-24] Version 3.3.1
+--------------------------
+**Library - Fix**
+- [PR #145](https://github.com/sendgrid/python-http-client/pull/145): update request exception logging and update tests. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
 [2020-08-19] Version 3.3.0
 --------------------------
 **Library - Chore**
