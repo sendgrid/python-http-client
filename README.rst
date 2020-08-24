@@ -15,7 +15,6 @@ Table of Contents
 -  `Installation <#installation>`__
 -  `Quick Start <#quick-start>`__
 -  `Usage <#usage>`__
--  `Roadmap <#roadmap>`__
 -  `How to Contribute <#how-to-contribute>`__
 -  `Local Setup of the Project <#local-setup-of-the-project>`__
 -  `Troubleshooting <#troubleshooting>`__
@@ -97,12 +96,6 @@ Usage
 
 -  `Example Code`_
 
-Roadmap
-=======
-
-If you are interested in the future direction of this project, please take a look at our `milestones`_.
-We would love to hear your feedback.
-
 How to Contribute
 =================
 
@@ -152,7 +145,6 @@ License
 
 .. _this repo: https://github.com/sendgrid/sendgrid-python
 .. _Example Code: https://github.com/sendgrid/python-http-client/tree/HEAD/examples
-.. _milestones: https://github.com/sendgrid/python-http-client/milestones
 .. _CONTRIBUTING: https://github.com/sendgrid/python-http-client/blob/HEAD/CONTRIBUTING.md
 .. _Feature Request: https://github.com/sendgrid/python-http-client/blob/HEAD/CONTRIBUTING.md#feature-request
 .. _Bug Reports: https://github.com/sendgrid/python-http-client/blob/HEAD/CONTRIBUTING.md#submit-a-bug-report
