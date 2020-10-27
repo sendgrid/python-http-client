@@ -14,7 +14,7 @@ class RepoFiles(unittest.TestCase):
         ['./CODE_OF_CONDUCT.md'],
         ['./CONTRIBUTING.md'],
         ['./ISSUE_TEMPLATE.md'],
-        ['./LICENSE.md', './LICENSE.txt'],
+        ['./LICENSE'],
         ['./PULL_REQUEST_TEMPLATE.md'],
         ['./README.rst'],
         ['./TROUBLESHOOTING.md'],
