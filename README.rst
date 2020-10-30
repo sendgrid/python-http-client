@@ -157,8 +157,8 @@ License
 .. _The MIT License (MIT): https://github.com/sendgrid/python-http-client/blob/HEAD/LICENSE
 .. _this is an incredible opportunity to join our #DX team: https://sendgrid.com/careers/role/1421152/?gh_jid=1421152
 
-.. |Build Status| image:: https://travis-ci.org/sendgrid/python-http-client.svg?branch=main
-   :target: https://travis-ci.org/sendgrid/python-http-client
+.. |Build Status| image:: https://travis-ci.com/sendgrid/python-http-client.svg?branch=main
+   :target: https://travis-ci.com/sendgrid/python-http-client
 .. |Email Notifications Badge| image:: https://dx.sendgrid.com/badge/python
    :target: https://dx.sendgrid.com/newsletter/python
 .. |Twitter Follow| image:: https://img.shields.io/twitter/follow/sendgrid.svg?style=social&label=Follow
