@@ -18,6 +18,13 @@ if __name__ == '__main__' and __package__ is None:
 
 class StaticClient(Client):
     def __getattr__(self, value):
+        """
+        Get the value of the given attribute.
+
+        Args:
+            self: (todo): write your description
+            value: (str): write your description
+        """
         self._add_to_url_path(value)
         return self
 
@@ -26,6 +33,16 @@ class StaticClient(Client):
                      request_body=None,
                      query_params=None,
                      request_headers=None):
+        """
+        Make an http request.
+
+        Args:
+            self: (todo): write your description
+            method: (str): write your description
+            request_body: (str): write your description
+            query_params: (dict): write your description
+            request_headers: (todo): write your description
+        """
         method = method.upper()
         if request_headers:
             self._set_headers(request_headers)
@@ -45,6 +62,15 @@ class StaticClient(Client):
             request_body=None,
             query_params=None,
             request_headers=None):
+        """
+        Perform a get request.
+
+        Args:
+            self: (todo): write your description
+            request_body: (str): write your description
+            query_params: (dict): write your description
+            request_headers: (str): write your description
+        """
         self.make_request('get', request_body, query_params,
                           request_headers)
         return self
@@ -53,6 +79,15 @@ class StaticClient(Client):
              request_body=None,
              query_params=None,
              request_headers=None):
+        """
+        Make a post request.
+
+        Args:
+            self: (todo): write your description
+            request_body: (str): write your description
+            query_params: (dict): write your description
+            request_headers: (str): write your description
+        """
         self.make_request('post', request_body, query_params,
                           request_headers)
         return self
@@ -61,6 +96,15 @@ class StaticClient(Client):
             request_body=None,
             query_params=None,
             request_headers=None):
+        """
+        Perform a put request.
+
+        Args:
+            self: (todo): write your description
+            request_body: (str): write your description
+            query_params: (dict): write your description
+            request_headers: (todo): write your description
+        """
         self.make_request('put', request_body, query_params,
                           request_headers)
         return self
@@ -69,6 +113,15 @@ class StaticClient(Client):
               request_body=None,
               query_params=None,
               request_headers=None):
+        """
+        Perform a patch request.
+
+        Args:
+            self: (todo): write your description
+            request_body: (todo): write your description
+            query_params: (dict): write your description
+            request_headers: (str): write your description
+        """
         self.make_request('patch', request_body, query_params,
                           request_headers)
         return self
@@ -77,6 +130,15 @@ class StaticClient(Client):
                request_body=None,
                query_params=None,
                request_headers=None):
+        """
+        Make a delete request.
+
+        Args:
+            self: (todo): write your description
+            request_body: (str): write your description
+            query_params: (dict): write your description
+            request_headers: (str): write your description
+        """
         self.make_request('delete', request_body, query_params,
                           request_headers)
         return self
@@ -84,7 +146,18 @@ class StaticClient(Client):
 
 # Shout out to Zapier: https://zapier.com/engineering/profiling-python-boss
 def timefunc(f):
+    """
+    Decorator to log execution.
+
+    Args:
+        f: (todo): write your description
+    """
     def f_timer(*args, **kwargs):
+        """
+        Decorator to execute a function.
+
+        Args:
+        """
         start = time.time()
         result = f(*args, **kwargs)
         end = time.time()
@@ -94,11 +167,23 @@ def timefunc(f):
 
 
 def get_number():
+    """
+    Get the number from the number.
+
+    Args:
+    """
     for x in xrange(5000000):
         yield x
 
 
 def run_tested_code(client, num_loops):
+    """
+    Run a success return code for a given client.
+
+    Args:
+        client: (todo): write your description
+        num_loops: (int): write your description
+    """
     while num_loops > 0:
         request_headers = {'X-Mock': 200}
         query_params = {'limit': 100}
@@ -131,6 +216,11 @@ def run_tested_code(client, num_loops):
 
 @timefunc
 def dynamic_version():
+    """
+    Create dynamic dynamic dynamic dynamic dynamic version.
+
+    Args:
+    """
     local_path = '{}/..'.format(os.path.abspath(os.path.dirname(__file__)))
     Config(local_path)
     api_key = os.environ.get('SENDGRID_API_KEY')
@@ -147,6 +237,11 @@ def dynamic_version():
 
 @timefunc
 def static_version():
+    """
+    Create a static version.
+
+    Args:
+    """
     local_path = '{}/..'.format(os.path.abspath(os.path.dirname(__file__)))
     Config(local_path)
     api_key = os.environ.get('SENDGRID_API_KEY')

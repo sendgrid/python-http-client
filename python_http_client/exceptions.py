@@ -5,6 +5,13 @@ class HTTPError(Exception):
     """ Base of all other errors"""
 
     def __init__(self, error):
+        """
+        Initialize the http response.
+
+        Args:
+            self: (todo): write your description
+            error: (str): write your description
+        """
         self.status_code = error.code
         self.reason = error.reason
         self.body = error.read()
@@ -78,6 +85,12 @@ err_dict = {
 
 
 def handle_error(error):
+    """
+    Parse error message.
+
+    Args:
+        error: (todo): write your description
+    """
     try:
         exc = err_dict[error.code](error)
     except KeyError:
