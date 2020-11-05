@@ -6,6 +6,12 @@ import warnings
 
 class DateRangeTest(unittest.TestCase):
     def setUp(self):
+        """
+        Sets the license
+
+        Args:
+            self: (todo): write your description
+        """
         self.openlicensefile = os.path.join(
                                 os.path.dirname(__file__),
                                 '../LICENSE')
@@ -16,4 +22,10 @@ class DateRangeTest(unittest.TestCase):
         fh.close()
 
     def test__daterange(self):
+        """
+        Test if the given pattern.
+
+        Args:
+            self: (todo): write your description
+        """
         self.assertIn(self.pattern, self.license_file)

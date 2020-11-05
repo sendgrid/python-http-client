@@ -290,7 +290,20 @@ class Client(object):
             return self._(name)
 
     def __getstate__(self):
+        """
+        Get the state of the object.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.__dict__
 
     def __setstate__(self, state):
+        """
+        Sets the state of this object.
+
+        Args:
+            self: (todo): write your description
+            state: (dict): write your description
+        """
         self.__dict__ = state

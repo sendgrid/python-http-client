@@ -30,6 +30,12 @@ class RepoFiles(unittest.TestCase):
         return all(map(lambda f: not path.isfile(f), files))
 
     def test_file_existence(self):
+        """
+        Check if all missing test files.
+
+        Args:
+            self: (todo): write your description
+        """
         missing = list(filter(self._all_file, self.FILES))
         self.assertEqual(len(missing), 0,
                          "Files {} aren't found".format(missing)
