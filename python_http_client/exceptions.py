@@ -4,11 +4,23 @@ import json
 class HTTPError(Exception):
     """ Base of all other errors"""
 
-    def __init__(self, error):
-        self.status_code = error.code
-        self.reason = error.reason
-        self.body = error.read()
-        self.headers = error.hdrs
+    def __init__(self, *args):
+        if len(args) == 4:
+            self.status_code = args[0]
+            self.reason = args[1]
+            self.body = args[2]
+            self.headers = args[3]
+        else:
+            self.status_code = args[0].code
+            self.reason = args[0].reason
+            self.body = args[0].read()
+            self.headers = args[0].hdrs
+
+    def __reduce__(self):
+        return (
+            HTTPError,
+            (self.status_code, self.reason, self.body, self.headers)
+        )
 
     @property
     def to_dict(self):

@@ -7,6 +7,7 @@ from python_http_client.exceptions import (
     BadRequestsError,
     NotFoundError,
     ServiceUnavailableError,
+    UnauthorizedError,
     UnsupportedMediaTypeError,
 )
 
@@ -207,6 +208,25 @@ class TestClient(unittest.TestCase):
             unpickled_client.__dict__,
             "original client and unpickled client must have the same state"
         )
+
+    @mock.patch('python_http_client.client.urllib')
+    def test_pickle_error(self, mock_lib):
+        mock_opener = MockOpener()
+        mock_lib.build_opener.return_value = mock_opener
+
+        client = self.client.__getattr__('hello')
+
+        mock_opener.response_code = 401
+        try:
+            client.get()
+        except UnauthorizedError as e:
+            pickled_error = pickle.dumps(e)
+            unpickled_error = pickle.loads(pickled_error)
+            self.assertDictEqual(
+                e.__dict__,
+                unpickled_error.__dict__,
+                "original error and unpickled error must have the same state"
+            )
 
 
 if __name__ == '__main__':
