@@ -222,10 +222,26 @@ class TestClient(unittest.TestCase):
         except UnauthorizedError as e:
             pickled_error = pickle.dumps(e)
             unpickled_error = pickle.loads(pickled_error)
-            self.assertDictEqual(
-                e.__dict__,
-                unpickled_error.__dict__,
-                "original error and unpickled error must have the same state"
+
+            self.assertEqual(
+                e.status_code,
+                unpickled_error.status_code,
+                "unpickled error must have the same status code",
+            )
+            self.assertEqual(
+                e.reason,
+                unpickled_error.reason,
+                "unpickled error must have the same reason",
+            )
+            self.assertEqual(
+                e.body,
+                unpickled_error.body,
+                "unpickled error must have the same body",
+            )
+            self.assertEqual(
+                e.headers,
+                unpickled_error.headers,
+                "unpickled error must have the same headers",
             )
 
 
