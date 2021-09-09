@@ -8,6 +8,7 @@ python:
 - '3.6'
 - '3.7'
 - '3.8'
+- '3.9'
 before_install:
 - pip install pycodestyle coverage codecov
 - if [[ "$TRAVIS_PYTHON_VERSION" == 2.7* ]]; then pip install mock; fi
