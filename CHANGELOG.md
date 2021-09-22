@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+[2021-09-22] Version 3.3.3
+--------------------------
+**Library - Chore**
+- [PR #150](https://github.com/sendgrid/python-http-client/pull/150): test with v3.9. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+
 [2021-02-10] Version 3.3.2
 --------------------------
 **Library - Fix**
