@@ -2,6 +2,7 @@
 
 venv:
 	@python --version || (echo "Python is not installed, please install Python 2 or Python 3"; exit 1);
+	pip install virtualenv
 	virtualenv --python=python venv
 
 install: venv

@@ -8,8 +8,6 @@ class RepoFiles(unittest.TestCase):
         ['./docker-compose.yml', './docker/docker-compose.yml'],
         ['./.env_sample'],
         ['./.gitignore'],
-        ['./.travis.yml'],
-        ['./.codeclimate.yml'],
         ['./CHANGELOG.md'],
         ['./CODE_OF_CONDUCT.md'],
         ['./CONTRIBUTING.md'],
