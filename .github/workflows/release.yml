@@ -35,7 +35,7 @@ jobs:
   notify-on-failure:
     name: Slack notify on failure
     if: ${{ failure() }}
-    needs: [ deploy ]
+    needs: [ release ]
     runs-on: ubuntu-latest
     steps:
       - uses: rtCamp/action-slack-notify@v2
