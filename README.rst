@@ -1,7 +1,7 @@
 .. image:: https://github.com/sendgrid/sendgrid-python/raw/HEAD/twilio_sendgrid_logo.png
    :target: https://www.sendgrid.com
 
-|Test Status| |Twitter Follow| |Codecov branch| |Code Climate| |Python Versions| |PyPI Version| |GitHub contributors| |MIT licensed|
+|Test and Deploy Badge| |Twitter Follow| |Codecov branch| |Code Climate| |Python Versions| |PyPI Version| |GitHub contributors| |MIT licensed|
 
 **The default branch name for this repository has been changed to `main` as of 07/27/2020.**
 
@@ -157,8 +157,8 @@ License
 .. _The MIT License (MIT): https://github.com/sendgrid/python-http-client/blob/HEAD/LICENSE
 .. _this is an incredible opportunity to join our #DX team: https://sendgrid.com/careers/role/1421152/?gh_jid=1421152
 
-.. |Test Status| image:: https://github.com/sendgrid/python-http-client/actions/workflows/tests.yml/badge.svg
-   :target: https://github.com/sendgrid/python-http-client/actions/workflows/tests.yaml
+.. |Test and Deploy Badge| image:: https://github.com/sendgrid/python-http-client/actions/workflows/test-and-deploy.yml/badge.svg
+   :target: https://github.com/sendgrid/python-http-client/actions/workflows/test-and-deploy.yml
 .. |Twitter Follow| image:: https://img.shields.io/twitter/follow/sendgrid.svg?style=social&label=Follow
    :target: https://twitter.com/sendgrid
 .. |Codecov branch| image:: https://img.shields.io/codecov/c/github/sendgrid/python-http-client/main.svg?style=flat-square&label=Codecov+Coverage
