@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+[2022-02-09] Version 3.3.6
+--------------------------
+**Library - Chore**
+- [PR #156](https://github.com/sendgrid/python-http-client/pull/156): upgrade supported language versions. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #154](https://github.com/sendgrid/python-http-client/pull/154): merge test and deploy gh action workflows. Thanks to [@Hunga1](https://github.com/Hunga1)!
+
+
 [2022-01-12] Version 3.3.5
 --------------------------
 **Library - Chore**
