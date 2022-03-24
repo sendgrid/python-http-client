@@ -3,8 +3,6 @@
 
 |Test and Deploy Badge| |Twitter Follow| |Codecov branch| |Code Climate| |Python Versions| |PyPI Version| |GitHub contributors| |MIT licensed|
 
-**The default branch name for this repository has been changed to `main` as of 07/27/2020.**
-
 **Quickly and easily access any RESTful or RESTful-like API.**
 
 If you are looking for the Twilio SendGrid API client library, please see `this repo`_.
