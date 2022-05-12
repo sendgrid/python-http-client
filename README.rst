@@ -101,8 +101,6 @@ We encourage contribution to our projects, please see our `CONTRIBUTING`_ guide 
 
 Quick links:
 
--  `Feature Request`_
--  `Bug Reports`_
 -  `Improvements to the Codebase`_
 -  `Review Pull Requests`_
 
@@ -144,8 +142,6 @@ License
 .. _this repo: https://github.com/sendgrid/sendgrid-python
 .. _Example Code: https://github.com/sendgrid/python-http-client/tree/HEAD/examples
 .. _CONTRIBUTING: https://github.com/sendgrid/python-http-client/blob/HEAD/CONTRIBUTING.md
-.. _Feature Request: https://github.com/sendgrid/python-http-client/blob/HEAD/CONTRIBUTING.md#feature-request
-.. _Bug Reports: https://github.com/sendgrid/python-http-client/blob/HEAD/CONTRIBUTING.md#submit-a-bug-report
 .. _Improvements to the Codebase: https://github.com/sendgrid/python-http-client/blob/HEAD/CONTRIBUTING.md#improvements-to-the-codebase
 .. _Review Pull Requests: https://github.com/sendgrid/python-http-client/blob/HEAD/CONTRIBUTING.md#code-reviews
 .. _troubleshooting guide: https://github.com/sendgrid/python-http-client/blob/HEAD/TROUBLESHOOTING.md
