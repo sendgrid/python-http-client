@@ -162,12 +162,16 @@ class TestClient(unittest.TestCase):
         client.version(3)
         self.assertEqual(client._version, 3)
 
+        # Test Response Headers
+        r = client.get()
+        self.assertEqual(r.headers, 'HEADERS')
+
         # Test GET
         client._url_path += ['test']
         r = client.get()
         self.assertEqual(r.status_code, 200)
 
-        # Test POST
+        # Test PUT
         r = client.put()
         self.assertEqual(r.status_code, 200)
 
