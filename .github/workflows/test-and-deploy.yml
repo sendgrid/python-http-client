@@ -13,17 +13,17 @@ on:
 jobs:
   test:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-large
     timeout-minutes: 20
     strategy:
       matrix:
         python-version: [ '2.7', '3.5', '3.6', '3.7', '3.8', '3.9', '3.10' ]
     steps:
       - name: Checkout sendgrid-python-http-client
-        uses: actions/checkout@v2
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5  # v2
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@e9aba2c848f5ebd159c070c61ea2c4e2b122355e  # v2
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -33,13 +33,13 @@ jobs:
     name: Deploy
     if: success() && github.ref_type == 'tag'
     needs: [ test ]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-large
     steps:
       - name: Checkout sendgrid-python-http-client
-        uses: actions/checkout@v2
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5  # v2
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@e9aba2c848f5ebd159c070c61ea2c4e2b122355e  # v2
         with:
           python-version: '3.10'
 
@@ -51,13 +51,13 @@ jobs:
           python setup.py sdist bdist_wheel
 
       - name: Publish package to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b  # release/v1
         with:
           user: __token__
           password: ${{ secrets.PYPI_TOKEN }}
 
       - name: Submit metric to Datadog
-        uses: sendgrid/dx-automator/actions/datadog-release-metric@main
+        uses: sendgrid/dx-automator/actions/datadog-release-metric@08b601b726671445abc798ed59881766ec8fefc6  # main
         env:
           DD_API_KEY: ${{ secrets.DATADOG_API_KEY }}
 
@@ -65,9 +65,9 @@ jobs:
     name: Slack notify on failure
     if: failure() && github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref_type == 'tag')
     needs: [ test, deploy ]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-large
     steps:
-      - uses: rtCamp/action-slack-notify@v2
+      - uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58  # v2
         env:
           SLACK_COLOR: failure
           SLACK_ICON_EMOJI: ':github:'
