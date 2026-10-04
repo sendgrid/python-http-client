@@ -9,6 +9,7 @@ from python_http_client.exceptions import (
     ServiceUnavailableError,
     UnauthorizedError,
     UnsupportedMediaTypeError,
+    err_dict,
 )
 
 try:
@@ -208,6 +209,21 @@ class TestClient(unittest.TestCase):
             unpickled_client.__dict__,
             "original client and unpickled client must have the same state"
         )
+
+    def test_pickle_error_preserves_exception_type(self):
+        error_types = list(err_dict.items()) + [(418, SG_HTTPError)]
+        for status_code, error_type in error_types:
+            for protocol in range(pickle.HIGHEST_PROTOCOL + 1):
+                error = error_type(
+                    status_code, 'REASON', b'{"error": "failed"}',
+                    {'Retry-After': '30'},
+                )
+                restored = pickle.loads(pickle.dumps(error, protocol))
+                self.assertIs(type(restored), error_type)
+                self.assertEqual(restored.status_code, error.status_code)
+                self.assertEqual(restored.reason, error.reason)
+                self.assertEqual(restored.body, error.body)
+                self.assertEqual(restored.headers, error.headers)
 
     @mock.patch('python_http_client.client.urllib')
     def test_pickle_error(self, mock_lib):

@@ -18,7 +18,7 @@ class HTTPError(Exception):
 
     def __reduce__(self):
         return (
-            HTTPError,
+            type(self),
             (self.status_code, self.reason, self.body, self.headers)
         )
 
