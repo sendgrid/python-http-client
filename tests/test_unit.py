@@ -148,6 +148,22 @@ class TestClient(unittest.TestCase):
         url_path = ['hello']
         self.assertEqual(client._url_path[0], url_path[0])
 
+    def test__rejects_path_injection(self):
+        for bad in ['123/suppressions', '123?x=1', '123#frag', '..', '.',
+                    '', '..\\x', '../v3/api_keys']:
+            with self.assertRaises(ValueError):
+                self.client._(bad)
+
+    def test__allows_valid_segments(self):
+        client = self.client._('groups')._(123)._('d_1-2.x')
+        self.assertTrue(
+            client._build_url(None).endswith('/groups/123/d_1-2.x'))
+
+    def test_build_url_rejects_injected_url_path(self):
+        self.client._url_path = ['groups', '1/suppressions']
+        with self.assertRaises(ValueError):
+            self.client._build_url(None)
+
     @mock.patch('python_http_client.client.urllib')
     def test__getattr__(self, mock_lib):
         mock_opener = MockOpener()

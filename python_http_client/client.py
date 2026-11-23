@@ -118,7 +118,7 @@ class Client(object):
         url = ''
         count = 0
         while count < len(self._url_path):
-            url += '/{}'.format(self._url_path[count])
+            url += '/{}'.format(self._validate_segment(self._url_path[count]))
             count += 1
 
         # add slash
@@ -144,6 +144,22 @@ class Client(object):
         """
         self.request_headers.update(request_headers)
 
+    @staticmethod
+    def _validate_segment(segment):
+        """Reject url segments that could change the endpoint being called.
+
+        :param segment: a single url path segment
+        :type segment: string or integer
+        :return: the segment, unchanged
+        :raises ValueError: if empty, '.', '..' or contains '/', '?', '#'
+        """
+        value = str(segment)
+        if value in ('', '.', '..') or any(c in value for c in '/?#\\'):
+            raise ValueError(
+                "Invalid path parameter {!r}: must not be empty, '.', '..' "
+                "or contain '/', '\\', '?', '#'".format(value))
+        return segment
+
     def _build_client(self, name=None):
         """Make a new Client object
 
@@ -151,6 +167,8 @@ class Client(object):
         :type name: string
         :return: A Client object
         """
+        if name is not None:
+            self._validate_segment(name)
         url_path = self._url_path + [name] if name else self._url_path
         return Client(host=self.host,
                       version=self._version,
